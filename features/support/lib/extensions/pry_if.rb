@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This is more of a monkey patch for Pry.
 #
 # The intent of this extension is provide a way of expressing
@@ -16,7 +18,7 @@ class Object
   # options::
   #   Same as the second argument to Pry
   #
-  def pry_if(flag=nil, object=nil, options={})
+  def pry_if(flag = nil, object = nil, options = {})
     flag = yield if flag.nil? && block_given?
     return unless flag
     require 'pry' unless defined? Pry

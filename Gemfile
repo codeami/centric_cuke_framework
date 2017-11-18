@@ -6,7 +6,7 @@ gem 'rspec-expectations', '~> 3.6'
 gem 'watir', '~> 6.8'
 gem 'page-object', '~> 2.2'
 gem 'data_magic', '~> 1.2'
-gem 'sauce_whisk' , '~> 0.0'
+gem 'sauce_whisk', '~> 0.0'
 
 # Development / Debugging
 gem 'rake', '~> 12.3'

@@ -17,5 +17,3 @@ require_relative 'lib/helpers'
 # Set up the world
 World(PageObject::PageFactory)
 World(DataMagic)
-
-

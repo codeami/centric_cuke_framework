@@ -20,3 +20,17 @@ Style/Semicolon:
   Exclude:
     - 'features/step_definitions/debug_steps.rb'
 
+Metrics/LineLength:
+  Max: 124
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - 'features/support/lib/extensions/pry_if.rb'
+
+Style/CaseEquality:
+  Exclude:
+    - 'features/support/lib/extensions/pry_if.rb'
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - 'features/support/lib/extensions/pry_if.rb'

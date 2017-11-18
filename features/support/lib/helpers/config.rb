@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'yaml'
 
 # Helper modules should all live in the helper namespace.
@@ -16,7 +18,7 @@ module Helpers
     # Load the files in Nenv.config_path
     def initialize
       Dir.glob(File.join(Nenv.config_path, '*.yml')) do |yml_file|
-        @data[File.basename(yml_file, '.yml').to_sym] = YAML.load(File.read(yml_file))
+        @data[File.basename(yml_file, '.yml').to_sym] = YAML.safe_load(File.read(yml_file))
       end
     end
   end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Helper modules should all live in the helper namespace.
 module Helpers
   # Helper module for creating browsers.
@@ -7,7 +9,7 @@ module Helpers
     # @param scenario [Cucumber:Scenario]
     #
     def self.create_browser(scenario)
-      self.send("create_#{Nenv.browser_type}_browser", scenario)
+      send("create_#{Nenv.browser_type}_browser", scenario)
     end
 
     # Saves job status in Sauce Labs
@@ -21,7 +23,7 @@ module Helpers
       SauceWhisk::Jobs.send(job_fn, browser.driver.send(:bridge).session_id)
     end
 
-    private
+    private_class_method
 
     # Creates a Sauce Labs browser.
     # Called by #create_browser when BROWSER_TYPE == :sauce
@@ -51,11 +53,11 @@ module Helpers
     # Simple helper function for building a Sauce Labs caps file
     def self.sauce_caps(scenario)
       {
-          version: Nenv.sauce_version,
-          browserName: Nenv.browser_brand,
-          platform: Nenv.sauce_platform,
-          name: "#{scenario.feature.name} - #{scenario.name}",
-          screenResolution: Nenv.browser_resolution
+        version: Nenv.sauce_version,
+        browserName: Nenv.browser_brand,
+        platform: Nenv.sauce_platform,
+        name: "#{scenario.feature.name} - #{scenario.name}",
+        screenResolution: Nenv.browser_resolution
       }
     end
   end
