@@ -1,0 +1,22 @@
+Bundler/OrderedGems:
+  Exclude:
+    - 'Gemfile'
+
+# Offense count: 1
+Lint/Debugger:
+  Exclude:
+    - 'features/step_definitions/debug_steps.rb'
+
+
+Style/FrozenStringLiteralComment:
+  Exclude:
+    - 'Gemfile'
+    - 'Rakefile'
+
+# Offense count: 1
+# Cop supports --auto-correct.
+# Configuration parameters: AllowAsExpressionSeparator.
+Style/Semicolon:
+  Exclude:
+    - 'features/step_definitions/debug_steps.rb'
+
