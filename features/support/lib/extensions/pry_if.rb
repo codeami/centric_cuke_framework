@@ -8,15 +8,11 @@
 class Object
   # Starts a pry session if the passed conditional or block is truthy.
   #
-  # == Parameters:
-  # flag::
-  #   A boolean indicating that we should start a pry session. Can be omitted if using a block
+  # @param  flag [boolean] Should we start a pry session?. Can be omitted if using a block
   #
-  # object::
-  #   Same as the first argument to Pry
+  # @param object [Object] Same as the first argument to Pry
   #
-  # options::
-  #   Same as the second argument to Pry
+  # @param options [Hash] Same as the second argument to Pry
   #
   def pry_if(flag = nil, object = nil, options = {})
     flag = yield if flag.nil? && block_given?
