@@ -1,4 +1,10 @@
-## Gems
+<!--
+# @markup markdown
+# @title Gems in the Centric framework.
+# 
+-->
+# Gems in the Centric framework.
+
 The gems included have their versions locked to only allow minor updates. If major version updates are desired those updates should be performed intentionally and only after having tested to ensure no breaking changes have been made.
 
 ### Core
