@@ -11,6 +11,10 @@ module RSpec
     match do |actual|
       actual.class_name.split.include? expected
     end
+
+    failure_message do |actual|
+      "expected element to have the CSS class: #{expected} got: #{actual.class_name}"
+    end
   end
 
   # @!method only_have_class(expected_class)
@@ -19,6 +23,10 @@ module RSpec
   RSpec::Matchers.define :only_have_class do |expected|
     match do |actual|
       actual.class_name == expected
+    end
+
+    failure_message do |actual|
+      "expected element to only have the CSS class: #{expected} got: #{actual.class_name}"
     end
   end
 
@@ -30,6 +38,10 @@ module RSpec
       classes = actual.class_name.split
       expected.all? { |e| classes.include?(e) }
     end
+
+    failure_message do |actual|
+      "expected element to have the CSS classes: #{expected} got: #{actual.class_name}"
+    end
   end
 
   # @!method only_have_classes(expected_classes)
@@ -39,6 +51,10 @@ module RSpec
     match do |actual|
       actual.class_name.split.sort == expected.sort
     end
+
+    failure_message do |actual|
+      "expected element to have only the CSS classes: #{expected} got: #{actual.class_name}"
+    end
   end
 
   # @!method only_have_classes(expected_classes)
@@ -47,6 +63,10 @@ module RSpec
   RSpec::Matchers.define :only_have_exact_classes do |expected|
     match do |actual|
       actual.class_name.split == expected
+    end
+
+    failure_message do |actual|
+      "expected element to have only the CSS classes: #{expected} in that order got: #{actual.class_name}"
     end
   end
 end

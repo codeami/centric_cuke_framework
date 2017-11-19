@@ -16,5 +16,7 @@ require_relative 'lib/helpers'
 require_relative 'lib/matchers'
 
 # Set up the world
-World(PageObject::PageFactory)
-World(DataMagic)
+if defined?(World)
+  World(PageObject::PageFactory)
+  World(DataMagic)
+end

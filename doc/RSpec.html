@@ -211,6 +211,54 @@ classes.</p>
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#have_path-instance_method" title="#have_path (instance method)">#<strong>have_path</strong>(expected_path)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Matches if the path of a link exactly matches a string.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#have_protocol-instance_method" title="#have_protocol (instance method)">#<strong>have_protocol</strong>(expected_protocol)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Matches if the protocol of a link exactly matches a string.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#match_host-instance_method" title="#match_host (instance method)">#<strong>match_host</strong>(pattern)  &#x21d2; Object </a>
     
 
@@ -251,6 +299,30 @@ classes.</p>
   
     <span class="summary_desc"><div class='inline'>
 <p>Matches if the href of a link matches a regular expression.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#match_path-instance_method" title="#match_path (instance method)">#<strong>match_path</strong>(pattern)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Matches if the path of a link matches a regex.</p>
 </div></span>
   
 </li>
@@ -365,7 +437,11 @@ classes.</p>
 11
 12
 13
-14</pre>
+14
+15
+16
+17
+18</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'features/support/lib/matchers/class.rb', line 10</span>
@@ -373,6 +449,10 @@ classes.</p>
 <span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:have_class</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
   <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
     <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_class_name'>class_name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_expected'>expected</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_failure_message'>failure_message</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expected element to have the CSS class: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expected'>expected</span><span class='embexpr_end'>}</span><span class='tstring_content'> got: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_class_name'>class_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -426,20 +506,28 @@ classes.</p>
       <pre class="lines">
 
 
-28
-29
-30
-31
-32
-33</pre>
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/class.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/class.rb', line 36</span>
 
 <span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:have_classes</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
   <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
     <span class='id identifier rubyid_classes'>classes</span> <span class='op'>=</span> <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_class_name'>class_name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span>
     <span class='id identifier rubyid_expected'>expected</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_classes'>classes</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_failure_message'>failure_message</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expected element to have the CSS classes: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expected'>expected</span><span class='embexpr_end'>}</span><span class='tstring_content'> got: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_class_name'>class_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -493,18 +581,26 @@ classes.</p>
       <pre class="lines">
 
 
-37
-38
-39
-40
-41</pre>
+49
+50
+51
+52
+53
+54
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/anchor.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/anchor.rb', line 49</span>
 
 <span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:have_host</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
   <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
     <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span> <span class='op'>==</span> <span class='id identifier rubyid_expected'>expected</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_failure_message'>failure_message</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expected link host to be: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expected'>expected</span><span class='embexpr_end'>}</span><span class='tstring_content'> got: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -558,18 +654,172 @@ classes.</p>
       <pre class="lines">
 
 
-19
-20
-21
-22
-23</pre>
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/anchor.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/anchor.rb', line 23</span>
 
 <span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:have_href</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
   <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
     <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_href'>href</span> <span class='op'>==</span> <span class='id identifier rubyid_expected'>expected</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_failure_message'>failure_message</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expected link href to be: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expected'>expected</span><span class='embexpr_end'>}</span><span class='tstring_content'> got: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_href'>href</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="have_path-instance_method">
+  
+    #<strong>have_path</strong>(expected_path)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Matches if the path of a link exactly matches a string.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>expected_path</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A string that should match the path of the link.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+75
+76
+77
+78
+79
+80
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/anchor.rb', line 75</span>
+
+<span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:have_path</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
+  <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_pathname'>pathname</span> <span class='op'>==</span> <span class='id identifier rubyid_expected'>expected</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_failure_message'>failure_message</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expected link path to be: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expected'>expected</span><span class='embexpr_end'>}</span><span class='tstring_content'> got: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_pathname'>pathname</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="have_protocol-instance_method">
+  
+    #<strong>have_protocol</strong>(expected_protocol)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Matches if the protocol of a link exactly matches a string.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>expected_protocol</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A string that should match the protocol of the link.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+62
+63
+64
+65
+66
+67
+68
+69
+70</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/anchor.rb', line 62</span>
+
+<span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:have_host</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
+  <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_protocol'>protocol</span> <span class='op'>==</span> <span class='id identifier rubyid_expected'>expected</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_failure_message'>failure_message</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expected link protocol to be: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expected'>expected</span><span class='embexpr_end'>}</span><span class='tstring_content'> got: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_protocol'>protocol</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -623,18 +873,26 @@ classes.</p>
       <pre class="lines">
 
 
-28
-29
-30
-31
-32</pre>
+36
+37
+38
+39
+40
+41
+42
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/anchor.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/anchor.rb', line 36</span>
 
 <span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:match_host</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
   <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
     <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span> <span class='id identifier rubyid_expected'>expected</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_failure_message'>failure_message</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expected link host to match expression: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expected'>expected</span><span class='embexpr_end'>}</span><span class='tstring_content'> got: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -692,7 +950,11 @@ classes.</p>
 11
 12
 13
-14</pre>
+14
+15
+16
+17
+18</pre>
     </td>
     <td>
       <pre class="code"><span class="info file"># File 'features/support/lib/matchers/anchor.rb', line 10</span>
@@ -700,6 +962,83 @@ classes.</p>
 <span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:match_href</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
   <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
     <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_href'>href</span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span> <span class='id identifier rubyid_expected'>expected</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_failure_message'>failure_message</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expected link href to match expression: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expected'>expected</span><span class='embexpr_end'>}</span><span class='tstring_content'> got: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_href'>href</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="match_path-instance_method">
+  
+    #<strong>match_path</strong>(pattern)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Matches if the path of a link matches a regex.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>pattern</span>
+      
+      
+        <span class='type'>(<tt>Regex</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A pattern that should match the path of the link.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+88
+89
+90
+91
+92
+93
+94
+95
+96</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/anchor.rb', line 88</span>
+
+<span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:match_path</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
+  <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_pathname'>pathname</span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span><span class='lparen'>(</span><span class='id identifier rubyid_expected'>expected</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_failure_message'>failure_message</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expected link path to be: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expected'>expected</span><span class='embexpr_end'>}</span><span class='tstring_content'> got: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_pathname'>pathname</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -753,18 +1092,26 @@ classes.</p>
       <pre class="lines">
 
 
-19
-20
-21
-22
-23</pre>
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/class.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/class.rb', line 23</span>
 
 <span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:only_have_class</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
   <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
     <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_class_name'>class_name</span> <span class='op'>==</span> <span class='id identifier rubyid_expected'>expected</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_failure_message'>failure_message</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expected element to only have the CSS class: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expected'>expected</span><span class='embexpr_end'>}</span><span class='tstring_content'> got: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_class_name'>class_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -819,18 +1166,26 @@ regardless of order.</p>
       <pre class="lines">
 
 
-38
-39
-40
-41
-42</pre>
+50
+51
+52
+53
+54
+55
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/class.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/class.rb', line 50</span>
 
 <span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:only_have_classes</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
   <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
     <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_class_name'>class_name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span> <span class='op'>==</span> <span class='id identifier rubyid_expected'>expected</span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span>
+  <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_failure_message'>failure_message</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>expected element to have only the CSS classes: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_expected'>expected</span><span class='embexpr_end'>}</span><span class='tstring_content'> got: </span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_class_name'>class_name</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span>
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -843,7 +1198,7 @@ regardless of order.</p>
 </div>
 
       <div id="footer">
-  Generated on Sat Nov 18 20:55:39 2017 by
+  Generated on Sat Nov 18 21:45:45 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.2).
 </div>
