@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Module: RSpec
+  
+    &mdash; Centric Cucumber Framework
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "RSpec";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index (R)</a> &raquo;
+    
+    
+    <span class="title">RSpec</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Module: RSpec
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>features/support/lib/matchers/class.rb<span class="defines">,<br />
+  features/support/lib/matchers/anchor.rb</span>
+</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Custom matchers for RSpec to make working with web elements easier.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#have_class-instance_method" title="#have_class (instance method)">#<strong>have_class</strong>(expected_class)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Matches if the element has the expected CSS class as one of it&#39;s
+classes.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#have_classes-instance_method" title="#have_classes (instance method)">#<strong>have_classes</strong>(expected_classes)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Matches if the element has the expected CSS classes.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#have_host-instance_method" title="#have_host (instance method)">#<strong>have_host</strong>(expected_hostname)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Matches if the hostname of a link exactly matches a string.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#have_href-instance_method" title="#have_href (instance method)">#<strong>have_href</strong>(expected_url)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Matches if the href of a link exactly matches a string.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#match_host-instance_method" title="#match_host (instance method)">#<strong>match_host</strong>(pattern)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Matches if the hostname of a link matches a regular expression.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#match_href-instance_method" title="#match_href (instance method)">#<strong>match_href</strong>(pattern)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Matches if the href of a link matches a regular expression.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#only_have_class-instance_method" title="#only_have_class (instance method)">#<strong>only_have_class</strong>(expected_class)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Matches if the element has the expected CSS class it&#39;s only class.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#only_have_classes-instance_method" title="#only_have_classes (instance method)">#<strong>only_have_classes</strong>(expected_classes)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Matches if the element has the expected CSS classes and no others
+regardless of order.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="have_class-instance_method">
+  
+    #<strong>have_class</strong>(expected_class)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Matches if the element has the expected CSS class as one of it&#39;s
+classes.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>expected_class</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The CSS class to look for.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12
+13
+14</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/class.rb', line 10</span>
+
+<span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:have_class</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
+  <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_class_name'>class_name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span> <span class='id identifier rubyid_expected'>expected</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="have_classes-instance_method">
+  
+    #<strong>have_classes</strong>(expected_classes)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Matches if the element has the expected CSS classes.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>expected_classes</span>
+      
+      
+        <span class='type'>(<tt>Array[<span class='object_link'><a href="String.html" title="String (class)">String</a></span>]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The CSS classes to look for.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+28
+29
+30
+31
+32
+33</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/class.rb', line 28</span>
+
+<span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:have_classes</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
+  <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='id identifier rubyid_classes'>classes</span> <span class='op'>=</span> <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_class_name'>class_name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span>
+    <span class='id identifier rubyid_expected'>expected</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span> <span class='id identifier rubyid_classes'>classes</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="have_host-instance_method">
+  
+    #<strong>have_host</strong>(expected_hostname)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Matches if the hostname of a link exactly matches a string.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>expected_hostname</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A string that should match the hostname of the link.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+37
+38
+39
+40
+41</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/anchor.rb', line 37</span>
+
+<span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:have_host</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
+  <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span> <span class='op'>==</span> <span class='id identifier rubyid_expected'>expected</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="have_href-instance_method">
+  
+    #<strong>have_href</strong>(expected_url)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Matches if the href of a link exactly matches a string.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>expected_url</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A string that should match the href of the link.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19
+20
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/anchor.rb', line 19</span>
+
+<span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:have_href</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
+  <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_href'>href</span> <span class='op'>==</span> <span class='id identifier rubyid_expected'>expected</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="match_host-instance_method">
+  
+    #<strong>match_host</strong>(pattern)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Matches if the hostname of a link matches a regular expression.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>pattern</span>
+      
+      
+        <span class='type'>(<tt>Regex</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A regex that should match the hostname of the link.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+28
+29
+30
+31
+32</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/anchor.rb', line 28</span>
+
+<span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:match_host</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
+  <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_host'>host</span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span> <span class='id identifier rubyid_expected'>expected</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="match_href-instance_method">
+  
+    #<strong>match_href</strong>(pattern)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Matches if the href of a link matches a regular expression.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>pattern</span>
+      
+      
+        <span class='type'>(<tt>Regex</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A regex that should match the href of the link.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+10
+11
+12
+13
+14</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/anchor.rb', line 10</span>
+
+<span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:match_href</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
+  <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_href'>href</span><span class='period'>.</span><span class='id identifier rubyid_match?'>match?</span> <span class='id identifier rubyid_expected'>expected</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="only_have_class-instance_method">
+  
+    #<strong>only_have_class</strong>(expected_class)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Matches if the element has the expected CSS class it&#39;s only class.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>expected_class</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="String.html" title="String (class)">String</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The CSS class to look for.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+19
+20
+21
+22
+23</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/class.rb', line 19</span>
+
+<span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:only_have_class</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
+  <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_class_name'>class_name</span> <span class='op'>==</span> <span class='id identifier rubyid_expected'>expected</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="only_have_classes-instance_method">
+  
+    #<strong>only_have_classes</strong>(expected_classes)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Matches if the element has the expected CSS classes and no others
+regardless of order.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>expected_classes</span>
+      
+      
+        <span class='type'>(<tt>Array[<span class='object_link'><a href="String.html" title="String (class)">String</a></span>]</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The CSS classes to look for</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'features/support/lib/matchers/class.rb', line 38</span>
+
+<span class='const'><span class='object_link'><a href="" title="RSpec (module)">RSpec</a></span></span><span class='op'>::</span><span class='const'>Matchers</span><span class='period'>.</span><span class='id identifier rubyid_define'>define</span> <span class='symbol'>:only_have_classes</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_expected'>expected</span><span class='op'>|</span>
+  <span class='id identifier rubyid_match'>match</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_actual'>actual</span><span class='op'>|</span>
+    <span class='id identifier rubyid_actual'>actual</span><span class='period'>.</span><span class='id identifier rubyid_class_name'>class_name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span> <span class='op'>==</span> <span class='id identifier rubyid_expected'>expected</span><span class='period'>.</span><span class='id identifier rubyid_sort'>sort</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Sat Nov 18 20:55:39 2017 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.9 (ruby-2.4.2).
+</div>
+
+    </div>
+  </body>
+</html>

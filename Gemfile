@@ -19,7 +19,6 @@ gem 'pry-stack_explorer', '~> 0.4.9'
 gem 'rake', '~> 12.3'
 gem 'yard', '~> 0.9'
 
-
 # Tools to keep our code quality up
 gem 'rubocop', '~> 0.51'
 gem 'overcommit', '~> 0.41'

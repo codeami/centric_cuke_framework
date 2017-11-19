@@ -13,6 +13,7 @@ require 'pry'
 
 require_relative 'lib/nenv'
 require_relative 'lib/helpers'
+require_relative 'lib/matchers'
 
 # Set up the world
 World(PageObject::PageFactory)
