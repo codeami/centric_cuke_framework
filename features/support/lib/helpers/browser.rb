@@ -44,7 +44,8 @@ module Helpers
     # @param _scenario [Cucumber:Scenario] Not currently used
     #
     def self.create_local_browser(_scenario = nil)
-      browser = Watir::Browser.new Nenv.browser_brand
+
+      browser = Watir::Browser.new Nenv.browser_brand, Config.instance[Nenv.browser_brand]
       browser.window.move_to(Nenv.browser_x, Nenv.browser_y)
       browser.window.resize_to(Nenv.browser_width, Nenv.browser_height)
       browser

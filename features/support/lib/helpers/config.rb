@@ -12,13 +12,15 @@ module Helpers
   #
   class Config
     include Singleton
+    attr_accessor :data
     extend Forwardable
     def_delegator :@data, :[]
 
     # Load the files in Nenv.config_path
     def initialize
+      @data = {}
       Dir.glob(File.join(Nenv.config_path, '*.yml')) do |yml_file|
-        @data[File.basename(yml_file, '.yml').to_sym] = YAML.safe_load(File.read(yml_file))
+        @data[File.basename(yml_file, '.yml').to_sym] = YAML.load(File.read(yml_file))
       end
     end
   end
