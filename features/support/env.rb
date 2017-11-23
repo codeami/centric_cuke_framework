@@ -12,8 +12,10 @@ require 'sauce-whisk'
 require 'pry'
 
 require_relative 'lib/nenv'
+require_relative 'lib/extensions/page-object'
 require_relative 'lib/helpers'
 require_relative 'lib/matchers'
+require_relative 'pages'
 
 # Set up the world
 if defined?(World)
