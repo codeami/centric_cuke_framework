@@ -9,11 +9,8 @@ mock_scenario = OpenStruct.new({ name: 'Console Scenario', feature: OpenStruct.n
 
 
 visit(GoogleHomePage) do |page|
-  # This should trigger the hooks but doesn't
+  # This should flash the box 5 times
   page.search = 'A Pry session is open'
-
-  # This does work
-  page.search_element.set 'A Pry session is open'
 end
 binding.pry
 puts 'Line for pry'
