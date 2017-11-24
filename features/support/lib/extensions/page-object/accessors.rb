@@ -1,6 +1,6 @@
 require 'erb'
 require 'page-object/locator_generator'
-
+require 'cpt_hook'
 module PageObject
   #
   # Contains the class level methods that are inserted into your page objects
@@ -1139,7 +1139,7 @@ module PageObject
       if hooks && !self.respond_to?(:hooks_for)
         define_method(:hooks_for) do |element_name, hooks_to_wrap|
           @hook_cache ||= {}
-          @hook_cache[element_name] ||= Hookable.new(nil, hooks_to_wrap, self)
+          @hook_cache[element_name] ||= CptHook::Hookable.new(nil, hooks_to_wrap, self)
           @hook_cache[element_name]
         end
       end
