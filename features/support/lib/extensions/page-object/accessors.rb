@@ -1135,14 +1135,25 @@ module PageObject
 
     def standard_methods(name, identifier, method, &block)
       hooks = identifier.delete(:hooks)
+
+      if hooks && !self.respond_to?(:hooks_for)
+        define_method(:hooks_for) do |element_name, hooks_to_wrap|
+          @hook_cache ||= {}
+          @hook_cache[element_name] ||= Hookable.new(nil, hooks_to_wrap, self)
+          @hook_cache[element_name]
+        end
+      end
       define_method("#{name}_element") do
-        # TODO: should only do this once right?
-        return Hookable.new(call_block(&block), hooks, self) if block_given?
-        Hookable.new(platform.send(method, identifier.clone), hooks, self)
+        hook_wrapper = hooks_for(name, hooks)
+        return hook_wrapper.__setobj__(call_block(&block)) if block_given?
+        hook_wrapper.__setobj__(platform.send(method, identifier.clone))
+        hook_wrapper
       end
       define_method("#{name}?") do
+        hook_wrapper = hooks_for(name, hooks)
         return call_block(&block).exists? if block_given?
-        Hookable.new(platform.send(method, identifier.clone), hooks, self).exists?
+        hook_wrapper.__setobj__(platform.send(method, identifier.clone)).exists?
+        hook_wrapper
       end
     end
 

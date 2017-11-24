@@ -14,7 +14,6 @@ class Hookable < SimpleDelegator
     _add_hooks(:after, method_hooks, additional_contexts)
 
     method_hooks.map {|h| h[:before] || h[:after]}.uniq.each do |method|
-      puts "Defining #{method}"
       define_singleton_method(method) do |*args, &block|
         self.send("before_#{method}") if self.respond_to? "before_#{method}"
         #val = __getobj__.send(method, *args, &block)
@@ -39,7 +38,6 @@ class Hookable < SimpleDelegator
           if hook_fn.is_a?(Proc)
             hook_fn.call
           else
-            puts "Calling #{hook_fn}"
             context = hook[:contexts].unshift(__getobj__).find {|c| c.respond_to?(hook_fn)}
             raise "No context found for #{which} hook: #{hook_fn}" unless context
             context.send(hook_fn)
