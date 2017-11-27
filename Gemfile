@@ -12,7 +12,7 @@ gem 'rspec-expectations', '~> 3.6'
 gem 'sauce_whisk', '~> 0.0'
 gem 'watir', '~> 6.8'
 
-gem 'cpt_hook', git: 'https://github.com/Donavan/cpt_hook'
+gem 'cpt_hook'
 
 # Development / Debugging
 gem 'pry', '~> 0.10'

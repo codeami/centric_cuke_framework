@@ -1139,10 +1139,18 @@ module PageObject
       if hooks && !self.respond_to?(:hooks_for)
         define_method(:hooks_for) do |element_name, hooks_to_wrap|
           @hook_cache ||= {}
+          hooks.each { |hook| hook[:call_chain].each { |cc| cc[:with] = cc.fetch(:with, []).map { |c| resolve_with(c) } } }
           @hook_cache[element_name] ||= CptHook::Hookable.new(nil, hooks_to_wrap, self)
           @hook_cache[element_name]
         end
+
+        define_method(:resolve_with) do |with_var|
+          return self if with_var == :page
+          return :self if with_var == :element
+          with_var
+        end
       end
+
       define_method("#{name}_element") do
         hook_wrapper = hooks_for(name, hooks)
         return hook_wrapper.__setobj__(call_block(&block)) if block_given?
