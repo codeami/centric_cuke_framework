@@ -2,18 +2,16 @@
 
 class GoogleHomePage < BasePage
   page_url('https://www.google.com/')
-  #text_field(:search, id: 'lst-ib' , hooks: [{ before: :value=, call: [:flash_search] }] )
-  text_field(:search, id: 'lst-ib' , :hooks=>[{:before=>:click, :call_chain=>[{:call=>:flash_page, :with=>[5]}]},
-                                              {:before=>:value=, :call_chain=>[{:call=>:test_fn, :with=>[:element, :page]}, {:call=>:flash_search, :with=>[5]}]}])
 
-  def test_fn(e, p)
+  text_field(:search, id: 'lst-ib' , :hooks=>[{:before=>:value=, :call_chain=>[{:call=>:flash_element, :with=>[:element, 5]}, {:call=>:test_fn, :with=>[:page, :element]}]}])
 
-    binding.pry;2
-    puts p
+  def test_fn(page, element)
+    puts "Page: #{page}\nElement: #{element}"
   end
-  def flash_search(count)
+
+  def flash_element(element, count)
     count.times do
-      search_element.flash
+      element.flash
       sleep 0.25
     end
   end
