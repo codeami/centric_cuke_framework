@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'yaml'
+require 'singleton'
 
 # Helper modules should all live in the helper namespace.
 module Helpers
