@@ -8,7 +8,7 @@ module Helpers
     #
     # @param scenario [Cucumber:Scenario]
     #
-    def self.create_browser(scenario)
+    def self.create_browser(scenario = nil)
       send("create_#{Nenv.browser_type}_browser", scenario)
     end
 
@@ -31,6 +31,7 @@ module Helpers
     # @param scenario [Cucumber:Scenario] The scenario name and feature name will be used as the session name.
     #
     def self.create_sauce_browser(scenario)
+      scenario ||= _mock_scenario
       caps = sauce_caps(scenario)
       client = Selenium::WebDriver::Remote::Http::Default.new
       client.timeout = Nenv.sauce_client_timeout
@@ -44,10 +45,9 @@ module Helpers
     # @param _scenario [Cucumber:Scenario] Not currently used
     #
     def self.create_local_browser(_scenario = nil)
-
       browser = Watir::Browser.new Nenv.browser_brand, Config.instance[Nenv.browser_brand]
-      browser.window.move_to(Nenv.browser_x, Nenv.browser_y)
-      #browser.window.resize_to(Nenv.browser_width, Nenv.browser_height)
+      browser.window.move_to(Nenv.browser_x, Nenv.browser_y) if Nenv.move_browser?
+      browser.window.resize_to(Nenv.browser_width, Nenv.browser_height) if Nenv.size_browser?
       browser
     end
 
@@ -74,6 +74,12 @@ module Helpers
         name: "#{scenario.feature.name} - #{scenario.name}",
         screenResolution: Nenv.browser_resolution
       }
+    end
+
+    private_class_method
+    def self._mock_scenario
+      require 'ostruct'
+      OpenStruct.new({ name: 'Console Scenario', feature: OpenStruct.new({ name: 'Console Feature' }) })
     end
   end
 end
