@@ -9,10 +9,12 @@ require 'data_magic'
 require 'watir'
 require 'page-object'
 require 'sauce-whisk'
+require 'magic_path'
 require 'pry'
 
 
 require 'lib/nenv'
+require_relative 'paths'
 require 'lib/extensions'
 require 'lib/helpers'
 require 'lib/matchers'

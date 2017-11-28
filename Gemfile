@@ -12,7 +12,8 @@ gem 'rspec-expectations', '~> 3.6'
 gem 'sauce_whisk', '~> 0.0'
 gem 'watir', '~> 6.8'
 
-gem 'cpt_hook'
+gem 'cpt_hook'    # Not locked yet due to active development
+gem 'magic_path'  # Not locked yet due to active development
 
 # Development / Debugging
 gem 'pry', '~> 0.10'
