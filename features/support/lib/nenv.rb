@@ -15,6 +15,9 @@ unless Nenv.respond_to? :test_env
 
   DEFAULT_SAUCE_CLIENT_TIMEOUT = 180 # What should the default SAUCE_CLIENT_TIMEOUT be?
 
+  DEFAULT_SELENIUM_HUB_HOST = 'localhost' # What should the default host be for Selenium hub
+  DEFAULT_SELENIUM_HUB_PORT = 4444        # What should the default port be for Selenium hub
+
   # Stuff that tunes the framework
   Nenv.instance.create_method(:config_path) { |v| v.nil? ? DEFAULT_CONFIG_PATH : v.tr('\\', '/') }
 
@@ -35,4 +38,9 @@ unless Nenv.respond_to? :test_env
   Nenv.instance.create_method(:sauce_url) { |v| v.nil? ? Config.instance[:sauce_labs][:url] : v }
   Nenv.instance.create_method(:sauce_platform) { |v| v.to_s.tr('_', ' ') }
   Nenv.instance.create_method(:sauce_client_timeout) { |v| v.nil? ? DEFAULT_SAUCE_CLIENT_TIMEOUT : v.to_i }
+
+  # Selenium hub config
+  Nenv.instance.create_method(:selenium_hub_host) { |v| v.nil? ? DEFAULT_SELENIUM_HUB_HOST : v }
+  Nenv.instance.create_method(:selenium_hub_port) { |v| v.nil? ? DEFAULT_SELENIUM_HUB_PORT : v.to_i }
+  Nenv.instance.create_method(:selenium_hub_url) { |v| v.nil? ? "http://#{Nenv.selenium_hub_host}:#{Nenv.selenium_hub_port}/wd/hub" : v }
 end

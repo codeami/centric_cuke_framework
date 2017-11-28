@@ -47,7 +47,21 @@ module Helpers
 
       browser = Watir::Browser.new Nenv.browser_brand, Config.instance[Nenv.browser_brand]
       browser.window.move_to(Nenv.browser_x, Nenv.browser_y)
-      browser.window.resize_to(Nenv.browser_width, Nenv.browser_height)
+      #browser.window.resize_to(Nenv.browser_width, Nenv.browser_height)
+      browser
+    end
+
+    # Creates a selenium hub browser.
+    # Called by #create_browser when BROWSER_TYPE == :selenium_hub
+    #
+    # @param _scenario [Cucumber:Scenario] Not currently used
+    #
+    def self.create_selenium_hub_browser(_scenario = nil)
+      caps = Selenium::WebDriver::Remote::Capabilities.send(Nenv.browser_brand)
+
+      browser = Selenium::WebDriver.for(:remote, :url => Nenv.selenium_hub_url, :desired_capabilities => caps)
+      # TODO: Browser sizing for selenium hub
+      #browser.window.resize_to(Nenv.browser_width, Nenv.browser_height)
       browser
     end
 
