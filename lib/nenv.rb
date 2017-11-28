@@ -18,9 +18,11 @@ unless Nenv.respond_to? :test_env
   DEFAULT_SELENIUM_HUB_HOST = 'localhost' # What should the default host be for Selenium hub
   DEFAULT_SELENIUM_HUB_PORT = 4444        # What should the default port be for Selenium hub
 
+  DEFAULT_FIXTURE_ROOT = 'fixtures' # Default folder for fixture files
 
   # Stuff that tunes the framework
   Nenv.instance.create_method(:config_path) { |v| v.nil? ? DEFAULT_CONFIG_PATH : v.tr('\\', '/') }
+  Nenv.instance.create_method(:fixture_root) { |v| v.nil? ? DEFAULT_FIXTURE_ROOT : v.tr('\\', '/') }
 
   # Stuff that changes based on the runtime environment for the app
   Nenv.instance.create_method(:test_env) { Nenv.send(ENV_KEY) || DEFAULT_TEST_ENV }

@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+$LOAD_PATH.unshift( "#{File.dirname(__FILE__)}/../..") # Add the project root to the lib path so we can easily include lib files.
 require 'rubygems'
 require 'bundler/setup'
 require 'nenv'
@@ -11,10 +11,11 @@ require 'page-object'
 require 'sauce-whisk'
 require 'pry'
 
-require_relative 'lib/nenv'
-require_relative 'lib/extensions/page-object'
-require_relative 'lib/helpers'
-require_relative 'lib/matchers'
+
+require 'lib/nenv'
+require 'lib/extensions'
+require 'lib/helpers'
+require 'lib/matchers'
 require_relative 'pages'
 
 # Set up the world
