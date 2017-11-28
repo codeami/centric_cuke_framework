@@ -9,13 +9,22 @@ module FixtureHelper
     DataMagic.yml_directory = fixture_folder
     fixture_files = fixture_files_on(scenario)
     STDERR.puts "Found #{fixture_files.count} fixtures on scenario.  Using #{fixture_files.last}." if fixture_files.count > 1
-    DataMagic.load "#{fixture_files.last}.yml" if fixture_files.count > 0
+    load_fixture(fixture_files.last) if fixture_files.count > 0
   end
 
   # Load a fixture file by name, returns a hash of the data
   def self.load_fixture(name, fixture_folder = Nenv.fixture_root)
     DataMagic.yml_directory = fixture_folder
-    DataMagic.load "#{name}.yml"
+    DataMagic.load actual_filename(name)
+  end
+
+  def self.actual_filename(name)
+    data = { filename: File.basename(name, '.yml'), ext: '.yml' }
+    [:fixture_file_env, :fixture_file_base].each do |type|
+      path = MagicPath.send(type).resolve(data)
+      return path if File.exist? "#{MagicPath.fixture_path}/#{path}"
+    end
+    raise "Could not find fixture to match #{name}"
   end
 
   # Given a hash save it as a fixture
