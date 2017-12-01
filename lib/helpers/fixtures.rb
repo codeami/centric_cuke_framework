@@ -45,6 +45,6 @@ module FixtureHelper
   end
 
   def self.fixture_files_on(scenario)
-    fixture_tags_on(scenario).map { |t| t.gsub('@fixture_', '').to_sym }
+    fixture_tags_on(scenario).map { |t| t.gsub('@fixture_', '') }
   end
 end

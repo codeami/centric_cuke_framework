@@ -1,5 +1,7 @@
 ---
 :test:
-  :host: localhost
+  :server_hostname: localhost
+  :server_port: 8080
 :development:
-  :host: localhost
+  :server_hostname: localhost
+  :server_port: 8080

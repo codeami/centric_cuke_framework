@@ -1136,8 +1136,10 @@ module PageObject
     def standard_methods(name, identifier, method, &block)
       hooks = identifier.delete(:hooks)
 
-      if hooks && !self.respond_to?(:hooks_for)
+      if !self.respond_to?(:hooks_for)
         define_method(:hooks_for) do |element_name, hooks_to_wrap|
+          hooks_to_wrap ||= []
+          hooks ||= []
           @hook_cache ||= {}
           hooks.each { |hook| hook[:call_chain].each { |cc| cc[:with] = cc.fetch(:with, []).map { |c| resolve_with(c) } } }
           @hook_cache[element_name] ||= CptHook::Hookable.new(nil, hooks_to_wrap, self)

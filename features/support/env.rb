@@ -3,6 +3,7 @@ $LOAD_PATH.unshift( "#{File.dirname(__FILE__)}/../..") # Add the project root to
 require 'rubygems'
 require 'bundler/setup'
 require 'nenv'
+require 'cucumber'
 require 'rspec/expectations'
 require 'facets'
 require 'data_magic'
@@ -12,16 +13,19 @@ require 'sauce-whisk'
 require 'magic_path'
 require 'pry'
 
-
-require 'lib/nenv'
+require 'lib/nenv_vars'
 require_relative 'paths'
 require 'lib/extensions'
 require 'lib/helpers'
 require 'lib/matchers'
+require 'lib/parameter_types'
 require_relative 'pages'
 
+
 # Set up the world
-if defined?(World)
+begin
   World(PageObject::PageFactory)
   World(DataMagic)
+rescue Exception
+  puts 'Warning failed to initialize the world.  This is only OK if in the console!'
 end

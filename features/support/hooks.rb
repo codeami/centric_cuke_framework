@@ -7,5 +7,5 @@ end
 
 After do |scenario|
   binding.pry_if scenario.failed? && Nenv.debug?
-  @browser&.close
+  @browser.close
 end
