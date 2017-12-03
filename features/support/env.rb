@@ -18,6 +18,7 @@ require_relative 'paths'
 require 'lib/extensions'
 require 'lib/helpers'
 require 'lib/matchers'
+require 'lib/widgets'
 require_relative 'pages'
 
 # Set up the world
