@@ -1,20 +1,15 @@
+require_relative 'sections/north_panel_section'
+require_relative 'sections/west_panel_section'
 
-class LoginPage < BasePage
+class ClaimCenterPage < BasePage
   page_url "#{Nenv.base_url}/ClaimCenter.do"
-
-  text_field(:username, id: 'Login:LoginScreen:LoginDV:username-inputEl')
   text_field(:password, id: 'Login:LoginScreen:LoginDV:password-inputEl')
-  span_button(:login, id: 'Login:LoginScreen:LoginDV:submit-btnInnerEl')
 
+  page_section(:north_panel, NorthPanel, id: 'northPanel')
+  page_section(:west_panel, WestPanel, id: 'westPanel')
 
-  def login_as(user, pass)
-    self.username = user
-    self.password = pass
-    self.login
+  def need_login?
+    self.password?
   end
 
-  def populate(data = {}, additional = {})
-    super
-    self.login
-  end
 end

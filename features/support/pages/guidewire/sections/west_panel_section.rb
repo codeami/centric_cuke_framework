@@ -1,4 +1,4 @@
-class NorthPanel
+class WestPanel
   include PageObject
-  img(:logo, class: 'product-logo')
+  span_button(:actions_menu_button, id: 'Desktop:DesktopMenuActions-btnWrap')
 end

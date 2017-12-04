@@ -17,5 +17,4 @@ class LoginPage < BasePage
     super
     self.login
   end
-
 end
