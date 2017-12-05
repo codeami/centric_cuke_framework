@@ -4,4 +4,3 @@
 require_relative 'extensions/pry_if'
 require_relative 'extensions/to_page_class'
 require_relative 'extensions/data_magic'
-require_relative 'extensions/page-object'

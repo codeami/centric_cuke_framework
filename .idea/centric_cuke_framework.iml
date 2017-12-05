@@ -12,7 +12,7 @@
     <orderEntry type="jdk" jdkName="rbenv: 2.4.2" jdkType="RUBY_SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
-      <library name="C2PO (v[path]) [path][gem]">
+      <library name="c2po (v[path]) [path][gem]">
         <CLASSES>
           <root url="file://$MODULE_DIR$/C2PO/lib" />
           <root url="file://$MODULE_DIR$/C2PO/bin" />
