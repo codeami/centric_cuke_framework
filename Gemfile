@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Every gem should have a version lock on it.
 
 # Core gems
-gem 'cucumber', ' ~> 3.0'
+gem 'cucumber', '~> 3.0'
 gem 'cuke_cataloger', '~> 1.4'
 gem 'data_magic', '~> 1.2'
 gem 'page-object', '~> 2.2'
@@ -14,6 +14,7 @@ gem 'watir', '~> 6.8'
 
 gem 'cpt_hook'    # Not locked yet due to active development
 gem 'magic_path'  # Not locked yet due to active development
+gem 'C2PO', path: './C2PO'
 
 # Development / Debugging
 gem 'pry', '~> 0.10'
