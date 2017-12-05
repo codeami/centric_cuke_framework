@@ -20,7 +20,7 @@ require 'lib/extensions'
 require 'lib/helpers'
 require 'lib/matchers'
 #require 'lib/parameter_types'
-require 'lib/widgets'
+
 
 require_relative 'pages'
 

@@ -1,0 +1,1 @@
+require 'c2po/widgets/span_button'
