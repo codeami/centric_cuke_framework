@@ -1,26 +1,12 @@
+require_relative 'north_panel_link_menu'
 class NorthPanel
   include PageObject
   img(:logo, class: 'product-logo')
-  #span_button(:link_menu_toggle, id: ':TabLinkMenuButton-btnInnerEl')
   link(:link_menu_toggle, id: ':TabLinkMenuButton')
-  link(:ll_test, id: 'TabBar:LogoutTabBarLink-itemEl', root: :parent)
+
+
+  external_page_section(:link_menu, NorthPanelLinkMenu, :parent_browser, id: 'menu-1037-body')
   css_state(:link_menu_toggle, open: /menu-active/, closed: { not: /menu-active/ })
-
-  link_hooked(:logout_link, id: 'TabBar:LogoutTabBarLink-itemEl', hooks: [{
-                                                                            before: :text,
-                                                                            call_chain: [
-                                                                            {
-                                                                              call: :ensure_link_menu_open
-                                                                            }]
-                                                                          },
-                                                                          {
-                                                                            before: :click,
-                                                                            call_chain: [
-                                                                            {
-                                                                              call: :ensure_link_menu_open
-                                                                            }]
-                                                                          }])
-
 
   def ensure_link_menu_open
     link_menu_toggle unless link_menu_toggle_open?
