@@ -367,7 +367,6 @@ module PageObject
     #
     def hooked_standard_methods(name, identifier, method, &block)
       hooks = identifier.delete(:hooks)
-
       unless hooks
         standard_methods(name, identifier, method, &block)
         return [] # This ensures that our return value is safe for checking hooks regardless
@@ -377,6 +376,7 @@ module PageObject
         define_method(:resolve_with) do |with_var|
           return self if with_var == :page
           return :self if with_var == :element
+          return parent_page if with_var == :parent_page
           with_var
         end
 
@@ -384,9 +384,10 @@ module PageObject
           @hook_cache ||= {}
         end
 
-        define_method(:cached_hooks) do |hooks, name|
-          hooks.each { |hook| hook[:call_chain].each { |cc| cc[:with] = cc.fetch(:with, []).map { |c| resolve_with(c) } } }
-          hook_cache[name] ||= CptHook::Hookable.new(nil, hooks, self)
+        define_method(:cached_hooks) do |hook_defs, name|
+          hook_defs.hooks.each { |hook| hook.call_chain.each { |cc| cc.resolve_with { |c| resolve_with(c) } } }
+          hook_defs.hooks.each { |hook| hook.call_chain.each { |cc| cc.resolve_contexts { |c| resolve_with(c) } } }
+          hook_cache[name] ||= CptHook::Hookable.new(nil, hook_defs, self)
         end
       end
 
@@ -397,17 +398,13 @@ module PageObject
         wrapper
       end
 
-      define_method(:method_hooked_for?) do |meth, name|
-        hook_cache.fetch(name, [{}]).any? { |h| h.value?(meth.to_sym) }
-      end
-
       define_method("#{name}?") do
+        binding.pry;2
         wrapper = cached_hooks(hooks, name)
         return call_block(&block).exists? if block_given?
         wrapper.__setobj__(platform.send(method, identifier.clone)).exists?
-        wrapper
       end
-      hooks.map { |h| h.fetch(:before, h[:after]) }.uniq
+      hooks.hooked_methods
     end
   end
 end

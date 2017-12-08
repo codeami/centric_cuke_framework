@@ -16,6 +16,7 @@ page = on(ClaimCenterPage)
 page.north_panel.ensure_link_menu_open
 #page.north_panel.ll_test
 state = page.north_panel.link_menu_toggle_closed?
+page.north_panel.link_menu.logout_link_element.exists?
 binding.pry
 
 
