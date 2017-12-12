@@ -1,15 +1,16 @@
 
+# frozen_string_literal: true
+
 ## Helper module for loading, merging and saving fixture files
 # Uses the Yaml include monkey patch.
 module FixtureHelper
-
   # Given a scenario, load any fixture it needs.
   # Fixture tags should be in the form of @fixture_FIXTUREFILE
   def self.load_fixtures_for(scenario, fixture_folder = Nenv.fixture_root)
     DataMagic.yml_directory = fixture_folder
     fixture_files = fixture_files_on(scenario)
     STDERR.puts "Found #{fixture_files.count} fixtures on scenario.  Using #{fixture_files.last}." if fixture_files.count > 1
-    load_fixture(fixture_files.last) if fixture_files.count > 0
+    load_fixture(fixture_files.last) if fixture_files.positive?
   end
 
   # Load a fixture file by name, returns a hash of the data
@@ -20,7 +21,7 @@ module FixtureHelper
 
   def self.actual_filename(name)
     data = { filename: File.basename(name, '.yml'), ext: '.yml' }
-    [:fixture_file_env, :fixture_file_base].each do |type|
+    %i[fixture_file_env fixture_file_base].each do |type|
       path = MagicPath.send(type).resolve(data)
       return path if File.exist? "#{MagicPath.fixture_path}/#{path}"
     end
@@ -45,6 +46,6 @@ module FixtureHelper
   end
 
   def self.fixture_files_on(scenario)
-    fixture_tags_on(scenario).map { |t| t.gsub('@fixture_', '').to_sym }
+    fixture_tags_on(scenario).map { |t| t.gsub('@fixture_', '') }
   end
 end

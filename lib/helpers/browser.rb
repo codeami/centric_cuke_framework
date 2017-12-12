@@ -45,10 +45,18 @@ module Helpers
     # @param _scenario [Cucumber:Scenario] Not currently used
     #
     def self.create_local_browser(_scenario = nil)
-      browser = Watir::Browser.new Nenv.browser_brand, Config.instance[Nenv.browser_brand]
-      browser.window.move_to(Nenv.browser_x, Nenv.browser_y) if Nenv.move_browser?
-      browser.window.resize_to(Nenv.browser_width, Nenv.browser_height) if Nenv.size_browser?
+      browser = Watir::Browser.new(Nenv.browser_brand, Config.instance[Nenv.browser_brand])
+      set_browser_pos(browser)
+      set_browser_size(browser)
       browser
+    end
+
+    def self.set_browser_pos(browser)
+      browser.window.move_to(Nenv.browser_x, Nenv.browser_y) if Nenv.move_browser?
+    end
+
+    def self.set_browser_size(browser)
+      browser.window.resize_to(Nenv.browser_width, Nenv.browser_height) if Nenv.size_browser?
     end
 
     # Creates a selenium hub browser.
@@ -59,9 +67,9 @@ module Helpers
     def self.create_selenium_hub_browser(_scenario = nil)
       caps = Selenium::WebDriver::Remote::Capabilities.send(Nenv.browser_brand)
 
-      browser = Selenium::WebDriver.for(:remote, :url => Nenv.selenium_hub_url, :desired_capabilities => caps)
+      browser = Selenium::WebDriver.for(:remote, url: Nenv.selenium_hub_url, desired_capabilities: caps)
       # TODO: Browser sizing for selenium hub
-      #browser.window.resize_to(Nenv.browser_width, Nenv.browser_height)
+      # browser.window.resize_to(Nenv.browser_width, Nenv.browser_height)
       browser
     end
 
@@ -79,7 +87,7 @@ module Helpers
     private_class_method
     def self._mock_scenario
       require 'ostruct'
-      OpenStruct.new({ name: 'Console Scenario', feature: OpenStruct.new({ name: 'Console Feature' }) })
+      OpenStruct.new(name: 'Console Scenario', feature: OpenStruct.new(name: 'Console Feature'))
     end
   end
 end

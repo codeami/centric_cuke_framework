@@ -1,8 +1,10 @@
 # frozen_string_literal: true
+
 require 'page-object'
 require 'data_magic'
 require 'facets/string/snakecase'
 
+# Base class for all pages in the framework
 class BasePage
   include PageObject
   include DataMagic
@@ -17,5 +19,4 @@ class BasePage
   def default_data
     {}
   end
-
 end

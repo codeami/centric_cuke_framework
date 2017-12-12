@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ## PageObject namespace for monkey patching
 module PageObject
   extend Forwardable
@@ -5,7 +7,7 @@ module PageObject
 
   def change_page_using(element, opts)
     opts[:current_url] ||= @browser.url
-    self.send(element.to_sym)
+    send(element.to_sym)
     wait_for_url_change(opts)
   end
 
@@ -15,7 +17,7 @@ module PageObject
     wait_for_ajax
     page = nil
     page = on_page(opts[:target_page].to_s.to_page_class) if opts[:target_page]
-    opts[:factory].current_page = page if opts[:factory]
+    opts[:factory]&.current_page = page
     page
   end
 end

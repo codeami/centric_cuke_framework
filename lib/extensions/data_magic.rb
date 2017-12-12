@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ## DataMagic namespace for monkey patching
 module DataMagic
   ##
@@ -14,7 +16,7 @@ module DataMagic
     end
 
     data = DataMagic.yml[record]
-    data = default.dup unless data
+    data ||= default.dup
     additional.key?(record) ? prep_data(data.merge(additional[record]).clone) : prep_data(data)
   end
 end
