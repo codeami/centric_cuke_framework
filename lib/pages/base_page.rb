@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'page-object'
+
 require 'data_magic'
 require 'facets/string/snakecase'
 
@@ -18,5 +18,24 @@ class BasePage
   # Base classes should override this to provide default data
   def default_data
     {}
+  end
+
+  def change_page_using(element, opts = {})
+    opts[:current_url] = @browser.url
+
+    begin
+      send(element.to_sym)
+    rescue
+      # wait_for_ajax
+      send(element.to_sym)
+    end
+
+    wait_for_url_change(opts)
+  end
+
+  def wait_for_url_change(opts = {})
+    url_now = opts.fetch(:current_url, @browser.url)
+    Watir::Wait.until { @browser.url != url_now }
+    wait_for_ajax
   end
 end

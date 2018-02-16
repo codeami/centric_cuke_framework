@@ -8,7 +8,7 @@ gem 'cucumber', '~> 3.0'
 gem 'cuke_cataloger', '~> 1.4'
 gem 'data_magic', '~> 1.2'
 gem 'page-object', '~> 2.2'
-gem 'rspec-expectations', '~> 3.6'
+gem 'rspec', '~> 3.7'
 gem 'sauce_whisk', '~> 0.0'
 gem 'watir', '~> 6.8'
 

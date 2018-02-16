@@ -4,3 +4,4 @@
 # This file is loaded in env.rb immediately after the extensions are.
 require_relative 'helpers/browser'
 require_relative 'helpers/fixtures'
+require_relative 'helpers/page_navigation'

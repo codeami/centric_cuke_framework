@@ -10,7 +10,7 @@ module FixtureHelper
     DataMagic.yml_directory = fixture_folder
     fixture_files = fixture_files_on(scenario)
     STDERR.puts "Found #{fixture_files.count} fixtures on scenario.  Using #{fixture_files.last}." if fixture_files.count > 1
-    load_fixture(fixture_files.last) if fixture_files.positive?
+    load_fixture(fixture_files.last) if fixture_files.count.positive?
   end
 
   # Load a fixture file by name, returns a hash of the data

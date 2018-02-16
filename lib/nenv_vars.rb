@@ -27,6 +27,9 @@ module Helpers
     DEFAULT_SERVER_HOST = 'localhost'
     DEFAULT_SERVER_PORT = 8080
 
+    DEFAULT_SFN_URL = 'https://scifinder-n-test.cas.org:83'.freeze
+    Nenv.instance.create_method(:sfn_url) { |v| v.nil? ? DEFAULT_SFN_URL : v } unless Nenv.respond_to?(:sfn_url)
+
     # Stuff that tunes the framework
     Nenv.instance.create_method(:config_path) { |v| v.nil? ? DEFAULT_CONFIG_PATH : v.tr('\\', '/') }
     Nenv.instance.create_method(:fixture_root) { |v| v.nil? ? DEFAULT_FIXTURE_ROOT : v.tr('\\', '/') }

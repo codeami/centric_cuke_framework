@@ -6,6 +6,8 @@ Before do |scenario|
 end
 
 After do |scenario|
-  binding.pry_if scenario.failed? && Nenv.debug?
+  # rubocop:disable Lint/Debugger
+  binding.pry if scenario.failed? && Nenv.debug?
+  # rubocop:enable Lint/Debugger
   @browser.close
 end

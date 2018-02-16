@@ -20,9 +20,8 @@ require_relative 'paths'
 require 'lib/extensions'
 require 'lib/helpers'
 require 'lib/matchers'
-# require 'lib/parameter_types'
-
-require_relative 'pages'
+require 'lib/parameter_types'
+require 'lib/pages'
 
 # Set up the world
 begin
@@ -32,4 +31,5 @@ begin
 rescue Exception
   puts 'Warning failed to initialize the world.  This is only OK if in the console!'
 end
+PageObject::JavascriptFrameworkFacade.framework = :angularjs
 # rubocop:enable Lint/RescueException
