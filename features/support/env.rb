@@ -3,25 +3,21 @@
 $LOAD_PATH.unshift("#{File.dirname(__FILE__)}/../..") # Add the project root to the lib path so we can easily include lib files.
 require 'rubygems'
 require 'bundler/setup'
-require 'nenv'
-require 'cucumber'
-require 'rspec/expectations'
-require 'facets'
-require 'data_magic'
-require 'watir'
-require 'page-object'
-require 'c2po'
-require 'sauce-whisk'
-require 'magic_path'
-require 'pry'
-
-require 'lib/nenv_vars'
+require_relative 'nenv_vars'
 require_relative 'paths'
-require 'lib/extensions'
-require 'lib/helpers'
-require 'lib/matchers'
-require 'lib/parameter_types'
-require 'lib/pages'
+require 'lib/framework_support'
+
+# Configure native mobile
+if Nenv.native_mobile?
+  MobileHelper.initialize_appium
+  begin
+    World(AppiumNav)
+  # rubocop:disable Lint/RescueException
+  rescue Exception
+    STDOUT.puts 'Warning failed to add AppiumNav to the world.  This is only OK if in the console!'
+  end
+  # rubocop:enable Lint/RescueException
+end
 
 # Set up the world
 begin
@@ -29,7 +25,9 @@ begin
   World(DataMagic)
 # rubocop:disable Lint/RescueException
 rescue Exception
-  puts 'Warning failed to initialize the world.  This is only OK if in the console!'
+  STDOUT.puts 'Warning failed to initialize the world.  This is only OK if in the console!'
 end
-PageObject::JavascriptFrameworkFacade.framework = :angularjs
 # rubocop:enable Lint/RescueException
+
+PageObject::JavascriptFrameworkFacade.framework = :angularjs
+

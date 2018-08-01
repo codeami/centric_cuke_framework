@@ -2,8 +2,8 @@
 
 # Helper modules should all live in the helper namespace.
 module Helpers
-  # Helper module for creating browsers.
   module Browser
+
     # High level function for creating a browser. Uses env variables to determine what to do.
     #
     # @param scenario [Cucumber:Scenario]
@@ -51,10 +51,21 @@ module Helpers
       browser
     end
 
+    # Set the passed browser to the screen position specified in the
+    # BROWSER_X and BROWSER_Y env vars
+    #
+    # @param browser [Watir::Browser] - The browser to reposition
     def self.set_browser_pos(browser)
       browser.window.move_to(Nenv.browser_x, Nenv.browser_y) if Nenv.move_browser?
     end
 
+    # Resize the passed browser to the dimensions specified in the
+    # BROWSER_WIDTH and BROWSER_HEIGHT env vars
+    # Note: Setting BROWSER_RESOLUTION to something like '1920x1080'
+    # also works since it gets parsed by Nenv if the other two
+    # do not exist.
+    #
+    # @param browser [Watir::Browser] - The browser to reposition
     def self.set_browser_size(browser)
       browser.window.resize_to(Nenv.browser_width, Nenv.browser_height) if Nenv.size_browser?
     end
@@ -74,6 +85,9 @@ module Helpers
     end
 
     # Simple helper function for building a Sauce Labs caps file
+    # It pulls the values from the environment mostly
+    # however it uses the name of the feature and scenario
+    # as the session name for sauce.
     def self.sauce_caps(scenario)
       {
         version: Nenv.sauce_version,

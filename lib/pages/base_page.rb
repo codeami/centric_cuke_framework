@@ -20,6 +20,15 @@ class BasePage
     {}
   end
 
+  # Blocking navigation that waits for a url to change
+  #
+  # This useful for things like login and navigation links.
+  #
+  # page.change_page_using :login
+  #
+  # Would call the login method on the page, then wait for the URL to change to a new
+  # value.
+  #
   def change_page_using(element, opts = {})
     opts[:current_url] = @browser.url
 
@@ -33,6 +42,14 @@ class BasePage
     wait_for_url_change(opts)
   end
 
+  # Block until the browser URL changes.
+  #
+  # If the supplied options hash does not contain a :current_url key,
+  # it will use the browser url.  This could lead to timing issues
+  # so you should most likely make a note of the url before initiating the url change.
+  #
+  # The change_page_using method does this automatically.
+  # @param opts [Hash] An options hash.
   def wait_for_url_change(opts = {})
     url_now = opts.fetch(:current_url, @browser.url)
     Watir::Wait.until { @browser.url != url_now }
