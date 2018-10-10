@@ -1,4 +1,8 @@
 # frozen_string_literal: true
+Given('Valid credentials') do
+
+end
+
 
 When('I attempt to log in') do
   on(LoginPage).populate
