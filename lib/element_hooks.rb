@@ -19,3 +19,7 @@ end
 MASKED_EDIT_HOOKS ||= CptHook.define_hooks do
   after(:value=).call(:fire_event).with(:blur)
 end
+
+SEARCH_EDIT_HOOKS ||= CptHook.define_hooks do
+  after(:value=).call(:send_keys).with(:tab)
+end

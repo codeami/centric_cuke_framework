@@ -15,6 +15,16 @@ class BasePage
     populate_page_wth(data) unless data.empty?
   end
 
+  def populate_value(receiver, key, value)
+    return self.send("#{key}=", value) if self.respond_to?("#{key}=")
+
+    populate_checkbox(receiver, key, value) if is_checkbox?(receiver, key) && is_enabled?(receiver, key)
+    populate_radiobuttongroup(receiver, key, value) if is_radiobuttongroup?(receiver, key)
+    populate_radiobutton(receiver, key, value) if is_radiobutton?(receiver, key) && is_enabled?(receiver, key)
+    populate_select_list(receiver, key, value) if is_select_list?(receiver, key)
+    populate_text(receiver, key, value) if is_text?(receiver, key) && is_enabled?(receiver, key)
+  end
+
   def active_menu
     div(xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-menu')]")
   end

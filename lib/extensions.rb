@@ -16,3 +16,6 @@ require 'lib/extensions/capture_assertions'
 
 # Angular support
 require 'lib/extensions/wangular'
+
+# Guidwire support
+require 'lib/extensions/guidewire_controls'
