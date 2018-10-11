@@ -1,0 +1,41 @@
+default: BROWSER_RESOLUTION=1920x1080 --no-source --color -p local -p pretty -p chrome
+defaultedge: --no-source --color  -p local -p pretty -p edge -p html --tags 'not @wip and not @broken and not @framework_support'
+defaultie: --no-source --color  -p local -p pretty -p ie -p html --tags 'not @wip and not @broken and not @framework_support'
+chaos: --no-source --color  -p local -p pretty -p chrome -p html --tags '@wip or @broken'
+sauce_labs: SAUCE_PLATFORM="Windows_7" SAUCE_VERSION="45" --no-source --color -p qa -p desktop -p remote -p pretty -p chrome -p json --tags 'not @wip and not @broken and not @framework_support'
+framework: --no-source --color  -p local -p pretty -p chrome --tags 'not @wip and not @broken'
+
+# Where to get browsers
+local: BROWSER_TYPE=local
+remote: BROWSER_TYPE=remote
+
+# Browser selection
+chrome: BROWSER=chrome
+firefox: BROWSER=firefox
+ie: BROWSER=ie
+safari: BROWSER=safari
+edge: BROWSER=edge
+
+# Screen Size
+desktop: BROWSER_RESOLUTION=1250x950 --tags @any_resolution,@allow_desktop --tags ~@no_desktop
+mobile: BROWSER_RESOLUTION=500x600 --tags @any_resolution,@allow_mobile --tags ~@no_mobile
+tablet: BROWSER_RESOLUTION=702x802 --tags @any_resolution,@allow_tablet --tags ~@no_tablet
+
+# Native Mobile
+native_mobile: NATIVE_MOBILE=true --tags @native_mobile -f pretty
+ios_native_mobile: -p native_mobile --tags '@ios_native and not @android_native'
+android_native_mobile: -p native_mobile --tags '@android_native and not @ios_native'
+
+# How do you want your results?
+pretty: -f pretty
+html: --format html --out reports/test_<%= Time.now.strftime("%Y%m%d-%H%M%S") %>.html
+json: --expand --format json --out reports/test_<%= Time.now.strftime("%Y%m%d-%H%M%S") %>.json
+rerun: -f rerun --out cucumber_failures_<%= Time.now.strftime("%Y%m%d-%H%M%S") %>-.log
+
+# How should we run the tests?
+parallel: --format pretty --profile json --format ParallelTests::Cucumber::FailuresLogger --out cucumber_failures.log
+slow_mo: CUKE_STEP_SIZE=1
+debug: CUKE_DEBUG=true
+
+# Headless support
+headless: BROWSER_RESOLUTION=1920x3000 HEADLESS=true -p chrome

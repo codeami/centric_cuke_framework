@@ -383,7 +383,7 @@ module PageObject
         return call_block(&block).exists? if block_given?
         wrapper.__setobj__(platform.send(method, identifier.clone)).exists?
       end
-      
+
       hooks&.hooked_methods || []
     end
 

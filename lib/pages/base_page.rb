@@ -15,6 +15,10 @@ class BasePage
     populate_page_wth(data) unless data.empty?
   end
 
+  def active_menu
+    div(xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-menu')]")
+  end
+
   # Base classes should override this to provide default data
   def default_data
     {}
