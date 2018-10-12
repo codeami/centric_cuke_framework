@@ -6,6 +6,53 @@ require 'page-object/accessors'
 # Rubocop has problems with metaprogramming...
 module PageObject
 
+  class GWSelectList < SimpleDelegator
+
+    def value
+      edit.value
+    end
+
+    def text
+      value
+    end
+
+    def set(value)
+      edit.set(value)
+    end
+
+    def show_list
+      dd_toggle.click unless list_open?
+    end
+
+    def close_list
+      dd_toggle.click if list_open?
+    end
+
+    def list_open?
+      class_name.include? 'x-pickerfield-open'
+    end
+
+    def select_item(value)
+      show_list
+      list.select_item(value)
+    end
+
+    private
+
+    def list
+      list_el = div( xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-boundlist-floating')]")
+      GWBoundListFloating.new(list_el, class: 'x-boundlist-item')
+    end
+
+    def edit
+      text_field( role: 'combobox')
+    end
+
+    def dd_toggle
+      div(class: 'x-form-trigger')
+    end
+  end
+
   class GWDropdownCell < SimpleDelegator
     def initialize(element, list_selector, item_selector)
       super(element)
@@ -117,6 +164,22 @@ module PageObject
       last_count = count
       yield
       wait_for_count_change(last_count)
+    end
+
+    def find_item(method, str_or_regex)
+      items.detect { |p| str_or_regex.is_a?(Regexp) ? str_or_regex.match(p.send(method)) : p.send(method) == str_or_regex }
+    end
+
+    def find_items(method, str_or_regex)
+      items.select { |p| str_or_regex.is_a?(Regexp) ? str_or_regex.match(p.send(method)) : p.send(method) == str_or_regex }
+    end
+
+    def any?(method, str_or_regex)
+      items.any? { |p| str_or_regex.is_a?(Regexp) ? str_or_regex.match(p.send(method)) : p.send(method) == str_or_regex }
+    end
+
+    def all?(method, str_or_regex)
+      items.all? { |p| str_or_regex.is_a?(Regexp) ? str_or_regex.match(p.send(method)) : p.send(method) == str_or_regex }
     end
 
     private
@@ -267,6 +330,25 @@ module PageObject
       define_method(name) do
         begin
           return GridView.new(send("#{name}_element"), item_class, item_sel, self)
+        rescue Selenium::WebDriver::Error::StaleElementReferenceError
+          retry
+        end
+      end
+    end
+
+    def gw_select_list(name, identifier = { index: 0 }, &block)
+      _hooked_methods = hooked_sm_em(name, identifier, 'div_for', "#{name}_po_element", &block)
+      define_method(name) do
+        send("#{name}_element").value
+      end
+
+      define_method("#{name}=") do |value|
+        send("#{name}_element").select_item(value)
+      end
+
+      define_method("#{name}_element") do
+        begin
+          return GWSelectList.new(send("#{name}_po_element"))
         rescue Selenium::WebDriver::Error::StaleElementReferenceError
           retry
         end

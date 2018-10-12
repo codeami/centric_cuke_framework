@@ -3,4 +3,5 @@ new_submission_tab_page:
   organization: 'Armstrong and Company'
   account_number: 'B000457766'
   producer_code: '100-002541 Armstrong (Premier)'
-  single_or_multiple: 'Multiple'
+  single_or_multiple: 'Single'
+  single_product_name: 'Businessowners'
