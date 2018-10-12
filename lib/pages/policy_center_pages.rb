@@ -1,0 +1,6 @@
+require_relative 'policy_center/policy_center_page'
+require_relative 'policy_center/login_page'
+require_relative 'policy_center/policy_tab_page'
+require_relative 'policy_center/search_tab_page'
+require_relative 'policy_center/new_submission_tab_page'
+require_relative 'policy_center/submission_tab_page'

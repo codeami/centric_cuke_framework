@@ -1,0 +1,2 @@
+require_relative 'submission_sections/info_bar'
+require_relative 'submission_sections/west_panel'

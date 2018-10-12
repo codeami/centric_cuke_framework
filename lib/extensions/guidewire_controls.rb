@@ -6,6 +6,183 @@ require 'page-object/accessors'
 # Rubocop has problems with metaprogramming...
 module PageObject
 
+  class GWQuestionSetQuestion < SimpleDelegator
+    attr_reader :question_type
+    def initialize(element, question_type)
+      super(element)
+      @question_type = question_type
+    end
+
+    def key
+      @key ||= text.snakecase.gsub( /[^\w\d\s_]/, '').to_sym
+    end
+
+    def text
+      td.text
+    end
+
+    def to_h
+      { key =>  {text: text, value: value } }
+    end
+  end
+
+  class GWQuestionSetYNQuestion < GWQuestionSetQuestion
+    attr_reader :question_type
+    def initialize(element)
+      super(element, :yes_no)
+      @label_sel =  { class: 'x-form-cb-label' }
+      @set_class = 'x-form-cb-checked'
+    end
+
+    def pry
+      binding.pry;2
+      puts ''
+    end
+
+    def value
+      answers.selected_item.text == 'Yes'
+    end
+
+    def answer
+      answers.selected_item.text
+    end
+
+    def set(val)
+      if val.is_a?(TrueClass)
+        val = val ? 'Yes' : 'No'
+      end
+      answers.select(val.titlecase)
+    end
+
+    def answers
+      @answers ||= GWRadioButtonArray.new(table(class: 'gw-radio-group-cell'),  @set_class, @label_sel)
+    end
+
+    def self.handle_element?(element)
+      return false unless correct_input_count?(element)
+      return false unless correct_labels?(element)
+      true
+    end
+
+    private
+    def self.correct_input_count?(element)
+      return element.inputs(class: 'x-form-radio').count == 2
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+
+    def self.correct_labels?(element)
+      return element.labels.map(&:text).join == 'YesNo'
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+  end
+
+  class GWQuestionSet < SimpleDelegator
+
+    def set(values)
+      values.each do |k, v|
+        questions.detect { |q| q.key == k }&.set(v)
+      end
+    end
+
+    def to_h
+      Hash[*questions.map(&:to_h).collect{|h| h.to_a}.flatten]
+    end
+
+    def name
+      td.text
+    end
+
+    def key
+      @key ||= name.snakecase.gsub( /[^\w\d\s_]/, '')
+    end
+
+    def pry
+      binding.pry;2
+      puts ''
+    end
+
+    def questions
+      trs(class: 'x-grid-row').map { |r| class_for_row(r) }
+    end
+
+    def class_for_row(r)
+      # Asssuming there will be more question types...
+      q_class = [GWQuestionSetYNQuestion].detect { |q| q.handle_element?(r) }
+      q_class.new(r)
+    end
+  end
+
+
+  class GWTreeNavItem < SimpleDelegator
+    def items
+      @sub_items ||= []
+    end
+  end
+
+  class GWTreeNavPanel < SimpleDelegator
+    def initialize(element)
+      super
+      add_methods
+    end
+
+    def title
+      div(class: 'x-title-item').text
+    end
+
+    def add_methods
+      items.each do |item|
+        if item.items.count.positive?
+          item.items.each { |i| add_method_for_item(i, item) }
+        else
+          add_method_for_item(item)
+        end
+      end
+    end
+
+    def add_method_for_item(item, parent = nil)
+      method_name = parent.nil? ? item.text : "#{parent.text}_#{item.text}"
+      define_singleton_method(method_name.snakecase) do
+        item.click
+      end
+    end
+
+    def items
+      @items ||= fetch_items
+    end
+
+    def subtitle
+      span(class: '')
+    end
+
+    private
+
+    def fetch_items
+      results = []
+      last_item = nil
+      tree_view_div.tds(class: 'x-grid-cell').each do |cell|
+        # TODO: This only handles two levels deep
+        unless cell.class_name.include?('g-accordion-depth-1')
+          last_item.items << cell
+        else
+          last_item = GWTreeNavItem.new(cell)
+          results << last_item
+        end
+      end
+      results
+    end
+
+    def tree_view_div
+      div(class: 'x-tree-view')
+    end
+
+    def title_div
+      div(class: 'x-title-text')
+    end
+
+  end
+
   class GWSelectList < SimpleDelegator
 
     def value
@@ -200,6 +377,10 @@ module PageObject
       super(@label_selector)
     end
 
+    def value
+      set?
+    end
+
     def text
       label.text
     end
@@ -226,6 +407,12 @@ module PageObject
       Watir::Wait.until { present? }
       tds(role: 'presentation').map { |b| GWRadioButton.new(b, @set_classname, @label_selector) }
     end
+
+    def text
+      selected_item&.text
+    end
+    alias_method :value, :text
+
 
     def selected_item
       items.detect { |i| i.set? }
@@ -337,7 +524,7 @@ module PageObject
     end
 
     def gw_select_list(name, identifier = { index: 0 }, &block)
-      _hooked_methods = hooked_sm_em(name, identifier, 'div_for', "#{name}_po_element", &block)
+      _hooked_methods = gw_simple_sm(name, identifier, GWSelectList,'div_for', &block)
       define_method(name) do
         send("#{name}_element").value
       end
@@ -345,14 +532,37 @@ module PageObject
       define_method("#{name}=") do |value|
         send("#{name}_element").select_item(value)
       end
+    end
+
+    def gw_tree_nav_panel(name, identifier, &block)
+      _hooked_methods = gw_simple_sm(name, identifier, GWTreeNavPanel,'div_for', &block)
+      define_method("#{name}=") do |value|
+        send("#{name}_element").select_item(value)
+      end
+    end
+
+    def gw_question_set(name, identifier, &block)
+      _hooked_methods = gw_simple_sm(name, identifier, GWQuestionSet,'div_for', &block)
+      define_method("#{name}=") do |value|
+        send("#{name}_element").set(value)
+      end
+    end
+
+    def gw_simple_sm(name, identifier, control_class, method, &block)
+      _hooked_methods = hooked_sm_em(name, identifier, method, "#{name}_po_element", &block)
+
+      define_method(name) do
+        send("#{name}_element")
+      end
 
       define_method("#{name}_element") do
         begin
-          return GWSelectList.new(send("#{name}_po_element"))
+          return control_class.new(send("#{name}_po_element"))
         rescue Selenium::WebDriver::Error::StaleElementReferenceError
           retry
         end
       end
+      _hooked_methods
     end
 
     # TODO: This is a TERRIBLE name
