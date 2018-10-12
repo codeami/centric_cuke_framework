@@ -9,10 +9,10 @@ And(/I create a new policy quote/) do
   end
 
   on(SubmissionTabPage) do |page|
-    qs = page.bop_offering_questions
-    vals = { is_the_customer_based_in_british_columbia: true, is_the_customer_a_member_of_partners_alliance: true }
-    qs.set vals
-    qs.pry
+
+    binding.pry
+    page.wizard_panel.populate_to_end
+
   end
 
 end

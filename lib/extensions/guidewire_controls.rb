@@ -14,7 +14,7 @@ module PageObject
     end
 
     def key
-      @key ||= text.snakecase.gsub( /[^\w\d\s_]/, '').to_sym
+      @key ||= text.snakecase.gsub( /[^\w\d\s_]/, '') #.to_sym
     end
 
     def text
@@ -40,15 +40,17 @@ module PageObject
     end
 
     def value
-      answers.selected_item.text == 'Yes'
+      item = answers.selected_item
+      return nil unless item
+      item.text == 'Yes'
     end
 
     def answer
-      answers.selected_item.text
+      answers.selected_item&.text
     end
 
     def set(val)
-      if val.is_a?(TrueClass)
+      if val.is_a?(TrueClass) || val.is_a?(FalseClass)
         val = val ? 'Yes' : 'No'
       end
       answers.select(val.titlecase)
@@ -90,12 +92,17 @@ module PageObject
       Hash[*questions.map(&:to_h).collect{|h| h.to_a}.flatten]
     end
 
+    def fixture_values
+      vals = to_h.map { |k, v| { k => v[:value] } }
+      { key => Hash[*vals.collect{|h| h.to_a}.flatten] }
+    end
+
     def name
       td.text
     end
 
     def key
-      @key ||= name.snakecase.gsub( /[^\w\d\s_]/, '')
+      @key ||= name.snakecase.gsub( /[^\w\d\s_]/, '').to_sym
     end
 
     def pry
@@ -227,6 +234,48 @@ module PageObject
 
     def dd_toggle
       div(class: 'x-form-trigger')
+    end
+  end
+
+  class GWDropdown < SimpleDelegator
+    def initialize(element, list_selector, item_selector)
+      super(element)
+      @item_selector = item_selector
+      @list_selector = list_selector
+    end
+
+    def open?
+      class_name.include? 'x-btn-menu-active'
+    end
+
+    def open
+      click unless open?
+    end
+
+    def close
+      click if open?
+    end
+
+    def closed?
+      !open?
+    end
+
+    def list
+      open
+      @list ||= GWBoundListFloating.new(list_element, @item_selector)
+    end
+
+    def select_item(str_or_regex)
+      list.select_item str_or_regex
+    end
+    alias_method :set, :select_item
+
+    def value
+      text
+    end
+
+    def list_element
+      div(@list_selector)
     end
   end
 
@@ -443,6 +492,50 @@ module PageObject
   # set of methods that provide access to the elements on the web pages.
   #
   module Accessors
+
+    def gw_dropdown(name, identifier, &block)
+      list_sel = identifier.delete(:list) || { xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-boundlist-floating')]" }
+      item_sel = identifier.delete(:items) || { class: 'x-boundlist-item' }
+      _hooked_methods = hooked_sm_em(name, identifier, 'link_for', "#{name}_po_element", &block)
+
+      define_method("#{name}_element") do
+        begin
+          return GWDropdown.new(send("#{name}_po_element"), list_sel, item_sel)
+        rescue Selenium::WebDriver::Error::StaleElementReferenceError
+          retry
+        end
+      end
+
+      define_method(name) do
+        send("#{name}_element").text
+      end
+
+      define_method("#{name}=") do |value|
+        send("#{name}_element").select_item(value)
+      end
+    end
+
+    def gw_form_dropdown(name, identifier, &block)
+      list_sel = identifier.delete(:list) || { xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-boundlist-floating')]" }
+      item_sel = identifier.delete(:items) || { class: 'x-boundlist-item' }
+      _hooked_methods = hooked_sm_em(name, identifier, 'div_for', "#{name}_po_element", &block)
+
+      define_method("#{name}_element") do
+        begin
+          return GWDropdown.new(send("#{name}_po_element"), list_sel, item_sel)
+        rescue Selenium::WebDriver::Error::StaleElementReferenceError
+          retry
+        end
+      end
+
+      define_method(name) do
+        send("#{name}_element").input.value
+      end
+
+      define_method("#{name}=") do |value|
+        send("#{name}_element").select_item(value)
+      end
+    end
 
     def gw_dropdown_cell(name, identifier, &block)
       list_sel = identifier.delete(:list) || { xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-boundlist-floating')]" }

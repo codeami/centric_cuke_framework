@@ -5,3 +5,7 @@ new_submission_tab_page:
   producer_code: '100-002541 Armstrong (Premier)'
   single_or_multiple: 'Single'
   single_product_name: 'Businessowners'
+wizard_panel:
+  wizard_offerings_detail_panel:
+    is_the_customer_based_in_british_columbia: false
+    is_the_customer_a_member_of_partners_alliance: false

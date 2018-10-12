@@ -12,7 +12,7 @@ class BasePage
 
   def populate(data = {}, additional = {})
     populate_page_with(data_for_or_default(self.class.to_s.snakecase, default_data, additional)) if data.empty?
-    populate_page_wth(data) unless data.empty?
+    populate_page_with(data) unless data.empty?
   end
 
   def populate_value(receiver, key, value)

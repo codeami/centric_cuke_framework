@@ -1,0 +1,2 @@
+require_relative 'wizard_detail_panels/wizard_detail_panel'
+require_relative 'wizard_detail_panels/wizard_offerings_detail_panel'
