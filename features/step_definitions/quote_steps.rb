@@ -9,10 +9,8 @@ And(/I create a new policy quote/) do
   end
 
   on(SubmissionTabPage) do |page|
-
     binding.pry
     page.wizard_panel.populate_to_end
-
   end
 
 end

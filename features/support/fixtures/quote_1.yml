@@ -9,3 +9,21 @@ wizard_panel:
   wizard_offerings_detail_panel:
     is_the_customer_based_in_british_columbia: false
     is_the_customer_a_member_of_partners_alliance: false
+  wizard_qualification_detail_panel:
+    has_any_policy_or_coverage_been_declined_canceled_or_non_renewed_during_the_prior_3_years: false
+    has_applicant_had_a_foreclosure_repossession_bankruptcy_judgement_or_lien_during_the_past_five_years: false
+    do_any_catastrophe_exposures_exist: false
+    during_the_last_five_years_has_any_applicant_been_convicted_of_any_degree_of_the_crime_of_arson: false
+    have_there_been_any_claims_or_allegations_relating_to_sexual_abuse_or_molestation_allegations_discrimination_or_negligent_hiring: false
+    does_the_applicant_have_other_past_or_current_policies_with_this_company: false
+    does_the_applicant_own_or_operate_any_business_not_included_on_this_application: false
+    do_any_uncorrected_fire_code_violations_exist: false
+    is_there_any_exposure_to_flammables_explosives_or_chemicals: false
+    have_any_operations_past_or_present_involved_storing_treating_discharging_applying_disposing_or_transporting_of_hazardous_materials: false
+    is_there_any_manufacturing_mixing_relabeling_or_repackaging_of_products: false
+    is_equipment_rented_or_loaned_to_others: false
+    are_employees_leased_to_or_from_others: false
+    is_workers_compensation_carried: true
+    are_sub_contractors_required_to_provide_certificates_of_insurance_prior_to_beginning_work: true
+    who_checks_certificates: "Managers"
+    are_athletic_teams_sponsored: false

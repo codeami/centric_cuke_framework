@@ -80,12 +80,98 @@ module PageObject
     end
   end
 
+
+  class GWQuestionSetSingleEditQuestion < GWQuestionSetQuestion
+    attr_reader :question_type
+    def initialize(element)
+      super(element, :single_edit)
+    end
+
+    def pry
+      binding.pry;2
+      puts ''
+    end
+
+    def value
+      edit_mode? ? editor.value : cell.text
+    end
+
+
+
+    def answer
+      value
+    end
+
+    def show_editor
+      click unless edit_mode?
+    end
+
+    def set(val)
+      binding.pry
+      show_editor
+      editor.set(val)
+      editor.send_keys(:tab)
+    end
+
+    def self.handle_element?(element)
+      return false unless correct_input_count?(element)
+      return false unless correct_style?(element)
+      true
+    end
+
+    def edit_mode?
+      cell.div.style.include? 'visibility: hidden;'
+
+    end
+
+    private
+
+    def cell
+      td(class: 'g-cell-edit')
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+
+    def editor_div
+      div(xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-grid-editor')]")
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+
+    def editor
+      editor_div.text_field
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+
+    def self.correct_input_count?(element)
+      return element.inputs(class: 'x-form-radio').count == 0
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+
+    def self.correct_style?(element)
+      return element.tds(class: 'g-cell-edit').count == 1
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+  end
+
   class GWQuestionSet < SimpleDelegator
 
     def set(values)
       values.each do |k, v|
-        questions.detect { |q| q.key == k }&.set(v)
+        find_question(k)&.set(v)
       end
+    end
+
+    def find_question(key)
+      q = questions.detect { |q| q.key == key }
+      return q if q
+      @questions = nil
+      q = questions.detect { |q| q.key == key }
+      raise "Could not find a question matching #{key}" unless q
+      q
     end
 
     def to_h
@@ -110,13 +196,18 @@ module PageObject
       puts ''
     end
 
-    def questions
+    def _questions
       trs(class: 'x-grid-row').map { |r| class_for_row(r) }
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+
+    def questions
+      @questions ||= _questions
     end
 
     def class_for_row(r)
-      # Asssuming there will be more question types...
-      q_class = [GWQuestionSetYNQuestion].detect { |q| q.handle_element?(r) }
+      q_class = [GWQuestionSetYNQuestion, GWQuestionSetSingleEditQuestion].detect { |q| q.handle_element?(r) }
       q_class.new(r)
     end
   end
@@ -309,7 +400,6 @@ module PageObject
     end
 
     def set(value)
-      #binding.pry;2
       show_dd
       editor.when_present.set(value)
       editor.send_keys(:tab)
