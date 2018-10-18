@@ -3,8 +3,63 @@
 require 'cpt_hook'
 require 'page-object/accessors'
 
+module GuideWire
+  class << self
+    def question_types
+      @question_types ||= {}
+    end
+  end
+end
+
 # Rubocop has problems with metaprogramming...
 module PageObject
+
+  class GWSelectList < SimpleDelegator
+
+    def value
+      edit.value
+    end
+
+    def text
+      value
+    end
+
+    def set(value)
+      edit.set(value)
+    end
+
+    def show_list
+      dd_toggle.click unless list_open?
+    end
+
+    def close_list
+      dd_toggle.click if list_open?
+    end
+
+    def list_open?
+      class_name.include? 'x-pickerfield-open'
+    end
+
+    def select_item(value)
+      show_list
+      list.select_item(value)
+    end
+
+    private
+
+    def list
+      list_el = div( xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-boundlist-floating')]")
+      GWBoundListFloating.new(list_el, class: 'x-boundlist-item')
+    end
+
+    def edit
+      text_field( role: 'combobox')
+    end
+
+    def dd_toggle
+      div(class: 'x-form-trigger')
+    end
+  end
 
   class GWQuestionSetQuestion < SimpleDelegator
     attr_reader :question_type
@@ -23,6 +78,14 @@ module PageObject
 
     def to_h
       { key =>  {text: text, value: value } }
+    end
+
+    def self.has_triggers?(element)
+      element.divs( class: 'x-form-trigger').count.positive?
+    end
+
+    def self.actionable?(element)
+      element.links(class: 'g-actionable').count.positive?
     end
   end
 
@@ -80,6 +143,7 @@ module PageObject
     end
   end
 
+  GuideWire.question_types[:yes_no] = GWQuestionSetYNQuestion
 
   class GWQuestionSetSingleEditQuestion < GWQuestionSetQuestion
     attr_reader :question_type
@@ -107,7 +171,6 @@ module PageObject
     end
 
     def set(val)
-      binding.pry
       show_editor
       editor.set(val)
       editor.send_keys(:tab)
@@ -121,7 +184,6 @@ module PageObject
 
     def edit_mode?
       cell.div.style.include? 'visibility: hidden;'
-
     end
 
     private
@@ -157,7 +219,14 @@ module PageObject
     end
   end
 
+  GuideWire.question_types[:single_edit] = GWQuestionSetSingleEditQuestion
+
   class GWQuestionSet < SimpleDelegator
+
+    def initialize(element, row_selector)
+      super(element)
+      @row_selector = row_selector
+    end
 
     def set(values)
       values.each do |k, v|
@@ -197,7 +266,7 @@ module PageObject
     end
 
     def _questions
-      trs(class: 'x-grid-row').map { |r| class_for_row(r) }
+      trs( @row_selector).map { |r| class_for_row(r) }
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
       retry
     end
@@ -207,11 +276,24 @@ module PageObject
     end
 
     def class_for_row(r)
-      q_class = [GWQuestionSetYNQuestion, GWQuestionSetSingleEditQuestion].detect { |q| q.handle_element?(r) }
-      q_class.new(r)
+      q_class = GuideWire.question_types.values.detect { |q| q.handle_element?(r) }
+      STDERR.puts "Unknown question type" unless q_class
+      q_class.new(r) if q_class
     end
   end
 
+  class GWFormSet < GWQuestionSet
+    def _questions
+      divs( @row_selector).map { |r| class_for_row(r) }
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+
+    def pry
+      binding.pry;2
+      puts ''
+    end
+  end
 
   class GWTreeNavItem < SimpleDelegator
     def items
@@ -279,53 +361,6 @@ module PageObject
       div(class: 'x-title-text')
     end
 
-  end
-
-  class GWSelectList < SimpleDelegator
-
-    def value
-      edit.value
-    end
-
-    def text
-      value
-    end
-
-    def set(value)
-      edit.set(value)
-    end
-
-    def show_list
-      dd_toggle.click unless list_open?
-    end
-
-    def close_list
-      dd_toggle.click if list_open?
-    end
-
-    def list_open?
-      class_name.include? 'x-pickerfield-open'
-    end
-
-    def select_item(value)
-      show_list
-      list.select_item(value)
-    end
-
-    private
-
-    def list
-      list_el = div( xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-boundlist-floating')]")
-      GWBoundListFloating.new(list_el, class: 'x-boundlist-item')
-    end
-
-    def edit
-      text_field( role: 'combobox')
-    end
-
-    def dd_toggle
-      div(class: 'x-form-trigger')
-    end
   end
 
   class GWDropdown < SimpleDelegator
@@ -725,9 +760,44 @@ module PageObject
     end
 
     def gw_question_set(name, identifier, &block)
-      _hooked_methods = gw_simple_sm(name, identifier, GWQuestionSet,'div_for', &block)
+      # _hooked_methods = gw_simple_sm(name, identifier, GWQuestionSet,'div_for', &block)
+      _hooked_methods = hooked_sm_em(name, identifier, 'div_for', "#{name}_po_element", &block)
+      sel = { class: 'x-grid-row' }
+
       define_method("#{name}=") do |value|
         send("#{name}_element").set(value)
+      end
+      define_method(name) do
+        send("#{name}_element")
+      end
+
+      define_method("#{name}_element") do
+        begin
+          return GWQuestionSet.new(send("#{name}_po_element"), sel)
+        rescue Selenium::WebDriver::Error::StaleElementReferenceError
+          retry
+        end
+      end
+    end
+
+    def gw_form_set(name, identifier, &block)
+      # _hooked_methods = gw_simple_sm(name, identifier, GWQuestionSet,'div_for', &block)
+      _hooked_methods = hooked_sm_em(name, identifier, 'table_for', "#{name}_po_element", &block)
+      sel = { class: 'x-field' }
+
+      define_method("#{name}=") do |value|
+        send("#{name}_element").set(value)
+      end
+      define_method(name) do
+        send("#{name}_element")
+      end
+
+      define_method("#{name}_element") do
+        begin
+          return GWFormSet.new(send("#{name}_po_element"), sel)
+        rescue Selenium::WebDriver::Error::StaleElementReferenceError
+          retry
+        end
       end
     end
 

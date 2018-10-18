@@ -13,7 +13,7 @@ class WizardPanel < BasePage
   end
 
   def current_detail_classname
-    "Wizard#{title}DetailPanel"
+    "Wizard#{title.strip.delete(' ')}DetailPanel"
   end
 
   def current_detail_key
@@ -33,6 +33,7 @@ class WizardPanel < BasePage
   end
 
   def populate_to(end_id, data = {})
+    end_id = "wizard_#{end_id.to_s.snakecase}_detail_panel"
     data = data_for(data_for_key.to_s) if data.empty?
     until current_detail_key == end_id
       populate(data)
