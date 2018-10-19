@@ -385,4 +385,47 @@ module PageObject
   end
 
   GuideWire.question_types[:form_searchable_text] = GWFormSearchableText
+
+  class GWFormFieldsetHeaderCheck < GWFormField
+    def initialize(element, sub_type = nil)
+      super(element, sub_type || :form_fieldset_header_check)
+    end
+
+    def pry
+      binding.pry; 2
+      puts ''
+    end
+
+    def value
+      _checkbox.class_name.include? 'x-form-cb-checked'
+    end
+
+    def answer
+      value
+    end
+
+    def set(val)
+      click unless value == val
+    end
+
+    def self.handle_element?(element)
+      element.class_name.include? 'x-fieldset-header-checkbox'
+    end
+
+    private
+
+    def _checkbox
+      button(role: 'checkbox')
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+
+    def self.correct_input_count?(element)
+      return element.text_fields(class: %w[x-form-field x-form-text]).count == 1
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+  end
+
+  GuideWire.question_types[:form_fieldset_header_check] = GWFormFieldsetHeaderCheck
 end
