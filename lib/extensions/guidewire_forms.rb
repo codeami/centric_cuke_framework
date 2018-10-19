@@ -1,6 +1,43 @@
 require 'chronic'
 
 module PageObject
+
+  class GWTabSet < SimpleDelegator
+
+    def pry
+      binding.pry
+    end
+
+    def tabs
+      @tabs ||= Hash[*tab_links.map { |l| { l.text.strip.snakecase => l } }.collect{|h| h.to_a}.flatten]
+    end
+
+    def tabs_text
+      tab_links.map(&:text)
+    end
+
+    def tab_keys
+      tab_links.map { |l| l.text.snakecase }
+    end
+
+    def active_tab_text
+      active_tab_link.text
+    end
+
+    def tab_count
+      tab_links.count
+    end
+
+    def tab_links
+      @tabs_links ||= links(class: 'x-tab')
+    end
+
+    def active_tab_link
+      link(class: 'x-tab-active')
+    end
+
+  end
+
   class GWFormField < GWQuestionSetQuestion
     def locate_label
       return label unless label.text.empty?

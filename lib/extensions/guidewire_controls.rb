@@ -762,6 +762,17 @@ module PageObject
       end
     end
 
+    def gw_tab_set(name, identifier, &block)
+      _hooked_methods = gw_simple_sm(name, identifier, GWTabSet,'div_for', &block)
+      define_method(name) do
+        send("#{name}_element")
+      end
+
+      define_method("#{name}=") do |value|
+        send("#{name}_element").set(value)
+      end
+    end
+
     def gw_tree_nav_panel(name, identifier, &block)
       _hooked_methods = gw_simple_sm(name, identifier, GWTreeNavPanel,'div_for', &block)
       define_method("#{name}=") do |value|

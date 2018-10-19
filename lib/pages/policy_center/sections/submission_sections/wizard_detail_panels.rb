@@ -1,3 +1,4 @@
 require_relative 'wizard_detail_panels/wizard_detail_panel'
 require_relative 'wizard_detail_panels/wizard_offerings_detail_panel'
 require_relative 'wizard_detail_panels/wizard_policy_info_detail_panel'
+require_relative 'wizard_detail_panels/wizard_businessowners_line_detail_panel'
