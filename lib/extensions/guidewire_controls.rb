@@ -48,7 +48,7 @@ module PageObject
     private
 
     def list
-      list_el = div( xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-boundlist-floating')]")
+      list_el = div( xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-boundlist-floating')]", visible: true)
       GWBoundListFloating.new(list_el, class: 'x-boundlist-item')
     end
 
@@ -235,10 +235,10 @@ module PageObject
     end
 
     def find_question(key)
-      q = questions.detect { |q| q.key == key }
+      q = questions.detect { |q| q.key == key.to_s }
       return q if q
       @questions = nil
-      q = questions.detect { |q| q.key == key }
+      q = questions.detect { |q| q.key == key.to_s }
       raise "Could not find a question matching #{key}" unless q
       q
     end
@@ -257,7 +257,7 @@ module PageObject
     end
 
     def key
-      @key ||= name.snakecase.gsub( /[^\w\d\s_]/, '').to_sym
+      @key ||= name.snakecase.gsub( /[^\w\d\s_]/, '')
     end
 
     def pry
@@ -283,10 +283,20 @@ module PageObject
   end
 
   class GWFormSet < GWQuestionSet
+
+    def initialize(element, row_selector, name)
+      super(element, row_selector)
+      @name = name
+    end
+
     def _questions
       divs( @row_selector).map { |r| class_for_row(r) }
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
       retry
+    end
+
+    def name
+      @name.to_s
     end
 
     def pry
@@ -794,7 +804,7 @@ module PageObject
 
       define_method("#{name}_element") do
         begin
-          return GWFormSet.new(send("#{name}_po_element"), sel)
+          return GWFormSet.new(send("#{name}_po_element"), sel, name)
         rescue Selenium::WebDriver::Error::StaleElementReferenceError
           retry
         end

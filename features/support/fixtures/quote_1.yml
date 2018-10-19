@@ -27,3 +27,34 @@ wizard_panel:
     are_sub_contractors_required_to_provide_certificates_of_insurance_prior_to_beginning_work: true
     who_checks_certificates: "Managers"
     are_athletic_teams_sponsored: false
+  wizard_policy_info_detail_panel:
+    policy_info:
+      date_quote_needed: 10/19/2018
+      estimated_premium: '1000.00'
+      change_primary_named_insured_to: ''
+      name: ''
+      phone: ''
+      change_policy_address_to: ''
+      policy_address: |-
+        0399 Bridgepointe Parkway
+        Floor 0399
+        Developer Unit Habitation Cube #0399
+        San Mateo, CA 94404-0399
+      county: San Mateo
+      address_type: Home
+      address_description: Created by the Address Builder with code 399
+      ssn: 989-00-0399
+      industry_code: '0740'
+      year_business_started: '2018'
+      description_of_business_and_operations: test business description
+      organization_type: Common ownership
+      term_type: Other
+      term_number: ''
+      effective_date: 10/19/2018
+      expiration_date: 01/19/2019
+      written_date: 10/19/2018
+      rate_as_of_date: ''
+      base_state: California
+      organization: Armstrong and Company
+      producer_code: 100-002541 Armstrong (Premier)
+      underwriting_companies: Acme Low Hazard Insurance

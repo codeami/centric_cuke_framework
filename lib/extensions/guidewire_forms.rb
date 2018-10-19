@@ -1,3 +1,5 @@
+require 'chronic'
+
 module PageObject
   class GWFormField < GWQuestionSetQuestion
     def locate_label
@@ -113,7 +115,7 @@ module PageObject
     end
 
     def self.handle_element?(element)
-      !element.class_name.include?('g-actionable') && element.divs(role: 'textbox').count == 1
+      !element.class_name.include?('g-actionable') && element.divs(role: 'textbox').count == 1 && element.links.count.zero?
     end
 
     private
@@ -126,6 +128,47 @@ module PageObject
   end
 
   GuideWire.question_types[:form_text_display] = GWFormTextDisplay
+
+  class GWFormChangeTo < GWFormField
+    def initialize(element)
+      super(element, :form_text_display)
+    end
+
+    def pry
+      binding.pry; 2
+      puts ''
+    end
+
+    def value
+      ''
+    end
+
+    def text
+      "change #{super} to"
+    end
+
+    def answer
+      value
+    end
+
+    def set(val)
+      raise 'Not implemented' unless val.to_s.empty?
+    end
+
+    def self.handle_element?(element)
+      element.links(class: 'g-actionable').count == 1 && element.divs(role: 'textbox').count == 1
+    end
+
+    private
+
+    def display_div
+      div(role: 'textbox')
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+  end
+
+  GuideWire.question_types[:form_change_to] = GWFormChangeTo
 
   class GWFormActionableText < GWFormField
     attr_reader :question_type
@@ -149,7 +192,7 @@ module PageObject
 
     def set(_val)
       # TODO: Implement
-      raise "Not yet implemented"
+      raise "Not yet implemented" unless _val.to_s.empty?
     end
 
     def self.handle_element?(element)

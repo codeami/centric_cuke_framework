@@ -13,7 +13,8 @@ And(/I create a new policy quote/) do
     page.wizard_panel.populate_to :policy_info
     d = page.wizard_panel.current_details
     p = d.policy_info
-    p.pry
+    page.wizard_panel.populate
+    #p.pry
     binding.pry
   end
 
