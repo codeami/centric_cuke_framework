@@ -2,14 +2,27 @@ require 'chronic'
 
 module PageObject
 
+  class GWFormsetTab < GWFormSet
+
+    def initialize(element, name)
+      super(element, { class: 'x-field', visible: true }, name )
+    end
+
+  end
+
   class GWTabSet < SimpleDelegator
+
+    def initialize(element, name)
+      super(element)
+      @name = name
+    end
 
     def pry
       binding.pry
     end
 
     def tabs
-      @tabs ||= Hash[*tab_links.map { |l| { l.text.strip.snakecase => l } }.collect{|h| h.to_a}.flatten]
+      @tabs ||= Hash[*tab_links.map { |l| { l.text.strip.snakecase => l } }.collect{ |h| h.to_a }.flatten]
     end
 
     def tabs_text
@@ -18,6 +31,15 @@ module PageObject
 
     def tab_keys
       tab_links.map { |l| l.text.snakecase }
+    end
+
+    def active_tab
+      class_name = Object.const_defined?(classname_for_tab) ? Object.const_get(classname_for_tab) : GWFormsetTab
+      class_name.new(div(class: 'x-tabpanel-child', visible: true), active_tab_text)
+    end
+
+    def classname_for_tab
+      "#{@name.to_s}#{active_tab_text}".delete(' &:,').camelcase(:upper)
     end
 
     def active_tab_text
@@ -147,8 +169,8 @@ module PageObject
       value
     end
 
-    def set(_val)
-      STDERR.puts "Warning attempting to set a display only field"
+    def set(val)
+      STDERR.puts "Warning attempting to set a display only field" unless val.empty?
     end
 
     def self.handle_element?(element)
@@ -410,6 +432,10 @@ module PageObject
 
     def self.handle_element?(element)
       element.class_name.include? 'x-fieldset-header-checkbox'
+    end
+
+    def label_ele
+      div(xpath: './following-sibling::div')
     end
 
     private

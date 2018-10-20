@@ -1,0 +1,1 @@
+#require_relative 'bop_tabs/coverages_tab'

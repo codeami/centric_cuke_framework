@@ -763,9 +763,22 @@ module PageObject
     end
 
     def gw_tab_set(name, identifier, &block)
-      _hooked_methods = gw_simple_sm(name, identifier, GWTabSet,'div_for', &block)
+      _hooked_methods = hooked_sm_em(name, identifier, 'div_for', "#{name}_po_element", &block)
+      # _hooked_methods = gw_simple_sm(name, identifier, GWTabSet,'div_for', &block)
       define_method(name) do
         send("#{name}_element")
+      end
+
+      define_method("#{name}=") do |value|
+        send("#{name}_element").set(value)
+      end
+
+      define_method("#{name}_element") do
+        begin
+          return GWTabSet.new(send("#{name}_po_element"), name)
+        rescue Selenium::WebDriver::Error::StaleElementReferenceError
+          retry
+        end
       end
 
       define_method("#{name}=") do |value|
