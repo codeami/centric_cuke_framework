@@ -357,6 +357,43 @@ module PageObject
       end
     end
 
+    def hooked_sm_em(name, identifier, method, element_method, &block)
+      hooks = identifier.delete(:hooks)
+      unless hooks
+        define_method(element_method) do
+          return call_block(&block) if block_given?
+          platform.send(method, identifier.clone)
+        end
+        define_method("#{name}?") do
+          return call_block(&block).exists? if block_given?
+          platform.send(method, identifier.clone).exists?
+        end
+        return [] # This ensures that our return value is safe for checking hooks regardless
+      end
+
+      _add_common_hook_methods
+
+      define_method(element_method) do
+        wrapper = cached_hooks(hooks, name)
+        return wrapper.__setobj__(call_block(&block)) if block_given?
+        wrapper.__setobj__(platform.send(method, identifier.clone))
+        wrapper
+      end
+
+      define_method("#{name}_unhooked") do
+        return call_block(&block) if block_given?
+        platform.send(method, identifier.clone)
+      end
+
+      define_method("#{name}?") do
+        wrapper = cached_hooks(hooks, name)
+        return call_block(&block).exists? if block_given?
+        wrapper.__setobj__(platform.send(method, identifier.clone)).exists?
+      end
+
+      hooks&.hooked_methods || []
+    end
+
     def hooked_standard_methods(name, identifier, method, &block)
       hooks = identifier.delete(:hooks)
       unless hooks
@@ -383,7 +420,7 @@ module PageObject
         return call_block(&block).exists? if block_given?
         wrapper.__setobj__(platform.send(method, identifier.clone)).exists?
       end
-      
+
       hooks&.hooked_methods || []
     end
 

@@ -1,0 +1,2 @@
+class WizardPaymentDetailPanel < WizardDetailPanel
+end

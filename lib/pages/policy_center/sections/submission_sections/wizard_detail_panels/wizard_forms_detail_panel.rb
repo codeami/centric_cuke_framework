@@ -1,0 +1,2 @@
+class WizardFormsDetailPanel < WizardDetailPanel
+end

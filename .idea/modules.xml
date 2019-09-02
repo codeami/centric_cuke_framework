@@ -3,6 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/centric_cuke_framework.iml" filepath="$PROJECT_DIR$/.idea/centric_cuke_framework.iml" />
+      <module fileurl="file://$USER_HOME$/code/edsl/.idea/edsl.iml" filepath="$USER_HOME$/code/edsl/.idea/edsl.iml" />
+      <module fileurl="file://$USER_HOME$/code/edsl-guidewire/.idea/edsl-guidewire.iml" filepath="$USER_HOME$/code/edsl-guidewire/.idea/edsl-guidewire.iml" />
+      <module fileurl="file://$USER_HOME$/code/edsl-pageobject/.idea/edsl-pageobject.iml" filepath="$USER_HOME$/code/edsl-pageobject/.idea/edsl-pageobject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../guidewire-DEMO/.idea/guidewire-DEMO.iml" filepath="$PROJECT_DIR$/../guidewire-DEMO/.idea/guidewire-DEMO.iml" />
     </modules>
   </component>
 </project>

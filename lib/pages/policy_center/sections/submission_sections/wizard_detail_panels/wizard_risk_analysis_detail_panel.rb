@@ -1,0 +1,2 @@
+class WizardRiskAnalysisDetailPanel < WizardDetailPanel
+end

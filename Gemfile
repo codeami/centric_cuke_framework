@@ -1,11 +1,15 @@
 # Core gems
+source 'https://rubygems.org'
+
 gem 'chronic'
 gem 'cpt_hook'
 gem 'cucumber', '~> 3.0'
 gem 'cuke_cataloger', '~> 1.4'
 gem 'data_magic', '~> 1.2'
+# gem 'edsl-pageobject'
 gem 'magic_path' # Not locked yet due to active development
 gem 'mail', '~> 2.7'
+gem 'page_navigation'
 gem 'page-object', '~> 2.2'
 gem 'rb-readline'
 gem 'rspec', '~> 3.7'

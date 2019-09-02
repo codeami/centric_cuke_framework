@@ -1,0 +1,3 @@
+class WizardQuoteDetailPanel < WizardDetailPanel
+
+end

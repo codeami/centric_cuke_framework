@@ -47,13 +47,15 @@ module PageObject
   # This differs from the stock wait_for_ajax in that it does not blow up while page navigation is occuring
   #
   def _wait_for_ajax(timeout = 120, message = nil)
-    sleep 0.5 # Give the browser time to start it's ajax requests
+    sleep 0.25 # Give the browser time to start it's ajax requests
     end_time = ::Time.now + timeout
+    unknown_count = 0
     until ::Time.now > end_time
       begin
         pending = browser.execute_script(::PageObject::JavascriptFrameworkFacade.pending_requests)
       rescue Selenium::WebDriver::Error::UnknownError
-        pending = 1
+        unknown_count += 1
+        pending = unknown_count > 2 ? 0 : 1
       rescue Selenium::WebDriver::Error::NoSuchDriverError
         pending = 0
       end

@@ -1,0 +1,2 @@
+class WizardModifiersDetailPanel < WizardDetailPanel
+end

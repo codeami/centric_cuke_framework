@@ -15,4 +15,8 @@ require 'lib/extensions/relocate'
 require 'lib/extensions/capture_assertions'
 
 # Angular support
-require 'lib/extensions/wangular'
+#require 'lib/extensions/wangular'
+
+# Guidwire support
+require 'lib/extensions/guidewire_controls'
+require 'lib/extensions/guidewire_forms'
