@@ -17,7 +17,7 @@ safari: BROWSER=safari
 edge: BROWSER=edge
 
 # Screen Size
-desktop: BROWSER_RESOLUTION=1250x950 --tags @any_resolution,@allow_desktop --tags ~@no_desktop
+desktop: BROWSER_RESOLUTION=1250x950
 mobile: BROWSER_RESOLUTION=500x600 --tags @any_resolution,@allow_mobile --tags ~@no_mobile
 tablet: BROWSER_RESOLUTION=702x802 --tags @any_resolution,@allow_tablet --tags ~@no_tablet
 

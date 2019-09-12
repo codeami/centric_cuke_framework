@@ -105,8 +105,10 @@ module PageObject
     end
 
     def self.handle_element?(element)
-      correct_input_count?(element) && !has_triggers?(element)
+      correct_input_count?(element) # && !has_triggers?(element)
     end
+
+
 
     private
 
@@ -123,7 +125,92 @@ module PageObject
     end
   end
 
-  GuideWire.question_types[:form_text] = GWFormText
+
+
+  class GWFormAutoFillText < GWFormText
+    def initialize(element)
+      super(element, :form_autofill_text)
+    end
+
+    def pry
+      binding.pry; 2
+      puts ''
+    end
+
+    def self.handle_element?(element)
+      correct_input_count?(element)
+    end
+
+    def set(val)
+      editor.click
+      editor.set(val)
+      editor.send_keys(:tab)
+    end
+
+    private
+
+    def editor
+      text_field(class: %w[x-form-field x-form-text])
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+
+    def self.correct_input_count?(element)
+      return element.text_fields(class: %w[x-form-field x-form-text]).count == 1 &&
+             element.images(src: /autofill/).count == 1
+
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+  end
+
+  GuideWire.question_types[:form_autofill_text] = GWFormAutoFillText
+
+
+
+  class GWFormCheckButton < GWFormField
+    def initialize(element)
+      super(element, :form_check_buttom)
+    end
+
+    def pry
+      binding.pry; 2
+      puts ''
+    end
+
+    def value
+      false
+    end
+
+    def answer
+      false
+    end
+
+    def set(_val)
+      check.click
+    end
+
+    def self.handle_element?(element)
+      correct_input_count?(element)
+    end
+
+    private
+
+    def check
+      button(index: 0) # TODO: Figure out why we can't see the styles here
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+
+    def self.correct_input_count?(element)
+      return element.buttons.count == 1
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+  end
+
+  GuideWire.question_types[:form_check_buttom] = GWFormCheckButton
+
 
   class GWFormMultilineText < GWFormText
     def initialize(element)
@@ -305,7 +392,8 @@ module PageObject
     end
 
     def self.correct_input_count?(element)
-      return element.text_fields(role: 'combobox').count == 1
+      return element.text_fields(role: 'combobox').count == 1 &&
+             element.divs(class: 'x-form-arrow-trigger', visible: true).count == 1
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
       retry
     end
@@ -385,7 +473,9 @@ module PageObject
     end
 
     def set(val)
-      editor.set(value)
+      editor.click
+      editor.set(val)
+      editor.send_keys :tab
     end
 
     def self.handle_element?(element)
@@ -455,4 +545,7 @@ module PageObject
   end
 
   GuideWire.question_types[:form_fieldset_header_check] = GWFormFieldsetHeaderCheck
+
+  # This is listed last as a catchall
+  GuideWire.question_types[:form_text] = GWFormText
 end

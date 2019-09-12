@@ -10,7 +10,5 @@ And(/I create a new policy quote/) do
 
   on(SubmissionTabPage) do |page|
     page.wizard_panel.populate_to :forms
-    binding.pry
   end
-
 end

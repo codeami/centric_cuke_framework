@@ -145,6 +145,7 @@ module PageObject
 
   GuideWire.question_types[:yes_no] = GWQuestionSetYNQuestion
 
+
   class GWQuestionSetSingleEditQuestion < GWQuestionSetQuestion
     attr_reader :question_type
     def initialize(element)
@@ -253,9 +254,13 @@ module PageObject
       Hash[*questions.map(&:to_h).collect{|h| h.to_a}.flatten]
     end
 
-    def fixture_values
+    def values
       vals = to_h.map { |k, v| { k => v[:value] } }
       { key => Hash[*vals.collect{|h| h.to_a}.flatten] }
+    end
+
+    def fixture_values
+      STDOUT.puts YAML.dump(values)
     end
 
     def name
