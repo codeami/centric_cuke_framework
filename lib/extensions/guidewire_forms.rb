@@ -386,7 +386,8 @@ module PageObject
     private
 
     def control
-      @control ||= GWSelectList.new(div(class: 'x-form-item-body'))
+      #binding.pry
+      @control ||= GWSelectList.new(self)  #class: 'x-form-item-body'))
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
       retry
     end

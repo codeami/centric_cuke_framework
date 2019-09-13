@@ -1,17 +1,11 @@
 <%= YAML.include('default.yml') %>
 new_account_search_page:
   account_details:
-    company_name_form_text: 'Test # 3 9 4 2019'
-    company_name_is_an_exact_match_form_check_buttom: false
-    first_name_form_text: ''
-    last_name_form_text: ''
-    first_name_is_an_exact_match_form_check_buttom: false
-    last_name_is_an_exact_match_form_check_buttom: false
-    country_form_select_list: 'United States'
-    city_form_autofill_text: 'Beech Groove'
+    company_name_form_text_multi: 'Test # 3 9 4 2019'
+    city_form_text: 'Beech Groove'
     county_form_text: 'Marion'
     state_form_select_list: Indiana
-    zip_code_form_autofill_text: '46107'
+    zip_code_form_text: '46107'
 create_account_page:
   account_details:
     name_form_text: 'Test # 3 9 4 2019'

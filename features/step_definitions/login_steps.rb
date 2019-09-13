@@ -4,7 +4,9 @@ Given('valid credentials') do
 end
 
 Given(/I have logged into Policy Center/) do
-  @browser.goto 'http://localhost:8180/pc/PolicyCenter.do'
+
+  @browser.goto  'https://t1pc.wrg-ins.net:8543/PolicyCenter.do' # 'http://localhost:8180/pc/PolicyCenter.do'
+
   on(LoginPage).login
 end
 

@@ -1,5 +1,5 @@
 class NewAccountSearchPage < PolicyCenterPage
-  gw_form_set(:account_details, id: 'NewAccount:NewAccountScreen:NewAccountSearchDV-table')
+  gw_form_set(:account_details, xpath: '//*[@id="NewAccount:NewAccountScreen:NewAccountSearchDV"]/table')
 
   link_hooked(:search, id: 'NewAccount:NewAccountScreen:NewAccountSearchDV:SearchAndResetInputSet:SearchLinksInputSet:Search', hooks: WFA_HOOKS)
 

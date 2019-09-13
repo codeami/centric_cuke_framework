@@ -277,7 +277,7 @@ module PageObject
     end
 
     def _questions
-      trs( @row_selector).map { |r| class_for_row(r) }
+      trs( @row_selector).map { |r| class_for_row(r) }.delete_if { |r| r.nil? }
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
       retry
     end
@@ -287,8 +287,9 @@ module PageObject
     end
 
     def class_for_row(r)
+      return nil unless r.tds.count > 1 && r.labels(visible: true).count.positive?
       q_class = GuideWire.question_types.values.detect { |q| q.handle_element?(r) }
-      # binding.pry unless q_class
+      binding.pry unless q_class
       STDERR.puts "Unknown question type" unless q_class
       q_class.new(r) if q_class
     end
@@ -302,8 +303,10 @@ module PageObject
     end
 
     def _questions
-      divs( @row_selector).map { |r| class_for_row(r) }
+      #divs( @row_selector).map { |r| class_for_row(r) }
+      trs(role: 'presentation').map { |r| class_for_row(r) }.delete_if { |r| r.nil? }
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      binding.pry
       retry
     end
 

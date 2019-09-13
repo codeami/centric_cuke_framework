@@ -26,7 +26,7 @@ class NorthPanel < BasePage
   external_page_section(:gear_menu, GearMenu, :parent_browser, id: 'menu-1042-body')
 
   external_page_section(:policy_dd, PolicyMenu, :parent_browser, id: 'menu-1027-body')
-  external_page_section(:account_dd, AccountMenu, :parent_browser, id: 'menu-1026-body')
+  external_page_section(:account_dd, AccountMenu, :parent_browser, id: 'menu-1014-body')
   link(:show_policy_tab, id: 'TabBar:PolicyTab')
   link(:show_search_tab, id: 'TabBar:SearchTab')
   link(:show_account_tab, id: 'TabBar:AccountTab')
