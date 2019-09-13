@@ -143,8 +143,59 @@ module PageObject
     end
   end
 
-  GuideWire.question_types[:yes_no] = GWQuestionSetYNQuestion
+  class GWFormYNQuestion < GWQuestionSetQuestion
+    attr_reader :question_type
+    def initialize(element)
+      super(element, :yes_no)
+    end
 
+    def pry
+      binding.pry;2
+      puts ''
+    end
+
+    def value
+      item = answers.selected_item
+      return nil unless item
+      item.text == 'Yes'
+    end
+
+    def answer
+      answers.selected_item&.text
+    end
+
+    def set(val)
+      if val.is_a?(TrueClass) || val.is_a?(FalseClass)
+        val = val ? 'Yes' : 'No'
+      end
+      answers.select(val.titlecase)
+    end
+
+    def answers
+      binding.pry
+      @answers ||= GWFormRadioButtonArray.new(div(index: 0))
+    end
+
+    def self.handle_element?(element)
+      return false unless correct_input_count?(element)
+      return false unless correct_labels?(element)
+      true
+    end
+
+    private
+    def self.correct_input_count?(element)
+      return element.inputs(class: 'x-form-radio').count == 2
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+
+    def self.correct_labels?(element)
+      return element.labels.map(&:text).join == 'YesNo'
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+  end
+  GuideWire.question_types[:yes_no] = GWFormYNQuestion
 
   class GWQuestionSetSingleEditQuestion < GWQuestionSetQuestion
     attr_reader :question_type
@@ -508,12 +559,14 @@ module PageObject
     def count
       item_divs.count
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      binding.pry
       retry
     end
 
     def items
       item_divs.to_a.map { |div| @item_class.new(div, @element, @parent) }
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      binding.pry
       retry
     end
 
@@ -595,6 +648,20 @@ module PageObject
     end
   end
 
+  class GWFormRadioButton < GWRadioButton
+    def initialize(element)
+      super(element, 'x-form-cb-checked', nil)
+    end
+
+    def label
+      following_sibling
+    end
+
+    def set?
+      table.class_name.include? @set_classname
+    end
+  end
+
   class GWRadioButtonArray < SimpleDelegator
     def initialize(element, set_classname, label_selector)
       super(element)
@@ -603,6 +670,7 @@ module PageObject
     end
 
     def items
+      binding.pry
       Watir::Wait.until { present? }
       tds(role: 'presentation').map { |b| GWRadioButton.new(b, @set_classname, @label_selector) }
     end
@@ -628,6 +696,39 @@ module PageObject
     end
   end
 
+  class GWFormRadioButtonArray < SimpleDelegator
+    def initialize(element)
+      super(element)
+    end
+
+    def items
+      binding.pry
+      Watir::Wait.until { present? }
+      table.tds(role: 'presentation').map { |b| GWFormRadioButton.new(b) }
+    end
+
+    def text
+      selected_item&.text
+    end
+    alias_method :value, :text
+
+
+    def selected_item
+      items.detect { |i| i.set? }
+    end
+
+    def to_h
+      items.flat_map { |i| { i.label => i.set? } }
+    end
+
+    def select(str_or_regex)
+      item = items.detect { |i| str_or_regex.is_a?(Regexp) ? str_or_regex.match(i.text) : i.text == str_or_regex }
+      raise "Could not locate a radio button matching #{str_or_regex}." unless item
+      item.set
+    end
+  end
+
+
   class GWCheckBox < GWRadioButton
     alias_method :checked?, :set?
     alias_method :check, :set
@@ -652,6 +753,7 @@ module PageObject
         begin
           return GWDropdown.new(send("#{name}_po_element"), list_sel, item_sel)
         rescue Selenium::WebDriver::Error::StaleElementReferenceError
+          binding.pry
           retry
         end
       end

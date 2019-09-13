@@ -125,8 +125,6 @@ module PageObject
     end
   end
 
-
-
   class GWFormAutoFillText < GWFormText
     def initialize(element)
       super(element, :form_autofill_text)
@@ -165,8 +163,6 @@ module PageObject
   end
 
   GuideWire.question_types[:form_autofill_text] = GWFormAutoFillText
-
-
 
   class GWFormCheckButton < GWFormField
     def initialize(element)
@@ -546,6 +542,50 @@ module PageObject
   end
 
   GuideWire.question_types[:form_fieldset_header_check] = GWFormFieldsetHeaderCheck
+
+  class GWFormRadioSet < GWFormField
+    def initialize(element)
+      super(element, :radio_set)
+    end
+
+    def pry
+      binding.pry; 2
+      puts ''
+    end
+
+    def value
+      array.value
+    end
+
+    def answer
+      value
+    end
+
+    def set(val)
+      array.set(val)
+    end
+
+    def self.handle_element?(element)
+      correct_input_count?(element)
+    end
+
+    private
+
+    def array
+      binding.pry
+      @array ||= GWFormRadioButtonArray.new(div(index: 0))
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+
+    def self.correct_input_count?(element)
+      return element.buttons(role: 'radio').count > 1
+    rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      retry
+    end
+  end
+
+  GuideWire.question_types[:radio_set] = GWFormRadioSet
 
   # This is listed last as a catchall
   GuideWire.question_types[:form_text] = GWFormText

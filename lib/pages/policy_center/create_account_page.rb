@@ -1,5 +1,5 @@
 class CreateAccountPage < PolicyCenterPage
-  gw_form_set(:account_details, id: 'CreateAccount:CreateAccountScreen:CreateAccountDV-table')
+  gw_form_set(:account_details, xpath: '//*[@id="CreateAccount"]/table')
 
   link_hooked(:update, id: 'CreateAccount:CreateAccountScreen:Update', hooks: WFA_HOOKS)
 
@@ -11,7 +11,7 @@ class CreateAccountPage < PolicyCenterPage
   def populate_and_update(data = nil)
     begin
       populate(data)
-    rescue
+    rescue Exception => e
       binding.pry
       STDOUT.puts
     end
