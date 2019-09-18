@@ -147,6 +147,7 @@ module PageObject
     attr_reader :question_type
     def initialize(element)
       super(element, :yes_no)
+      binding.pry
     end
 
     def pry
@@ -195,7 +196,7 @@ module PageObject
       retry
     end
   end
-  GuideWire.question_types[:yes_no] = GWFormYNQuestion
+  # GuideWire.question_types[:yes_no] = GWFormYNQuestion
 
   class GWQuestionSetSingleEditQuestion < GWQuestionSetQuestion
     attr_reader :question_type
@@ -340,7 +341,7 @@ module PageObject
     def class_for_row(r)
       return nil unless r.tds.count > 1 && r.labels(visible: true).count.positive?
       q_class = GuideWire.question_types.values.detect { |q| q.handle_element?(r) }
-      binding.pry unless q_class
+      # binding.pry unless q_class
       STDERR.puts "Unknown question type" unless q_class
       q_class.new(r) if q_class
     end
@@ -648,17 +649,27 @@ module PageObject
     end
   end
 
-  class GWFormRadioButton < GWRadioButton
+  class GWFormRadioButton < SimpleDelegator
     def initialize(element)
-      super(element, 'x-form-cb-checked', nil)
-    end
-
-    def label
-      following_sibling
+      super(element)
     end
 
     def set?
-      table.class_name.include? @set_classname
+      self.class_name.include? 'x-form-cb-checked'
+    end
+
+    def value
+      set?
+    end
+
+    def text
+      label(visible: true).text
+    end
+
+    def set
+      return if set?
+      button.focus
+      button.click
     end
   end
 
@@ -702,9 +713,13 @@ module PageObject
     end
 
     def items
-      binding.pry
       Watir::Wait.until { present? }
-      table.tds(role: 'presentation').map { |b| GWFormRadioButton.new(b) }
+      begin
+        table.tables.map { |b| GWFormRadioButton.new(b) }
+      rescue Exception => ex
+        binding.pry
+        STDOUT.puts
+      end
     end
 
     def text

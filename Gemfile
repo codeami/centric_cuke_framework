@@ -17,7 +17,7 @@ gem 'sauce_whisk', '~> 0.0'
 gem 'spreadsheet'
 gem 'trollop'
 gem 'twilio-ruby'
-gem 'watir', '~> 6.10.3'
+gem 'watir' #, '~> 6.10.3'
 gem 'watir_angular'
 
 # Mobile testing

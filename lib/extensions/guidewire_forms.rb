@@ -77,7 +77,12 @@ module PageObject
     end
 
     def text
-      label_ele.text
+      begin
+        label_ele.text
+      rescue Exception => ex
+        binding.pry
+        STDOUT.puts
+      end
     end
   end
 
@@ -548,6 +553,10 @@ module PageObject
       super(element, :radio_set)
     end
 
+    def label_ele
+      label(xpath: '../../../../..//label')
+    end
+
     def pry
       binding.pry; 2
       puts ''
@@ -572,9 +581,9 @@ module PageObject
     private
 
     def array
-      binding.pry
       @array ||= GWFormRadioButtonArray.new(div(index: 0))
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
+      @arry = nil
       retry
     end
 
