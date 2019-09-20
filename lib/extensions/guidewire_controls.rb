@@ -25,7 +25,9 @@ module PageObject
     end
 
     def set(value)
+      edit.click
       edit.set(value)
+      edit.send_keys :tab
     end
 
     def show_list
@@ -885,6 +887,17 @@ module PageObject
 
     def gw_select_list(name, identifier = { index: 0 }, &block)
       _hooked_methods = gw_simple_sm(name, identifier, GWSelectList,'div_for', &block)
+      define_method(name) do
+        send("#{name}_element").value
+      end
+
+      define_method("#{name}=") do |value|
+        send("#{name}_element").select_item(value)
+      end
+    end
+
+    def gw_table_select_list(name, identifier = { index: 0 }, &block)
+      _hooked_methods = gw_simple_sm(name, identifier, GWSelectList,'table_for', &block)
       define_method(name) do
         send("#{name}_element").value
       end

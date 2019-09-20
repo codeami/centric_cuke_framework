@@ -5,6 +5,7 @@ And(/^I create a new (.*) account from my fixture file$/) do |acc_type|
 
   #binding.pry
   on(NewAccountSearchPage).create_new_account(acc_type.downcase)
+  binding.pry
   data =  on(CreateAccountPage).account_details.fixture_values
   binding.pry
 

@@ -9,8 +9,10 @@ require 'cpt_hook'
 WFA_HOOKS ||= CptHook.define_hooks do
   after(:click).call(:wait_for_ajax)
   after(:click!).call(:wait_for_ajax)
-  after(:set).call(:wait_for_ajax)
-  after(:value=).call(:wait_for_ajax)
+  before(:set).call(:click).call(:wait_for_ajax)
+  after(:set).call(:send_keys).with(:tab).call(:wait_for_ajax)
+  before(:value=).call(:click).call(:wait_for_ajax)
+  after(:value=).call(:send_keys).with(:tab).call(:wait_for_ajax)
   after(:check).call(:wait_for_ajax)
   after(:uncheck).call(:wait_for_ajax)
 end

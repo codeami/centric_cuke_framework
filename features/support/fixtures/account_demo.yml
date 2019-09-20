@@ -1,20 +1,14 @@
 <%= YAML.include('default.yml') %>
 new_account_search_page:
-  account_details:
-    company_name_form_text_multi: 'Test # 3 9 4 2019'
-    city_form_text: 'Beech Groove'
-    county_form_text: 'Marion'
-    state_form_select_list: Indiana
-    zip_code_form_text: '46107'
+  company_name: 'Test # 3 9 4 2019'
+  city: 'Beech Groove'
+  county: 'Marion'
+  state: Indiana
+  zip_code: '46107'
 create_account_page:
-  account_details:
-    name_form_text: 'Test # 3 9 4 2019'
-    address_1_form_text: 123 Main street
-    city_form_autofill_text: Beech Groove
-    county_form_text: Marion
-    state_form_select_list: Indiana
-    zip_code_form_autofill_text: '46107'
-    address_type_form_select_list: Business
-    organization_type_form_select_list: LLC
-    organization_form_searchable_text: ACV Property Insurance
-    producer_code_form_select_list: 301-008578 ACV Property Insurance
+  name_form_text: 'Test # 3 9 4 2019'
+  address_1: 123 Main street
+  zip_code: '46107'
+  business_entity_type: LLC
+  organization: FORWARD AGENCIES INC - 139111
+  producer_code: Jody Gumber - 008
