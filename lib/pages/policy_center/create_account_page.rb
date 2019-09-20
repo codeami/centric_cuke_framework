@@ -19,15 +19,30 @@ class CreateAccountPage < PolicyCenterPage
   text_field_hooked(:year_business_started, id: 'CreateAccount:CreateAccountScreen:Addresses:CreateAccountDV:businssDetails:YearBusinessStarted-inputEl', hooks: WFA_HOOKS)
   text_area_hooked(:description_of_business, id: 'CreateAccount:CreateAccountScreen:Addresses:CreateAccountDV:businssDetails:DescriptionOfBusiness-inputEl', hooks: WFA_HOOKS)
   text_field_hooked(:organization, id: 'CreateAccount:CreateAccountScreen:Addresses:CreateAccountDV:ProducerSelectionInputSet:Producer-inputEl', hooks: WFA_HOOKS)
-  gw_table_select_list(:producer_code, id: 'CreateAccount:CreateAccountScreen:Addresses:CreateAccountDV:ProducerSelectionInputSet:ProducerCode-inputEl', hooks: WFA_HOOKS)
-  link_hooked(:update, id: 'CreateAccount:CreateAccountScreen:Update', hooks: WFA_HOOKS)
+  gw_table_select_list(:producer_code, id: 'CreateAccount:CreateAccountScreen:Addresses:CreateAccountDV:ProducerSelectionInputSet:ProducerCode', hooks: WFA_HOOKS)
+  link_hooked(:update, id: 'CreateAccount:CreateAccountScreen:ForceDupCheckUpdate', hooks: WFA_HOOKS)
+  link_hooked(:add_hazard_grade, id: 'CreateAccount:CreateAccountScreen:AccountHazardGrade_LDV:AccountHazardCodesLV_tb:Add')
+  div(:search_organization, id: 'CreateAccount:CreateAccountScreen:Addresses:CreateAccountDV:ProducerSelectionInputSet:Producer:SelectOrganization')
 
-  def populate(data = nil)
-    data ||= data_for 'create_account_page'
-    account_details.set(data[:account_details.to_s])
+  def organization_code=(val)
+    organization_element.focus
+    search_organization_element.click!
+    wait_for_ajax
+    OrganizationSearchPage.new(browser).select_organization_by_code(val)
   end
 
-  def populate_and_update(data = nil)
+  def hazard_grades=(val)
+    val = [val] unless val.is_a?(Array)
+    val.each do |v|
+      add_hazard_grade
+      ClassCodeSearchPage.new(browser).select_by_code(v['class_code'])
+      page = HazardGradeSelectPage.new(browser)
+      page.select_by_gl_class(v['hazard_code']) if page.results_grid?
+    end
+
+  end
+
+   def populate_and_update(data = nil)
     begin
       populate(data)
     rescue Exception => e

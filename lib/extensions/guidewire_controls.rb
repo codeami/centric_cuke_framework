@@ -617,7 +617,7 @@ module PageObject
     private
 
     def item_divs
-      divs(@item_sel)
+      trs(@item_sel)
     end
   end
 
@@ -873,7 +873,7 @@ module PageObject
 
     # TODO: This is a bit of a hack.  Need to plum this into PageObject
     def grid_view(name, item_class, identifier, &block)
-      item_sel = identifier.delete(:item_sel) || { class: 'x-grid-item-container' }
+      item_sel = identifier.delete(:item_sel) || { class: 'x-grid-data-row' }
       _hooked_methods = hooked_standard_methods(name, identifier, 'div_for', &block)
 
       define_method(name) do

@@ -1,6 +1,6 @@
 <%= YAML.include('default.yml') %>
 new_account_search_page:
-  company_name: 'Test # 3 9 4 2019'
+  company_name: 'Test # <%= Time.now.usec.to_s %>'
   city: 'Beech Groove'
   county: 'Marion'
   state: Indiana
@@ -9,6 +9,10 @@ create_account_page:
   name_form_text: 'Test # 3 9 4 2019'
   address_1: 123 Main street
   zip_code: '46107'
-  business_entity_type: LLC
-  organization: FORWARD AGENCIES INC - 139111
+  business_entity_type: Limited Liability Company (LLC)
+  description_of_business: This is a description
+  organization_code: '139111'
   producer_code: Jody Gumber - 008
+  hazard_grades:
+    - class_code: '09081'
+      hazard_code: '11288'
