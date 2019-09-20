@@ -7,4 +7,9 @@ class SubmissionTabPage < PolicyCenterPage
 
   page_section(:wizard_panel, WizardPanel, id: 'centerPanel-table')
 
+  def pry
+    binding.pry
+    STDOUT.puts
+  end
+
 end

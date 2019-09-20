@@ -16,3 +16,6 @@ create_account_page:
   hazard_grades:
     - class_code: '09081'
       hazard_code: '11288'
+wizard_panel:
+  wizard_offerings_detail_panel:
+    offering_selection: Broadening

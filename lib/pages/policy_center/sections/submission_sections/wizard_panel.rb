@@ -37,6 +37,7 @@ class WizardPanel < BasePage
     data = data_for(data_for_key.to_s) if data.empty?
     cur_key = current_detail_key
     until cur_key == end_id
+      binding.pry
       populate(data)
       next_page
       cur_key = current_detail_key

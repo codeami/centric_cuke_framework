@@ -23,6 +23,8 @@ class CreateAccountPage < PolicyCenterPage
   link_hooked(:update, id: 'CreateAccount:CreateAccountScreen:ForceDupCheckUpdate', hooks: WFA_HOOKS)
   link_hooked(:add_hazard_grade, id: 'CreateAccount:CreateAccountScreen:AccountHazardGrade_LDV:AccountHazardCodesLV_tb:Add')
   div(:search_organization, id: 'CreateAccount:CreateAccountScreen:Addresses:CreateAccountDV:ProducerSelectionInputSet:Producer:SelectOrganization')
+  link_hooked(:address_verification_update, id: 'AddressVerificationPopup:ToolbarButton', hooks: WFA_HOOKS)
+  span( :account_summary_screen_header, id: 'AccountFile_Summary:AccountFile_SummaryScreen:ttlBar')
 
   def organization_code=(val)
     organization_element.focus
@@ -50,5 +52,7 @@ class CreateAccountPage < PolicyCenterPage
       STDOUT.puts
     end
     update
+    Watir::Wait.until { self.address_verification_update? || account_summary_screen_header? }
+    address_verification_update if self.address_verification_update?
   end
 end
