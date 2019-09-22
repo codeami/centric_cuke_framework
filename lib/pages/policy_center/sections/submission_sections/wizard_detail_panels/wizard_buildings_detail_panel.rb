@@ -2,7 +2,7 @@ require_relative 'bop_tabs'
 require_relative 'wizard_buildings_edit_detail_panel'
 
 class WizardBuildingsDetailPanel < WizardDetailPanel
-  link_hooked(:add_building, hooks: WFA_HOOKS, text: 'Add')
+  link_hooked(:add_building, hooks: WFA_HOOKS, text: 'Add Building')
 
   def building_editor
     WizardBuildingsEditDetailPanel.new(browser, false, parent_page)
@@ -15,4 +15,7 @@ class WizardBuildingsDetailPanel < WizardDetailPanel
       building_editor.populate(building)
     end
   end
+end
+
+class WizardBuildingsandClassificationsDetailPanel < WizardBuildingsDetailPanel
 end

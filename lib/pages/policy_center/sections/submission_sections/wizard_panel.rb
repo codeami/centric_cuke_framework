@@ -1,7 +1,7 @@
 require_relative 'wizard_detail_panels'
 
 class WizardPanel < BasePage
-  div(:title, class: 'x-title-text')
+  span(:title, class: 'g-title')
   link(:next_button, id: 'SubmissionWizard:Next')
   link(:prev_button, id: 'SubmissionWizard:Prev')
   link(:quote, text: 'Quote')
@@ -13,7 +13,7 @@ class WizardPanel < BasePage
   end
 
   def current_detail_classname
-    "Wizard#{title.strip.delete(' ')}DetailPanel"
+    "Wizard#{title.strip.delete(' ').gsub(/\(.*\)/, '')}DetailPanel"
   end
 
   def current_detail_key
@@ -28,7 +28,7 @@ class WizardPanel < BasePage
 
   def populate(data = {})
     data = data_for(data_for_key.to_s) if data.empty?
-    actual_data = data.fetch(current_detail_key, data)
+    actual_data = data.fetch(current_detail_key, {})
     current_details.populate(actual_data)
   end
 
@@ -37,7 +37,7 @@ class WizardPanel < BasePage
     data = data_for(data_for_key.to_s) if data.empty?
     cur_key = current_detail_key
     until cur_key == end_id
-      binding.pry
+      #binding.pry
       populate(data)
       next_page
       cur_key = current_detail_key
@@ -66,7 +66,14 @@ class WizardPanel < BasePage
 
   def change_page_with(meth)
     last_detail_key = current_detail_key
-    send(meth)
+    attempts = 1
+    begin
+      send("#{meth}_element").click!
+    rescue Exception => ex
+      attempts += 1
+      binding.pry if attempts > 3
+      retry
+    end
     Watir::Wait.until { current_detail_key != last_detail_key || warnings? }
     raise "Could not change wizard page. Messages: #{messages}" if warnings?
   end

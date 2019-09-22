@@ -29,5 +29,5 @@ rescue Exception
 end
 # rubocop:enable Lint/RescueException
 
-PageObject::JavascriptFrameworkFacade.framework = :angularjs
+PageObject::JavascriptFrameworkFacade.framework = :jquery
 

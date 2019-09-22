@@ -9,7 +9,7 @@ And(/^I add a new product to my new account$/) do
   on(NewSubmissionsPage).add_bop
 
   on(SubmissionTabPage) do |page|
-    binding.pry
+    #binding.pry
     page.wizard_panel.populate_to :forms
   end
 end

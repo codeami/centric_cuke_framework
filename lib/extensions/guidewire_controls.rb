@@ -31,15 +31,18 @@ module PageObject
     end
 
     def show_list
-      dd_toggle.click unless list_open?
+      until list_open?
+        dd_toggle.click!
+        sleep 0.3
+      end
     end
 
     def close_list
-      dd_toggle.click if list_open?
+      dd_toggle.click! if list_open?
     end
 
     def list_open?
-      class_name.include? 'x-pickerfield-open'
+      class_name.include?('x-pickerfield-open') || tds(class: 'x-pickerfield-open').count.positive? || list_element.present?
     end
 
     def select_item(value)
@@ -49,9 +52,12 @@ module PageObject
 
     private
 
+    def list_element
+       div( xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-boundlist-floating')]", visible: true)
+    end
+
     def list
-      list_el = div( xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-boundlist-floating')]", visible: true)
-      GWBoundListFloating.new(list_el, class: 'x-boundlist-item')
+      GWBoundListFloating.new(list_element, class: 'x-boundlist-item')
     end
 
     def edit

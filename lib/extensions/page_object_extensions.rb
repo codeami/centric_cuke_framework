@@ -47,7 +47,7 @@ module PageObject
   # This differs from the stock wait_for_ajax in that it does not blow up while page navigation is occuring
   #
   def _wait_for_ajax(timeout = 120, message = nil)
-    sleep 0.25 # Give the browser time to start it's ajax requests
+    sleep 0.5 # Give the browser time to start it's ajax requests
     end_time = ::Time.now + timeout
     unknown_count = 0
     until ::Time.now > end_time

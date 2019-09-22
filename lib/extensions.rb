@@ -20,3 +20,4 @@ require 'lib/extensions/capture_assertions'
 # Guidwire support
 require 'lib/extensions/guidewire_controls'
 require 'lib/extensions/guidewire_forms'
+require 'lib/extensions/guidewire_table_check'
