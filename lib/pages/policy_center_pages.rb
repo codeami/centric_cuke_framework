@@ -1,0 +1,15 @@
+# frozen_string_literal: true
+
+require_relative 'policy_center/policy_center_page'
+require_relative 'policy_center/login_page'
+require_relative 'policy_center/policy_tab_page'
+require_relative 'policy_center/search_tab_page'
+require_relative 'policy_center/new_submission_tab_page'
+require_relative 'policy_center/submission_tab_page'
+require_relative 'policy_center/new_account_search_page'
+require_relative 'policy_center/create_account_page'
+require_relative 'policy_center/organization_search_page'
+require_relative 'policy_center/class_code_search_page'
+require_relative 'policy_center/hazard_grade_select_page'
+require_relative 'policy_center/account_file_summary_page'
+require_relative 'policy_center/new_submissions_page'

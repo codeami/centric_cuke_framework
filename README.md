@@ -1,13 +1,10 @@
-# Centric Cucumber framework for web automation
+# Centric Guidewire automation framework
 
-This framework is intended to starting point for new Cucumber projects. The architecture, conventions and guidelines are a distillation of the experience of multiple Centric consultants across a wide variety of web automation projects over the years.
+This framework leverages custom extensions to the PageObject gem developed by Centric Consulting to make automation of the Guidewire family of products easier.  These extensions allow us to treat the special Guidewire versions of elements in the same way we'd handle their normal counterparts and to provide convenient interfaces for more complex things such as data grids.
 
-A flakey test suite can cripple a project.  If you can't trust your automation you can't move as quickly as you'd like.  Your test suite should tell you a story, if that story can't be believed then your suite is providing no value.
+The design philosophy behind this framework is to reduce the complexity of the day-to-day actions of writing tests. The idea is to be able to say "follow this route, with this data, now let me assert something". This means building a lot of intelligence into our page models so that we can hand them a data structure and have them deal with how to get that on the page. Step definitions should not interact with the DOM unless actively testing something about that DOM.
 
-Our framework attempts to provide solutions to common problems, improve test reliability and reduce repetition.  Likewise we provide guidance on best practices and ways to avoid quality problems with your suite.  Wherever possible this guidance is ingrained so that it's difficult to do the "wrong thing".
-
-**Warning:** The framework is intended to be used with Ruby version 2.4.2 or higher. While it's entirely possible older versions will work, no effort has been made to test this.
-
+Because of this design philosophy, tests written using this framework must be written in a declarative manner.  When you only need one line of code to create and issue a policy, there's not a lot of point spelling out every step along the way.  This also frees you up to use whatever language you need in your Gherkin to facilitate communication within your team.  There's no harm in dummy steps that do nothing, but convey critical information to human beings.
 
 ## Documentation
 The subfolder *doc* contains both Yard and human generated documentation.  There are README files for various topics you'll need to understand, to get the most out of this framework. 

@@ -1,19 +1,25 @@
+# frozen_string_literal: true
+
 # Core gems
+source 'https://rubygems.org'
+
 gem 'chronic'
 gem 'cpt_hook'
 gem 'cucumber', '~> 3.0'
 gem 'cuke_cataloger', '~> 1.4'
 gem 'data_magic', '~> 1.2'
+# gem 'edsl-pageobject'
 gem 'magic_path' # Not locked yet due to active development
 gem 'mail', '~> 2.7'
 gem 'page-object', '~> 2.2'
+gem 'page_navigation'
 gem 'rb-readline'
 gem 'rspec', '~> 3.7'
 gem 'sauce_whisk', '~> 0.0'
 gem 'spreadsheet'
 gem 'trollop'
 gem 'twilio-ruby'
-gem 'watir', '~> 6.10.3'
+gem 'watir' # , '~> 6.10.3'
 gem 'watir_angular'
 
 # Mobile testing
@@ -31,7 +37,7 @@ gem 'yard-cucumber'
 
 # Tools to keep our code quality up
 gem 'overcommit', '~> 0.41'
-gem 'rubocop', '~> 0.51'
+gem 'rubocop' # , '~> 0.51'
 
 # Useful gems
 gem 'facets', '~> 3.1'

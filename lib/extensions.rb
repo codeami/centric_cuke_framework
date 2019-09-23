@@ -15,4 +15,12 @@ require 'lib/extensions/relocate'
 require 'lib/extensions/capture_assertions'
 
 # Angular support
-require 'lib/extensions/wangular'
+# require 'lib/extensions/wangular'
+
+# Guidwire support
+require 'lib/extensions/guidewire_controls'
+require 'lib/extensions/guidewire_radios'
+require 'lib/extensions/guidewire_questions'
+require 'lib/extensions/guidewire_forms'
+require 'lib/extensions/guidewire_table_check'
+require 'lib/extensions/guidewire_accessors'

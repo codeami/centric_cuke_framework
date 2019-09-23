@@ -1,0 +1,34 @@
+<%= YAML.include('default.yml') %>
+new_account_search_page:
+  company_name: 'Test # <%= Time.now.usec.to_s %>'
+  city: 'Beech Groove'
+  county: 'Marion'
+  state: Indiana
+  zip_code: '46107'
+create_account_page:
+  name_form_text: 'Test # 3 9 4 2019'
+  address_1: 123 Main street
+  zip_code: '46107'
+  business_entity_type: Limited Liability Company (LLC)
+  description_of_business: This is a description
+  organization_code: '139111'
+  producer_code: Jody Gumber - 008
+  hazard_grades:
+    - class_code: '09081'
+      hazard_code: '11288'
+wizard_panel:
+  wizard_offerings_detail_panel:
+    offering_selection: Broadening
+  wizard_buildingsand_classifications_detail_panel:
+    buildings:
+      - year_built: 2000
+        construction_type: Frame
+        building_coverages_enabled: true
+        building_limit: 150000
+        percentage_owner_occupied: 10% or less
+        classifications:
+          - classification_sq_ft: 2000
+  wizard_payment_detail_panel:
+    downpayment_amount: '00'
+    where_should_payment_be_mailed: Directly to Insured
+    issue_policy: false

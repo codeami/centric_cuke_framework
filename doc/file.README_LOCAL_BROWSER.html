@@ -14,6 +14,8 @@
 
   <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
 
+  <link rel="stylesheet" href="css/cucumber.css" type="text/css" charset="utf-8" />
+
 <script type="text/javascript" charset="utf-8">
   pathId = "README_LOCAL_BROWSER";
   relpath = '';
@@ -23,6 +25,8 @@
   <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
 
   <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/cucumber.js"></script>
 
 
   </head>
@@ -43,8 +47,8 @@
 
         <div id="search">
   
-    <a class="full_list_link" id="class_list_link"
-        href="class_list.html">
+    <a class="full_list_link" id="feature_list_link"
+        href="feature_list.html">
 
         <svg width="24" height="24">
           <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
@@ -57,43 +61,71 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'>
-<p># –&gt;</p>
+      <div id="content"><div id='filecontents'><p>--&gt;</p>
 
-<h1 id="label-Local+browser+creation+in+the+Centric+Framework">Local browser creation in the Centric Framework</h1>
+<h1>Local browser creation in the Centric Framework</h1>
 
-<p>Aside from the BROWSER_BRAND variable to determine which local browser to
-start there are several other configuration options for local browsers. As
-with all other ENV variables in the framework you can see the current
-defaults by looking at <em>support/lib/nenv.rb</em>. It&#39;s a good idea
-to consult this file, as the values in it may have been changed without a
-documentation update.</p>
+<p>Aside from the BROWSER_BRAND variable to determine which local browser to start there are several other configuration options for local browsers.  As with all other ENV variables in the framework you can see the current defaults by looking at <em>support/lib/nenv.rb</em>.  It&#39;s a good idea to consult this file, as the values in it may have been changed without a documentation update.</p>
 
-<h2 id="label-ENV+variables+for+local+browsers">ENV variables for local browsers</h2>
+<h2>ENV variables for local browsers</h2>
 
-<p>The ENV variables below mainly deal with the positioning of the browser
-window.</p>
+<p>The ENV variables below mainly deal with the positioning of the browser window.</p>
 
-<p>| Variable | Allowed Values | Default | Info |
-|———————|———————————–|———–|————————————————————————————–| | BROWSER_BRAND |
-chrome, firefox, ie, safari, edge | chrome | Set to the brand of browser
-you want to test under. | | SIZE_BROWSER | true/false | false | Should the
-browser be resized? | | BROWSER_RESOLUTION | NxN | 1920x1080 | Used to
-specify a specific resolution for the browser window. For example: 1024x768
-| | MOVE_BROWSER | true/false | false | Should the browser be moved? | |
-BROWSER_X | Any integer | 0 | Used to specify the x position for the
-browser window. | | BROWSER_Y | Any integer | 0 | Used to specify the y
-position for the browser window. |</p>
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Allowed Values</th>
+<th>Default</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>BROWSER_BRAND</td>
+<td>chrome, firefox, ie, safari, edge</td>
+<td>chrome</td>
+<td>Set to the brand of browser you want to test under.</td>
+</tr>
+<tr>
+<td>SIZE_BROWSER</td>
+<td>true/false</td>
+<td>false</td>
+<td>Should the browser be resized?</td>
+</tr>
+<tr>
+<td>BROWSER_RESOLUTION</td>
+<td>NxN</td>
+<td>1920x1080</td>
+<td>Used to specify a specific resolution for the browser window.  For example: 1024x768</td>
+</tr>
+<tr>
+<td>MOVE_BROWSER</td>
+<td>true/false</td>
+<td>false</td>
+<td>Should the browser be moved?</td>
+</tr>
+<tr>
+<td>BROWSER_X</td>
+<td>Any integer</td>
+<td>0</td>
+<td>Used to specify the x position for the browser window.</td>
+</tr>
+<tr>
+<td>BROWSER_Y</td>
+<td>Any integer</td>
+<td>0</td>
+<td>Used to specify the y position for the browser window.</td>
+</tr>
+</tbody></table>
 
-<h2 id="label-Additional+configuration">Additional configuration</h2>
+<h2>Additional configuration</h2>
 
 <p>The config folder contains YAML files for configuring each browser brand.</p>
 </div></div>
 
       <div id="footer">
-  Generated on Tue Nov 28 12:13:15 2017 by
+  Generated on Mon Sep 23 18:05:53 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.11 (ruby-2.4.2).
+  0.9.20 (ruby-2.4.2).
 </div>
 
     </div>

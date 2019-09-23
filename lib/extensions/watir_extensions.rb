@@ -11,13 +11,13 @@ module Watir
       # if it still fails, likely due to the header in SFn, we scroll
       # the page down 100px and try again.
 
-      self.wd.location_once_scrolled_into_view
-      self.send(:click)
+      wd.location_once_scrolled_into_view
+      send(:click)
     rescue Selenium::WebDriver::Error::UnknownError => e
       puts 'Element not initially clickable'
       if e.message.include? 'Element is not clickable'
-        self.driver.execute_script('window.scrollBy(0,-100);')
-        self.send(:click)
+        driver.execute_script('window.scrollBy(0,-100);')
+        send(:click)
       end
     end
 

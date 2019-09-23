@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: Page Object guidelines for the Centric framework
+  
+    &mdash; Centric Cucumber Framework
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/cucumber.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "README_PAGE_OBJECT";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/cucumber.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: Page Object guidelines for the Centric framework</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="feature_list_link"
+        href="feature_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><ul>
+<li>The PageObject should be the only place where DOM manipulation occurs.</li>
+<li>Page Object source files should be placed in lib/pages/<PRODUCT></li>
+<li>Complicated pages should be broken up into page sections.</li>
+<li>Modal dialogs should be broken up into page sections.</li>
+<li>&quot;Drop down&quot; lists made up of divs / lis should be broken out into page sections.  In many cases you&#39;ll be able to use the generic ULSelect section either outright or as a base class for your list.</li>
+<li>Page Sections should be placed in a &quot;sections&quot; folder under the pages the section belongs to.</li>
+<li>The data to populate pages / sections from fixtures must use a key that represents the &quot;snake case&quot; of the page /section class name.  e.g. &quot;complete_sales_call_modal&quot; for CompleteSalesCallModal</li>
+</ul>
+
+<h2>Keeping the logic in your steps simple</h2>
+
+<p>If an action would trigger an AJAX call, navigation, animation, etc then that should be handled inside the page class.  If an action requires that another action be performed first that should also be handled inside the page class.</p>
+
+<p>For example let&#39;s assume that we have a field that turns into an edit box when clicked and a save button that triggers ajax.  Instead of something like:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_on'>on</span><span class='lparen'>(</span><span class='const'>Pageclass</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_page'>page</span><span class='op'>|</span>
+    <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_foo_element'>foo_element</span><span class='period'>.</span><span class='id identifier rubyid_click'>click</span>
+    <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_foo'>foo</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bar</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+    <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_wait_for_ajax'>wait_for_ajax</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>We can add methods to the page like so:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>def</span> <span class='id identifier rubyid_foo='>foo=</span><span class='lparen'>(</span><span class='id identifier rubyid_value'>value</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_foo_element'>foo_element</span><span class='period'>.</span><span class='id identifier rubyid_click'>click</span>
+    <span class='id identifier rubyid_foo_elelment'>foo_elelment</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bar</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_save'>save</span>
+    <span class='id identifier rubyid_save_element'>save_element</span><span class='period'>.</span><span class='id identifier rubyid_click'>click</span>
+    <span class='id identifier rubyid_wait_for_ajax'>wait_for_ajax</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Which allows us to use simpler logic in our step like so:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_on'>on</span><span class='lparen'>(</span><span class='const'>Pageclass</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_page'>page</span><span class='op'>|</span>
+    <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_foo'>foo</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>bar</span><span class='tstring_end'>&#39;</span></span>
+    <span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<p>Doing this many times can be tedious. For that reason the Centric framework includes a page object extension too make things easier.  See the file README_HOOKS.md for details.</p>
+
+<h2>Managing state with css_state</h2>
+
+<p>Quite often you&#39;ll encounter things like dropdown lists which may or may not be expanded, open, etc.  If you inspect the elements you&#39;ll usually find that classes are added or removed as the state changes.  In order to make our code cleaner and easier to read the Centric framework includes an extension to the PageObject DSL that adds the keyword css_state.</p>
+
+<p>The css_state method accepts another element as it&#39;s first argument and then a hash containing state names and the CSS classes that represent those states.  For example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_link'>link</span><span class='lparen'>(</span><span class='symbol'>:show_contacts</span><span class='comma'>,</span> <span class='label'>data_bind:</span> <span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>ShowContacts</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span>
+<span class='id identifier rubyid_css_state'>css_state</span><span class='lparen'>(</span><span class='symbol'>:show_contacts</span><span class='comma'>,</span> <span class='label'>open:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>k-minus</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>closed:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>k-plus</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+</code></pre>
+
+<p>Here we&#39;ve defined a link called &quot;show_contacts&quot;.  We&#39;ve all defined two states &quot;open&quot; and &quot;closed&quot; and the CSS classes associated with those states. </p>
+
+<p>With that in place we can query the state of that element with &quot;ELEMENT_STATE?&quot; where ELEMENT is the element name and STATE is one of the states we&#39;ve defined.  For example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_page'>page</span><span class='period'>.</span><span class='id identifier rubyid_show_contacts_open?'>show_contacts_open?</span>
+</code></pre>
+
+<p>Quite often you&#39;ll encounter elements that only have a CSS class for one of their states.  In those cases you can define an additional state as the absence of a class.  For example:</p>
+
+<pre class="code ruby"><code class="ruby">  <span class='id identifier rubyid_li'>li</span><span class='lparen'>(</span><span class='symbol'>:contacts_menu_dropdown</span><span class='comma'>,</span> <span class='label'>xpath:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>//*[@id=&quot;sp-navbar&quot;]/ul/li[1]</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_css_state'>css_state</span><span class='lparen'>(</span><span class='symbol'>:contacts_menu_dropdown</span><span class='comma'>,</span> <span class='label'>open:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>open</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>closed:</span> <span class='lbrace'>{</span> <span class='label'>not:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>open</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>When the dropdown is open the CSS class &quot;open&quot; is applied.  When it&#39;s closed the &quot;open&quot; CSS class is removed, but no &quot;closed&quot; class appears.  By passing a hash with the keyword &quot;not&quot; we can pass a class name that should be missing in order for the element to be in this state. </p>
+
+<h2>Working with sections</h2>
+
+<p>Pages can be complicated.  Breaking pages into sections is nearly mandatory for most pages.  </p>
+
+<p>Since many pages have similar sections that could cause name conflicts sections for pages should be placed in a module and that module included in the class.  For example the &quot;Add Route Stop Modal&quot; (lib/pages/workcenter_marketing/sections/add_route_stop_modal.rb) is composed of multiple sections. These sections are in several files.  Each file defines classes within the AddRouteStopSections module.  The AddRouteStopModal class includes that module, ensuring that the section class names cannot clash with sections for other pages.</p>
+
+<h3>Section parents</h3>
+
+<p>The Centric framework uses an extension to PageObject that preserves the parent / child relationship of sections.  Methods within a section can use the &quot;parent_page&quot; accessor to access their parent page.  For example, the following code uses this feature to make sure that the list of contacts is being displayed before we try and access any data contained in the rows:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='kw'>def</span> <span class='id identifier rubyid_contacts'>contacts</span>
+  <span class='comment'># Make sure the parent row has made us visible
+</span>  <span class='id identifier rubyid_parent_page'>parent_page</span><span class='period'>.</span><span class='id identifier rubyid_show_contacts'>show_contacts</span> <span class='kw'>unless</span> <span class='id identifier rubyid_parent_page'>parent_page</span><span class='period'>.</span><span class='id identifier rubyid_show_contacts_open?'>show_contacts_open?</span>
+  <span class='id identifier rubyid_contacts_grid_element'>contacts_grid_element</span><span class='period'>.</span><span class='id identifier rubyid_tbody'>tbody</span><span class='period'>.</span><span class='id identifier rubyid_trs'>trs</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_row'>row</span><span class='op'>|</span> <span class='const'>RBLContactGridRow</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_row'>row</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+<span class='kw'>end</span>
+</code></pre>
+
+<h3>Sections for grids</h3>
+
+<p>Using page sections for grids / lists makes it easier for us to access the contents of the grids as logical entities.  It&#39;s possible to use page sections without using the PageObject DSL to declare them. The file lib/pages/workcenter_marketing/sections/route_business_list.rb contains a good example of a somewhat complex implementation of this pattern.  The pattern can be broken down as follows:</p>
+
+<ol>
+<li>Create a page section for the grid itself.</li>
+<li>Create a page section for the data contained in the row.</li>
+<li>Within the section for the grid, create an &quot;items&quot; method that maps the rows into the proper class</li>
+<li>Create appropriate &quot;find&quot; methods in the grid section.</li>
+</ol>
+
+<p>The following code is an example of this in action:</p>
+
+<pre class="code ruby"><code class="ruby">  <span class='comment'># This represents a single row in the contacts grid, of a RBLContactsRow
+</span>  <span class='comment'># All selectors are relative to the tr
+</span>  <span class='kw'>class</span> <span class='const'>RBLContactGridRow</span>
+    <span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="PageObject.html" title="PageObject (module)">PageObject</a></span></span>
+    <span class='id identifier rubyid_span'>span</span><span class='lparen'>(</span><span class='symbol'>:contact_name</span><span class='comma'>,</span> <span class='label'>data_bind:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>text:Name</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_span'>span</span><span class='lparen'>(</span><span class='symbol'>:address</span><span class='comma'>,</span> <span class='label'>data_bind:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>text:Address</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='comment'># This represents a single row in the &quot;business search&quot; grid, for rows that contain contacts
+</span>  <span class='comment'># All selectors are relative to the tr
+</span>  <span class='kw'>class</span> <span class='const'>RBLContactsRow</span>
+    <span class='id identifier rubyid_include'>include</span> <span class='const'><span class='object_link'><a href="PageObject.html" title="PageObject (module)">PageObject</a></span></span>
+    <span class='id identifier rubyid_div'>div</span><span class='lparen'>(</span><span class='symbol'>:contacts_grid</span><span class='comma'>,</span> <span class='label'>id:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>divContactsGrid</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+
+    <span class='kw'>def</span> <span class='id identifier rubyid_contacts'>contacts</span>
+      <span class='comment'># Make sure the parent row has made us visible
+</span>      <span class='id identifier rubyid_parent_page'>parent_page</span><span class='period'>.</span><span class='id identifier rubyid_show_contacts'>show_contacts</span> <span class='kw'>unless</span> <span class='id identifier rubyid_parent_page'>parent_page</span><span class='period'>.</span><span class='id identifier rubyid_show_contacts_open?'>show_contacts_open?</span>
+      <span class='id identifier rubyid_contacts_grid_element'>contacts_grid_element</span><span class='period'>.</span><span class='id identifier rubyid_tbody'>tbody</span><span class='period'>.</span><span class='id identifier rubyid_trs'>trs</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_row'>row</span><span class='op'>|</span> <span class='const'>RBLContactGridRow</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_row'>row</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>def</span> <span class='id identifier rubyid_find_contact'>find_contact</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='rparen'>)</span>
+      <span class='id identifier rubyid_contacts'>contacts</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_c'>c</span><span class='op'>|</span> <span class='id identifier rubyid_c'>c</span><span class='period'>.</span><span class='id identifier rubyid_contact_name'>contact_name</span> <span class='op'>==</span> <span class='id identifier rubyid_name'>name</span> <span class='rbrace'>}</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+</code></pre>
+
+<h3>External page sections</h3>
+
+<p>Quite often you will encounter drop down lists that appear to be contained within a section, but actually live outside div containing the rest of the elements.  A good example of this would be many of the drop down lists.</p>
+
+<p>To help deal with this issue we have an extension that allows us to declare a subsection that&#39;s not constrained to the DOM of the section.  In addition to the normal page_section parameters an additional parameter is available to indicate the actual parent of the section within the DOM.  This parameter should be a symbol that refers to a function on the page object that returns the proper parent.  In many cases the symbol :parent_page is what you&#39;ll want to use:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_external_page_section'>external_page_section</span><span class='lparen'>(</span><span class='symbol'>:was_productive_visit_list</span><span class='comma'>,</span> <span class='const'>ULSelect</span><span class='comma'>,</span> <span class='symbol'>:parent_browser</span><span class='comma'>,</span> <span class='label'>id:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>lstProductiveVisit_listbox</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+</code></pre>
+</div></div>
+
+      <div id="footer">
+  Generated on Mon Sep 23 18:05:53 2019 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.20 (ruby-2.4.2).
+</div>
+
+    </div>
+  </body>
+</html>

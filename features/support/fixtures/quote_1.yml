@@ -1,0 +1,100 @@
+<%= YAML.include('default.yml') %>
+new_submission_tab_page:
+  organization: 'Armstrong and Company'
+  account_number: 'B000457766'
+  producer_code: '100-002541 Armstrong (Premier)'
+  single_or_multiple: 'Single'
+  single_product_name: 'Businessowners'
+wizard_panel:
+  wizard_offerings_detail_panel:
+    is_the_customer_based_in_british_columbia_yes_no: false
+    is_the_customer_a_member_of_partners_alliance_yes_no: false
+  wizard_qualification_detail_panel:
+    has_any_policy_or_coverage_been_declined_canceled_or_non_renewed_during_the_prior_3_years_yes_no: false
+    has_applicant_had_a_foreclosure_repossession_bankruptcy_judgement_or_lien_during_the_past_five_years_yes_no: false
+    do_any_catastrophe_exposures_exist_yes_no: false
+    during_the_last_five_years_has_any_applicant_been_convicted_of_any_degree_of_the_crime_of_arson_yes_no: false
+    have_there_been_any_claims_or_allegations_relating_to_sexual_abuse_or_molestation_allegations_discrimination_or_negligent_hiring_yes_no: false
+    does_the_applicant_have_other_past_or_current_policies_with_this_company_yes_no: false
+    does_the_applicant_own_or_operate_any_business_not_included_on_this_application_yes_no: false
+    do_any_uncorrected_fire_code_violations_exist_yes_no: false
+    is_there_any_exposure_to_flammables_explosives_or_chemicals_yes_no: false
+    have_any_operations_past_or_present_involved_storing_treating_discharging_applying_disposing_or_transporting_of_hazardous_materials_yes_no: false
+    is_there_any_manufacturing_mixing_relabeling_or_repackaging_of_products_yes_no: false
+    is_equipment_rented_or_loaned_to_others_yes_no: false
+    are_employees_leased_to_or_from_others_yes_no: false
+    is_workers_compensation_carried_yes_no: true
+    are_sub_contractors_required_to_provide_certificates_of_insurance_prior_to_beginning_work_yes_no: true
+    who_checks_certificates_single_edit: "Managers"
+    are_athletic_teams_sponsored_yes_no: false
+  wizard_policy_info_detail_panel:
+    policy_info:
+      date_quote_needed_form_date: two days from today
+      estimated_premium_form_text: '1000.00'
+      ssn_form_text: 989-00-0399
+      industry_code_form_searchable_text: '0740'
+      year_business_started_form_text: '2018'
+      description_of_business_and_operations_form_text_multi: test business description
+      organization_type_form_select_list: Common ownership
+      term_type_form_select_list: Other
+      effective_date_form_date: tomorrow
+      expiration_date_form_date: one year from tomorrow
+      written_date_form_date: today
+      base_state_form_select_list: California
+      organization_form_searchable_text: Armstrong and Company
+      producer_code_form_select_list: 100-002541 Armstrong (Premier)
+      underwriting_companies_form_select_list: Acme Low Hazard Insurance
+  wizard_businessowners_line_detail_panel:
+    small_business_type:
+      small_business_type_form_select_list: Apartment
+    property_coverages:
+      blanket_form_select_list: Building
+    liability_coverages:
+      special_coverages_packages_form_select_list: "Lessor's Risk Pack"
+    other_included_coverages:
+      hired_auto_form_fieldset_header_check: true
+  wizard_locations_detail_panel:
+  wizard_modifiers_detail_panel:
+  wizard_policy_review_detail_panel:
+  wizard_risk_analysis_detail_panel:
+  wizard_forms_detail_panel:
+  wizard_payment_detail_panel:
+  wizard_quote_detail_panel:
+  wizard_buildings_detail_panel:
+    buildings:
+      - description_form_text: This is a description
+        building_class_code_form_select_list: 0243 - Veterinarians Office - Office
+        building_form_fieldset_header_check: false
+        building_limit_form_text: '500,000'
+        valuation_method_form_select_list: Replacement cost
+        coinsurance_form_select_list: 100%
+        building_annual_increase__form_select_list: 4%
+        business_personal_property_form_fieldset_header_check: false
+        business_personal_property_limit_form_text: '100,000'
+        ordinance_or_law_form_fieldset_header_check: false
+        accounts_receivable_form_fieldset_header_check: false
+        valuable_papers_form_fieldset_header_check: true
+        papers_on_premises_limit_form_text: '10,000'
+        year_built_form_text: '1970'
+        construction_type_form_select_list: Masonry non-combustible
+        _of_stories_form_text: '1'
+        _of_basements_form_text: '42'
+        basement_finished_sq_ft_form_text: '2000'
+        basement_unfinished_sq_ft_form_text: '2000'
+        total_area_form_text: '4000'
+        _sprinklered_form_select_list: 100%
+        year_of_last_update_heating_form_text: '2018'
+        year_of_last_update_plumbing_form_text: '2017'
+        year_of_last_update_roofing_form_text: '2016'
+        year_of_last_update_wiring_form_text: '2015'
+        alarm_type_form_select_list: Central station
+        alarm_grade_form_select_list: "<none>"
+        alarm_certification_form_select_list: "<none>"
+        front_exposure_form_text: '500'
+        rear_exposure_form_text: '500'
+        left_exposure_form_text: '500'
+        right_exposure_form_text: '500'
+        interest_form_select_list: Owner
+        percent_occupied_form_select_list: 100%
+        any_area_leased_form_select_list: "<none>"
+

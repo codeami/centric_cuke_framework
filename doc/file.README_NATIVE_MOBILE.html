@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: README_NATIVE_MOBILE
+  
+    &mdash; Centric Cucumber Framework
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/cucumber.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "README_NATIVE_MOBILE";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/cucumber.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: README_NATIVE_MOBILE</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="feature_list_link"
+        href="feature_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><h1>Native Mobile Automation</h1>
+
+<p>This document is not yet complete.  The native mobile framework is currently under heavy development and will be documented here once the API is stable and patterns have emerged. However there are some stable elements which can be documented.</p>
+
+<h2>Introduction</h2>
+
+<h3>Getting set up</h3>
+
+<p>In order to run / develop native mobile tests you will need <a href="http://appium.io/docs/en/about-appium/getting-started/">Appium Desktop installed</a>.  I recommend downloading the desktop version if you&#39;re doing development as it includes tools that you&#39;ll need.  For iOS you will need Xcode and the command line tools installed, there&#39;s a list of prerequisites and how to install them in the <a href="http://appium.io/docs/en/drivers/ios-xcuitest/index.html">documentation</a> for the XCUI driver.</p>
+
+<p>Note: Depending on where you end up installing XCode, Appium may not be able to find it.  When installing via the App Store, on at least one machine, Appium was not able to find XCode.  There is a simple fix for this, enter the following on the command line: <code>sudo xcode-select --switch /path/to/Xcode.app</code> for example if Xcode is installed in /Applications you would use <code>sudo xcode-select --switch /Applications/Xcode.app</code>        ` </p>
+
+<h3>Mobile application locations</h3>
+
+<p>Whenever a new build of a mobile application is delivered the app should be zipped and placed in the <code>mobile_apps</code> folder of the project.  These apps should be checked into git so that they&#39;re available to anyone that needs to run the mobile tests.</p>
+
+<h3>Running mobile tests</h3>
+
+<p>Mobile tests can be run using one of the mobile profiles such as <code>ios_native_mobile</code> or <code>android_native_mobile</code>.  This sets up the proper flags to tell the framework to load mobile testing support.</p>
+
+<h3>Installing a new version of a mobile app</h3>
+
+<p>In order to install a new build of a mobile app onto your emulator add <code>RESET_MOBILE=true</code> to your cucum command line, then run a simple test like the login test.  For example: <code>bundle exec cucumber RESET_MOBILE=true -p ios_native_mobile features/Mobile/chris_wip/wcmm.feature:10</code></p>
+
+<h3>Handy links for learning mobile automation</h3>
+
+<p><a href="https://appiumpro.com/editions/8">https://appiumpro.com/editions/8</a></p>
+
+<h2>Things to know about native mobile testing</h2>
+
+<h3>The inspector tool</h3>
+
+<p>The inspector   tool built into Appium is the easiest equivalent to &quot;view source&quot; or the Chrome dev tools.  You can launch it from Appium Desktop once you&#39;ve started your server.  You can set it up to load the app you want to work with, but it&#39;s easier to set a pry breakpoint in your test and attach to the session.</p>
+
+<p>You will spend a lot of time in this control as you&#39;re building your ScreenObjects.  With it you can find the accessibility IDs, hierarchy and much more. Invest some time into getting to know how it works it&#39;s MUCH better than digging through raw XML to find what you&#39;re looking for.</p>
+
+<h3>The tools are less refined</h3>
+
+<ul>
+<li>Scrolling is manual.  If you need to interact with something, you must scroll to it yourself.</li>
+<li>Things can be displayed and hidden at the same time. If the onscreen keyboard (OSK) is up and covering a control, it will report as displayed but you will not be able to interact with it.</li>
+<li>There&#39;s no way to ask if something exists other than trying to, and failing to, find it.  This can take quite a bit of time, depending on timeout settings.</li>
+<li>find_element will only find visible controls.  This includes list items.</li>
+<li>find_elements <em>will</em> find controls that aren&#39;t visible. If you&#39;re looking for an control which might need scrolled to, you&#39;re better off using find_elements and grabbing the first one.</li>
+<li>How you locate things has serious performance issues.</li>
+</ul>
+
+<h3>Locating controls in iOS apps</h3>
+
+<p>There are several ways to locate controls, each has it&#39;s advantages and disadvantages.</p>
+
+<ul>
+<li>accessibility_id can be the fastest and most reliable way to find controls.  However, if the developer has not given an explicit accessibility_id to a control, one will be generated for it based on the content of the control. You might find a text_field via <code>address1</code> but once you change the value of the text_field that ID is now <code>123 main st</code> or something similar.  <strong>They&#39;re very handy for buttons and static text, however use caution with controls that have values that change.</strong></li>
+<li>Finding elements by index is also very fast.  However, the order of controls cannot change for this to be accurate.  If you have dynamic content, where controls are added and removed, you can only reliably locate controls before the dynamic area.</li>
+<li>Finding elements by class chain is slightly slower than the above two.  It has the advantage of being precise.  When dealing with dynamic content class chains allow you to use an xpath-like syntax.</li>
+<li>Predicate strings have similar performance to class chain lookups.  They use the same underlying mechanism, a class chain is actually a predicate string query.  Predicate string queries typically have to search a larger object space since they can&#39;t follow the class chain to narrow their search.</li>
+<li>String queries are &quot;magic&quot; predicate queries.  They will attempt to match your string against several fields.  In most cases you&#39;re better off, performance wise, to use a predicate string that only looks at one attribute i.e. <code>&quot;name == #{value}&quot;</code></li>
+<li>XPath is available but should be avoided.  While it&#39;s the most precise selector available the performance penalty is quite steep.</li>
+</ul>
+
+<h2>Working with the native mobile framework</h2>
+
+<p>The native mobile framework has been designed to look a lot like PageObject from the web automation world.  Instead of PageObjects we have ScreenObjects.  ScreenObjects have an accessor DSL and a populate method.</p>
+
+<p>The framework attempts to mitigate many of the drawbacks of Appium compared to Watir.  Scrolling to controls is handled automatically and presence check functions have been added that temporarily reduce the element location timeouts to a sub second value before checking.  These checks are not as fast as the web based versions, but they&#39;re better than nothing.</p>
+
+<h3>Accessors</h3>
+
+<p>Most accessors have a signature that accepts a name, an identifier and an index. Their names correspond with their control classes. </p>
+
+<ul>
+<li><strong>text_field</strong></li>
+<li><strong>switch</strong></li>
+<li><strong>nav_bar</strong></li>
+<li><strong>table</strong></li>
+<li><strong>activity_indicator</strong></li>
+<li><strong>other</strong></li>
+<li><strong>image</strong></li>
+<li><strong>static_text</strong></li>
+<li><strong>static_text_buttton</strong> - Special case where the default method is click.</li>
+<li><strong>button</strong></li>
+<li><strong>switch</strong> - Implemented like a checkbox in Watir.</li>
+</ul>
+
+<p>There are a few special accessors that have different signatures:</p>
+
+<ul>
+<li><strong>modal</strong> - This works like page_section in Watir.  You give it a name, an identifier and a screen class to instantiate.</li>
+<li><strong>popup_table</strong> - Provides an easy abstraction for the various popup lists.  This will be discussed below.</li>
+<li><strong>date_picker</strong> - Provides an abstraction for DatePickers. <strong>Note:</strong> DatePickers which are added dynamically can not be found due to a bug in Appium.<br></li>
+</ul>
+
+<h3>Identifiers</h3>
+
+<p>Any identifier that can be passed to find_element can be used in the DSL. The identifiers can be expressed as hash values, or strings. Below are some recipes showing how to use various identifier strategies when declaring controls using the ScreenObject DSL:</p>
+
+<p><strong><em>Find the first text_field on the screen</em></strong></p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_text_field'>text_field</span><span class='lparen'>(</span><span class='symbol'>:username</span><span class='comma'>,</span> <span class='int'>1</span><span class='rparen'>)</span>
+<span class='comment'># Adds screen.username and screen.username= to get/set the value
+</span></code></pre>
+
+<p><strong><em>Find the third text_field with the value of &quot;Street&quot;</em></strong></p>
+
+<pre class="code ruby"><code class="ruby">text_field(:mailing_address1, value: &#39;Street&#39;, 3)
+# Adds screen.username and screen.username= to get/set the value
+</code></pre>
+
+<p><strong><em>Find a button by accessibility ID</em></strong></p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_button'>button</span><span class='lparen'>(</span><span class='symbol'>:sign_in</span><span class='comma'>,</span> <span class='label'>accessibility_id:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Sign In</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='comment'># Adds screen.sign_in to click the button
+</span></code></pre>
+
+<p><strong><em>Find a button by predicate string</em></strong></p>
+
+<pre class="code ruby"><code class="ruby">button(:sign_in, 
+       predicate_string: &quot;type == &#39;XCUIElementTypeButton&#39; AND value BEGINSWITH[c] &#39;Sign&#39;)
+# Adds screen.sign_in to click the button
+</code></pre>
+
+<p><strong><em>Find a table using a class chain</em></strong></p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>TABLE_CHAIN</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>**/XCUIElementTypeOther[$name==&quot;Add Business&quot;$]/**/XCUIElementTypeTable</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_table'>table</span><span class='lparen'>(</span><span class='symbol'>:root</span><span class='comma'>,</span> <span class='label'>class_chain:</span> <span class='const'>TABLE_CHAIN</span><span class='rparen'>)</span>
+<span class='comment'># Adds screen.swipe_root and screen_scroll_root_to
+</span></code></pre>
+
+<p>This class chain says &quot;Somewhere in the hierarchy find an &#39;other&#39; element that has a child with the name &#39;Add Business&#39;, then somewhere under that find a table&quot;.  Since most screens have a header with their name, and the first table in the hierarchy below that header contains the controls this definition can be reused in most screens by changing the value to look for in the name attribute.</p>
+
+<p><strong>Note:</strong> It&#39;s helpful to declare part of your class chain as a constant that you can reuse rather than putting the full class chain as the identifier.  This will make things a lot more readable and give you a quick way to see that things have the same parent containers.</p>
+
+<p><strong><em>Find a text field in a cell that&#39;s in a table</em></strong></p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_text_field'>text_field</span><span class='lparen'>(</span><span class='symbol'>:business_name</span><span class='comma'>,</span> 
+           <span class='label'>class_chain:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>TABLE_CHAIN</span><span class='embexpr_end'>}</span><span class='tstring_content'>/XCUIElementTypeCell[2]/XCUIElementTypeTextField</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+</code></pre>
+
+<p>This fill find the first text field, in the second cell, of the table we defined in the <code>TABLE_CHAIN</code> constant for the <code>:root</code> element.</p>
+
+<p>This is the preferred way to find content in tables that either doesn&#39;t have an accessibility ID or has one that changes based on content.</p>
+
+<p>There is an excellent <a href="https://appiumpro.com/editions/8">guide to predicate strings and class chains</a> on the Appium Pro site.</p>
+
+<h3>Popup Tables</h3>
+
+<p>There are many times when you will need to select a value from a popup list. These are similar to select lists in Watir.  Since they all conform to a common structure a special accessor exists to make working with them easier. The <code>popup_table</code> accessor has a signature that looks like:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_popup_table'>popup_table</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_title'>title</span><span class='comma'>,</span> <span class='id identifier rubyid_identifiers'>identifiers</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>The <code>title</code> attribute is the text that appears in the nav bar for the popup.  The identifiers should include a <code>toggle</code> key with an identifier to locate the thing to click in order to show the list, as well as a <code>value</code> key, with an identifier to locate the static text field that contains the value after selection.  </p>
+
+<p>The following example shows a complete definition for a popup table.</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>TYPE_CELL</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>TABLE_CHAIN</span><span class='embexpr_end'>}</span><span class='tstring_content'>/XCUIElementTypeCell[3]</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_popup_table'>popup_table</span><span class='lparen'>(</span><span class='symbol'>:business_type</span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Type</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> 
+            <span class='label'>toggle:</span> <span class='lbrace'>{</span> <span class='label'>class_chain:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>TYPE_CELL</span><span class='embexpr_end'>}</span><span class='tstring_content'>/XCUIElementTypeButton</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span> 
+             <span class='label'>value:</span> <span class='lbrace'>{</span> <span class='label'>class_chain:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>TYPE_CELL</span><span class='embexpr_end'>}</span><span class='tstring_content'>/XCUIElementTypeStaticText</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='comment'># Adds screen.business_type and screen.business_type= to get/set the value            
+</span></code></pre>
+
+<p>When setting the value of a popup table, the toggle method will be called automatically if the list is not <code>open?</code></p>
+
+<h3>DatePickers</h3>
+
+<p>To declare a date picker you need to supply two identifiers.  One for the pickers, the other for the toggle that shows the date picker (if any).</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>VISIT_CELL</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>TABLE_CHAIN</span><span class='embexpr_end'>}</span><span class='tstring_content'>/XCUIElementTypeCell[4]</span><span class='tstring_end'>&quot;</span></span>
+<span class='id identifier rubyid_date_picker'>date_picker</span><span class='lparen'>(</span><span class='symbol'>:next_visit</span><span class='comma'>,</span> <span class='label'>picker:</span> <span class='lbrace'>{</span> <span class='label'>class_chain:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>VISIT_CELL</span><span class='embexpr_end'>}</span><span class='tstring_content'>/**/XCUIElementTypePickerWheel</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span> 
+                         <span class='label'>toggle:</span> <span class='lbrace'>{</span> <span class='label'>accessibility_id:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Next Visit Date</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span> 
+                         <span class='label'>scroll:</span> <span class='lbrace'>{</span> <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Next Visit Date</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='rparen'>)</span>
+<span class='comment'># Adds screen.next_visit and screen.next_visit= to get/set the value
+</span></code></pre>
+
+<p>DatePickers can accept a Date for their value or a String.  Strings are parsed via Chronic so something like <code>screen.next_visit_date = &#39;one month from now&#39;</code> is perfectly acceptable.  Though <code>screen.next_visit_date = &#39;8/27/1970&#39;</code> is also fine.</p>
+
+<h3>Handling scrolling</h3>
+
+<p>In order to deal with content that requires scrolling the ScreenObject will make use of a &quot;root&quot; element.  This is the element that will be scrolled to  find the various fields we need to interact with.</p>
+
+<p>In order to scroll to an element, we need to provide additional information in our identifiers passed to the accessors.  We do this with a &#39;scroll&#39; hash that looks like:</p>
+
+<pre class="code ruby"><code class="ruby">scroll: { value: &#39;Route&#39; }
+# or
+scroll: { value: &quot;label == &#39;Physical&#39;&quot; }
+</code></pre>
+
+<p>The first version will scroll until it finds anything with the text &#39;Route&#39;.  The second will scroll till it finds a label called &#39;Physical&#39;. <strong><em>Scrolling to a label is faster and more accurate.  Use it when you can.</em></strong></p>
+
+<p>In most cases all scrolling is contained to a single table, we define this as the &quot;root&quot; element for the screen. Typically this is a table as shown in the accessors example:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='const'>TABLE_CHAIN</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>**/XCUIElementTypeOther[$name==&quot;Add Business&quot;$]/**/XCUIElementTypeTable</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_table'>table</span><span class='lparen'>(</span><span class='symbol'>:root</span><span class='comma'>,</span> <span class='label'>class_chain:</span> <span class='const'>TABLE_CHAIN</span><span class='rparen'>)</span>
+</code></pre>
+
+<p>We pass scroll information as part of the identifier like so:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_text_field'>text_field</span><span class='lparen'>(</span><span class='symbol'>:physical_postal_code</span><span class='comma'>,</span> 
+           <span class='label'>scroll:</span> <span class='lbrace'>{</span> <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>label == &#39;Physical&#39;</span><span class='tstring_end'>&quot;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
+      <span class='label'>class_chain:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>PHYSICAL_ADDRESS_CELL</span><span class='embexpr_end'>}</span><span class='tstring_content'>/XCUIElementTypeTextField[3]</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+</code></pre>
+
+<p>It is possible however to define scroll containers as part of the scroll data like so:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_table'>table</span><span class='lparen'>(</span><span class='symbol'>:some_other_table</span><span class='comma'>,</span> <span class='int'>2</span><span class='rparen'>)</span> <span class='comment'># The second table on screen
+</span><span class='id identifier rubyid_text_field'>text_field</span><span class='lparen'>(</span><span class='symbol'>:foo</span><span class='comma'>,</span> <span class='label'>scroll:</span> <span class='lbrace'>{</span> <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>label == &#39;Physical&#39;</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> 
+                       <span class='label'>container:</span> <span class='symbol'>:some_other_table</span> <span class='rbrace'>}</span><span class='comma'>,</span> 
+       <span class='label'>accessibility_id:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>foo</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+</code></pre>
+
+<p><strong>Scrolling is terrible</strong> quite often things will scroll to a point where Appium considers them visible, but they can&#39;t be interacted with.  In those cases, you can usually use something just below the thing you&#39;re looking for instead.</p>
+
+<p><strong>Scrolling is SLOOOOW</strong> watching Appium scroll to anything is frustrating. When you&#39;re scrolling a long list looking for something as text it&#39;s doubly so.  Scroll performance is one of the areas under active research for performance for this framework.</p>
+
+<h3>Methods added by the DSL</h3>
+
+<p>For all elements the following methods are created on the ScreenObject when declaring controls (Assuming an element named :name):</p>
+
+<ul>
+<li><strong>name_element</strong> - Returns an Appium element or ScreenObject control for the control. Unlike Watir this call accepts a boolean value called <code>use_cache</code> which defaults to <code>true</code>.  By default controls are cached once found to avoid the overhead of finding the control again. Calling <code>name_element(false)</code> will bust the cache and force relocation. If the control does not exist this will take at least .25s to complete.</li>
+<li><strong>name?</strong> - Returns true if the control is displayed (i.e. this is the same as calling <code>displayed?</code> on an Appium element) if the control is hidden, or not present the return value will be false.  This uses the control cache so that once found the only overhead is the call to <code>displayed?</code></li>
+<li><strong>name_exist?</strong> - Returns true if the control can be found in the hierarchy regardless of visibility. This control does NOT use the cache and as such is a fairly expensive call to make but this allows it to be used for things that can disappear.  While it does not use the control cache, it does PRIME it.  Calling <code>name?</code> after <code>name_exist?</code> only incurs the lookup penalty once.</li>
+<li><strong>name</strong> - Performs the default action for that type of element.   Much like web automation, if it&#39;s something that clicks <code>name</code> will click it, if it&#39;s not a button-like thing, it will return the text of the control.</li>
+<li><strong>name=</strong> - For controls which can have their values set this method will set them.   This is implemented so that the value parameter is appropriate for the type of controls.  <code>text_field</code> accepts strings, <code>switch</code> fields accept booleans, <code>date\_picker</code> accepts dates or strings.</li>
+</ul>
+
+<p>For controls which have scroll information supplied the following additional methods are added.</p>
+
+<ul>
+<li><strong>scroll_to_name</strong> - Will scroll <code>root_element</code> per the parameters supplied in the identifiers.  This accepts a single parameter indicating the direction to scroll. <code>:up</code>, <code>:down</code>, <code>:left</code>, and <code>:right</code> are valid options. The default is <code>:down</code> if a direction is not supplied.</li>
+<li><strong>scroll_to_name_if_needed</strong> - Calls <code>scroll_to_name</code> if <code>name?</code> returns false. It accepts the same direction values as <code>scroll_to_name</code>.</li>
+</ul>
+
+<p>Tables add a couple more methods related to scrolling:</p>
+
+<ul>
+<li><strong>scroll_name_to</strong> - Accepts a predicate_string argument the table should be scrolled to and a direction to scroll in, defaults to <code>:down</code>.</li>
+<li><strong>swipe_name</strong> - Performs a swipe gesture in the supplied direction (defaults to <code>:down</code>).  This can also be used to help speed things along in some cases.  For example: If you know the thing you&#39;re looking for is far down in a table you might call a swipe call or two first so that the page by page scrolling to text/predicate strings does not have as many pages to go through.  This can also be handy dealing with the imprecise scrolling, ensuring that the last item is fully visible with a quick swipe.</li>
+</ul>
+
+<p>Switches add additional methods:</p>
+
+<ul>
+<li><strong>check_name</strong> - Turns the switch to the &#39;on&#39; position.</li>
+<li><strong>uncheck_name</strong> - Turns the switch to the &#39;off&#39; position.</li>
+</ul>
+
+<p>Some examples: </p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># Given this
+</span><span class='kw'>class</span> <span class='const'>DemoScreen</span>
+  <span class='id identifier rubyid_include'>include</span> <span class='const'>ScreenObject</span>
+
+  <span class='comment'># This class chain locates the table containing all the fields, we can use it as base for the others
+</span>  <span class='const'>TABLE_CHAIN</span> <span class='op'>||=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>**/XCUIElementTypeOther[$name==&quot;Add Business&quot;$]/**/XCUIElementTypeTable</span><span class='tstring_end'>&#39;</span></span>
+  <span class='id identifier rubyid_table'>table</span><span class='lparen'>(</span><span class='symbol'>:root</span><span class='comma'>,</span> <span class='label'>class_chain:</span> <span class='const'>TABLE_CHAIN</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_text_field'>text_field</span><span class='lparen'>(</span><span class='symbol'>:business_name</span><span class='comma'>,</span> <span class='label'>class_chain:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>TABLE_CHAIN</span><span class='embexpr_end'>}</span><span class='tstring_content'>/XCUIElementTypeCell[2]/XCUIElementTypeTextField</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_button'>button</span><span class='lparen'>(</span><span class='symbol'>:toggle_type</span><span class='comma'>,</span> <span class='label'>class_chain:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='const'>TABLE_CHAIN</span><span class='embexpr_end'>}</span><span class='tstring_content'>/XCUIElementTypeCell[3]/XCUIElementTypeButton</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_switch'>switch</span><span class='lparen'>(</span><span class='symbol'>:mailing_same_as_physical</span><span class='comma'>,</span> <span class='label'>scroll:</span> <span class='lbrace'>{</span> <span class='label'>value:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Mailing Address is Same as Physical Address</span><span class='tstring_end'>&#39;</span></span> <span class='rbrace'>}</span><span class='comma'>,</span>
+                          <span class='label'>accessibility_id:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Mailing Address is Same as Physical Address</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+<span class='kw'>end</span>
+
+<span class='id identifier rubyid_screen'>screen</span> <span class='op'>=</span> <span class='id identifier rubyid_on_screen'>on_screen</span><span class='lparen'>(</span><span class='const'>DemoScreen</span><span class='rparen'>)</span>
+
+<span class='comment'># We can:
+</span>
+<span class='comment'># Get / set the value of business_name
+</span><span class='id identifier rubyid_screen'>screen</span><span class='period'>.</span><span class='id identifier rubyid_business_name'>business_name</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ABC Co</span><span class='tstring_end'>&#39;</span></span>
+<span class='id identifier rubyid_name'>name</span> <span class='op'>=</span> <span class='id identifier rubyid_screen'>screen</span><span class='period'>.</span><span class='id identifier rubyid_business_name'>business_name</span>
+
+<span class='comment'># See if business_name is displayed
+</span><span class='id identifier rubyid_screen'>screen</span><span class='period'>.</span><span class='id identifier rubyid_business_name?'>business_name?</span>
+
+<span class='comment'># Click the toggle_type button
+</span><span class='id identifier rubyid_screen'>screen</span><span class='period'>.</span><span class='id identifier rubyid_toggle_type'>toggle_type</span>
+
+<span class='comment'># Flip / read the mailing_same_as_physical switch
+</span><span class='id identifier rubyid_screen'>screen</span><span class='period'>.</span><span class='id identifier rubyid_mailing_same_as_physical'>mailing_same_as_physical</span> <span class='op'>=</span> <span class='kw'>true</span> <span class='comment'># Turn the switch on
+</span><span class='id identifier rubyid_screen'>screen</span><span class='period'>.</span><span class='id identifier rubyid_check_mailing_same_as_physical'>check_mailing_same_as_physical</span>  <span class='comment'># Ditto
+</span>
+<span class='id identifier rubyid_screen'>screen</span><span class='period'>.</span><span class='id identifier rubyid_mailing_same_as_physical'>mailing_same_as_physical</span> <span class='op'>=</span> <span class='kw'>false</span> <span class='comment'># Turn the switch on
+</span><span class='id identifier rubyid_screen'>screen</span><span class='period'>.</span><span class='id identifier rubyid_uncheck_mailing_same_as_physical'>uncheck_mailing_same_as_physical</span> <span class='comment'># Ditto
+</span>
+<span class='id identifier rubyid_actual'>actual</span> <span class='op'>=</span> <span class='id identifier rubyid_screen'>screen</span><span class='period'>.</span><span class='id identifier rubyid_mailing_same_as_physical'>mailing_same_as_physical</span> <span class='comment'># boolean 
+</span>
+<span class='comment'># Make sure the switch is displayed
+</span><span class='id identifier rubyid_screen'>screen</span><span class='period'>.</span><span class='id identifier rubyid_scroll_to_mailing_same_as_physical'>scroll_to_mailing_same_as_physical</span>
+
+<span class='comment'># But don&#39;t screw scroll if off screen looking for it, if it&#39;s already displayed
+</span><span class='id identifier rubyid_screen'>screen</span><span class='period'>.</span><span class='id identifier rubyid_scroll_to_mailing_same_as_physical_if_needed'>scroll_to_mailing_same_as_physical_if_needed</span>
+
+<span class='comment'># Scroll the screen to an arbitrary label
+</span><span class='id identifier rubyid_screen'>screen</span><span class='period'>.</span><span class='id identifier rubyid_scroll_root_to'>scroll_root_to</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>label == &#39;foo&#39;</span><span class='tstring_end'>&quot;</span></span>
+</code></pre>
+
+<h3>Populating screens</h3>
+
+<p>Everything which include ScreenObject has two ways to populate the controls with data:</p>
+
+<p><strong>populate_with(data)</strong> - This will take a hash where the keys match the name of controls on the ScreenObject.  Scrolling is only performed in one direction during this call so, data within the hash should be optimized so that keys are sorted in the order in which they appear on the screen. Simply listing them in display order in a YAML file is sufficient.</p>
+
+<p>The <code>root_element</code> of the ScreenObject will be scrolled to ensure the control is visible.  Likewise, the on screen keyboard is closed before attempting to set the value of a control.  This means that your machine will make noise while running the tests and the keyboard will act like a Jack Rustle Terrier but it prevents the OSK from blocking controls.</p>
+
+<p>We could populate the screen from the previous example with something like this:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_screen'>screen</span><span class='period'>.</span><span class='id identifier rubyid_populate_with'>populate_with</span><span class='lparen'>(</span><span class='label'>business_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ABC Co</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='label'>mailing_same_as_physical:</span> <span class='kw'>true</span><span class='rparen'>)</span>
+
+</code></pre>
+
+<p><strong>populate(data={})</strong> - This method will call <code>data_for</code> from DataMagic using it&#39;s class as the key and then merge the results with the passed data, if any.  Keys are built by taking the class of the screen object, stripping the namespacing, then converting to &quot;snake case&quot;.  For example <code>Screens::IOS::WorkCenterMarketing::NewBusinessModal</code> would pass <code>new_business_modal</code> as the key to <code>data_for</code>.</p>
+
+<p>We could populate the screen from the previous example with something like this:</p>
+
+<pre class="code ruby"><code class="ruby"><span class='comment'># Assuming a DataMagic fixture that would have a key &#39;demo_screen&#39; and the following data:
+</span><span class='comment'># business_name: &#39;ABC Co&#39;, mailing_same_as_physical: true
+</span>
+<span class='comment'># Populate with the data as-is from the fixture
+</span><span class='id identifier rubyid_screen'>screen</span><span class='period'>.</span><span class='id identifier rubyid_populate'>populate</span>
+
+<span class='comment'># Populate with the fixture data, but override some fields
+</span><span class='id identifier rubyid_screen'>screen</span><span class='period'>.</span><span class='id identifier rubyid_populate_with'>populate_with</span><span class='lparen'>(</span><span class='label'>business_name:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>ACME Co</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+
+<span class='comment'># In this simple example the page would be populated with: 
+</span><span class='comment'>#  business_name: &#39;ACME Co&#39;, mailing_same_as_physical: true
+</span>
+</code></pre>
+
+<h3>Navigating Screens</h3>
+
+<p>Screens should be placed in namespace modules to prevent collision.  These modules should include the OS the screen is for as well as the application name. For example: <code>Screens::IOS::WorkCenterMarketing::NewBusinessModal</code> setting <code>default_app_for_nav</code> to the name of your application will allow on_screen to find the correct class without your needing to specify the full namespace.  </p>
+
+<p><code>on_screen</code> works just like <code>on_page</code> in PageObject, though it can be called in slightly different ways:</p>
+
+<pre class="code ruby"><code class="ruby"># These three would all return the same Object assuming that
+# @default_app_for_nav is set to &#39;WorkCenterMarketing&#39; and we&#39;re automating iOS
+on_screen(:new_business_modal)
+on_screen(&#39;new_business_modal&#39;)
+on_screen(Screens::IOS::WorkCenterMarketing::NewBusinessModal)
+
+# This would return the exact class passed in.
+on_screen(OtherScreen)
+
+# on_screen can be used to fetch a reference to a screen
+screen = on_screen(:new_business_modal) 
+screen.do_something
+
+# It can be used in the typical block format
+on_screen(:new_business_modal) do |screen|
+  screen.do_something
+  screen.do_something_else
+End 
+
+# and it can be used for one-offs 
+on_screen(:new_business_modal, &amp;:do_something)  
+</code></pre>
+</div></div>
+
+      <div id="footer">
+  Generated on Mon Sep 23 18:05:53 2019 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.20 (ruby-2.4.2).
+</div>
+
+    </div>
+  </body>
+</html>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 ## DataMagic namespace for monkey patching
 
 require 'singleton'
@@ -23,8 +25,6 @@ class DataForCache
 end
 
 module DataMagic
-
-
   ##
   # :category: extensions
   #
@@ -53,6 +53,7 @@ module DataMagic
     end
     data = DataMagic.yml[record]
     raise ArgumentError, "Undefined key #{key}" unless data
+
     DataForCache.instance.cache_set(record, prep_data(data.merge(additional.key?(record) ? additional[record] : additional).deep_copy))
   end
 
@@ -77,7 +78,6 @@ module DataMagic
     end
   end
 end
-
 
 ## YmlReader namespace for monkey patching
 module YmlReader

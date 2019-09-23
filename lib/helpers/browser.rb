@@ -3,7 +3,6 @@
 # Helper modules should all live in the helper namespace.
 module Helpers
   module Browser
-
     # High level function for creating a browser. Uses env variables to determine what to do.
     #
     # @param scenario [Cucumber:Scenario]
@@ -22,8 +21,6 @@ module Helpers
       job_fn = scenario.passed? ? 'pass_job' : 'fail_job'
       SauceWhisk::Jobs.send(job_fn, browser.driver.send(:bridge).session_id)
     end
-
-    private_class_method
 
     # Creates a Sauce Labs browser.
     # Called by #create_browser when BROWSER_TYPE == :sauce
@@ -98,7 +95,6 @@ module Helpers
       }
     end
 
-    private_class_method
     def self._mock_scenario
       require 'ostruct'
       OpenStruct.new(name: 'Console Scenario', feature: OpenStruct.new(name: 'Console Feature'))

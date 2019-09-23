@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  File: blog
+  
+    &mdash; Centric Cucumber Framework
+  
+</title>
+
+  <link rel="stylesheet" href="css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="css/cucumber.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "blog";
+  relpath = '';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/cucumber.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="file_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="_index.html">Index</a> &raquo; 
+    <span class="title">File: blog</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="feature_list_link"
+        href="feature_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><div id='filecontents'><p>In my role with Centric, I get to see a <em>lot</em> of test suites.  Everything from startups to enterprises, from “move fast and break stuff” to “NOTHING CAN BREAK!”.  I’ve seen lots of great ideas, lots of bad ones.  As I’ve moved from clients I’ve carried many of the good ideas forward and learned how to mitigate the bad ones.</p>
+
+<p>Recently I’ve started working with some of my colleges within Centric to try and package up some of the good ideas we’ve learned over the years, as well as some new ones we’re not quite sure about. We call this effort C2POE, Centric Consulting Page Object Experiments.</p>
+
+<p>Nothing in C2POE is necessarily ground breaking.  We’re focusing on small widgets that smooth out the various rough edges found in automation.  Most of the pieces can be used on their own to solve the specific problem they address, without forcing huge changes in existing suites.  We want automated testers to be able to focus on the tests, not worry about the nitty gritty details all the time.</p>
+
+<p>The first of these pieces, released as a gist, is a tool for dealing with page state.  Our “Hooked Accessors” extension to PageObject provides a way to both DRY up your code and ensure that page state is handled appropriately.</p>
+
+<p>Failing to manage page state is one of the major contributors to flakey tests.  Automation actions can trigger state changes, from expanding a div to navigating to a new page.  Failing to manage track and manage these state changes leads to race conditions where a test works most of the time but then something takes a little too long (or finishes faster than expected) and the tests blows up.</p>
+
+<p>Consider the code example below:</p>
+
+<p><img src="dry_1.png" alt=""></p>
+
+<p>While the structure is a bit odd, this code is otherwise typical of what you&#39;d find in many tests suites.  The authors of these steps first ensure that the page is in a usable state before doing their thing.  The codebase is full of defensive programming like this.  Code that has nothing to do with the test itself when what we really want is something like the following:</p>
+
+<p><img src="dry_1a.png" alt=""></p>
+
+<p>In this DRY version, only code relevant to the test is in the step.  We can write simple clear code like this because we&#39;re managing our page state properly.</p>
+
+<p>One simple rule can make all the difference in the world:  <strong>If a function triggers AJAX or navigation, that function will block until the page is in a usable state.</strong></p>
+
+<p>Here&#39;s a slightly move involved example:
+<img src="puppet1.png" alt=""></p>
+
+<p>Again, nothing terribly wrong with the code except that we&#39;re treating our page like a puppet.  There&#39;s a logic in the step to deal with actions on the page.  We know that add_vehicle is going to trigger an AJAX call so we block, but we&#39;re blocking in the wrong place.  Everyone who calls add vehicle has to remember to block, if they don&#39;t it might not fail the first 100 times, but eventually it will and you&#39;ll be chasing a weird error.</p>
+
+<p>We&#39;re also NOT managing the state change caused by pressing the &quot;OK&quot; button, thus forcing the steps that follow to defensively ensure the page is usable.</p>
+
+<p>Something like the following is cleaner and easier to work with:</p>
+
+<p><img src="puppet2.png" alt=""></p>
+
+<p>Here we&#39;ve done away with the manipulation of the DOM from the step and instead we&#39;re asking the page to add the vehicle.  The page manipulates the DOM and blocks appropriately.</p>
+
+<p>In the place of the &quot;ok&quot; button we&#39;re calling &quot;save_vehicle&quot; which looks like this:</p>
+
+<p><img src="puppet3.png" alt=""></p>
+
+<p>Such a minor change for a huge increase in reliability and reduced maintenance. It&#39;s also boring and tedious to write these little helper functions all the time.  Which is part of the reason our hooked accessors module exists.</p>
+
+<p>We use a gem (also built by Centric) called Captain Hook.  Captain Hook allows developers to wrap existing objects and apply before/after hooks to their functions.  Our hooked accessors extension ties Captain Hook into the Page Object DSL.  Using Captain Hook we can express the need to wait for AJAX whenever &quot;click&quot; is called.  </p>
+
+<p>With Captain Hook we can write something like:</p>
+
+<p><img src="puppet4.png" alt=""></p>
+
+<p>Here we&#39;ve defined a simple hook that says &quot;after calling click, call wait for ajax&quot;.  We can then pass those hooks into the definition of the element, ensuring that it&#39;s easy to do it the right way.</p>
+
+<p>Here&#39;s another example of a common pattern:</p>
+
+<p><img src="right_thing_1.png" alt=""></p>
+
+<p>When looking at these two, it&#39;s clear they do roughly the same thing, just using different sections of the page.  In the top step we ensure that the section is scrolled into view before interaction, in the second we don&#39;t.  That&#39;s a bug.  One developer forgot that the section needed scrolled into view.  In the real codebase these two steps are dozens of lines apart, it&#39;s not as easy to see the missed bit of logic.</p>
+
+<p>With Captain Hook we can ensure that we never forget that step:
+<img src="right_thing_2.png" alt=""></p>
+
+<p>That gives a cleaner version that looks something like this:
+<img src="right_thing_3.png" alt=""></p>
+
+<p>We still have that defensive call to &quot;page.ready?&quot; We should do something about that.  If we&#39;d been managing our state the whole time, this wouldn&#39;t be needed.  Since we haven&#39;t been and we don&#39;t have time to refactor everything at once, we can leverage Captain Hook to remove the repetition:</p>
+
+<p><img src="right_thing_4.png" alt=""></p>
+
+<p>Here we&#39;re defining two hooks, one to ensure things get scrolled and another to ensure that we call &quot;page.ready?&quot; when needed.  (This could have been defined as one set of hooks instead of two that get merged, I just implemented it this way to show an example of hooks being merged.)</p>
+
+<p>Captain Hook is based on the Ruby Standard Library SimpleDelegator.  SimpleDelegator allows us to replace methods on the wrapped object without modifying the class via money patching.</p>
+
+<p>When we add hooks to an object, we add a method with the same name as the method we&#39;re hooking.  Our replacement method calls any before hooks, then calls the real function on the wrapped object, followed by the after hooks.</p>
+
+<p>The DSL for defining hooks is fairly simple.  It starts with either before(method) or after(method). Where &quot;method&quot; is the name of the method you want to add hooks to.</p>
+
+<p>Next is call(method), where we tell Captain Hook what we want to call as our hook.  We can supply either a method name or a proc/lambda.</p>
+
+<p>If we want to pass arguments to our hook we can add &quot;with(arg1, arg2, ...)&quot; to apply them.</p>
+
+<p>And lastly, we can tell Captain Hook where to find the method we want to call with &quot;using(other_object)&quot;.  Internally we call these values the context of the hook.  Captain Hook will automatically use the wrapped object as a context if one isn&#39;t provided.  The page object extensions take this a step further and automatically add the page as a context.</p>
+
+<p>In addition you can pass the symbols :self/:element to refer to the wrapped object and :page to refer to the parent page.</p>
+
+<p>That&#39;s a lot to absorb so let&#39;s look at some examples:</p>
+
+<p><img src="dsl_1.png" alt=""></p>
+
+<p>Here we&#39;re defining a set of hooks to ensure our masked edits get the correct events fired.  We&#39;re wrapping the &quot;value=&quot; method on the element and ensuring that events are fired in the correct order.<br>
+The DSL is fluent, so multiple calls can expressed for one hook.  </p>
+
+<p><img src="dsl_2.png" alt=""></p>
+
+<p>Here we&#39;re defining a hook that calls the &quot;flash_element&quot; function on the page object, passing in the element we want to flash, and how many time to flash it.  Now we get a handy strobe effect as each hooked element gets set.</p>
+
+<p>There are times when applying hooks would make it difficult to test specific functionality on the page.  Consider the following:  </p>
+
+<p><img src="dsl_3.png" alt=""></p>
+
+<p>This hook is intended to make it easy to access a dropdown menu by ensuring that the dropdown has been expanded    before accessing it&#39;s contents.  However, you might be testing that expansion and the hooks would make it impossible.  In those cases there&#39;s a way to get the original unhooked version of the element.  Instead of page.element.click you&#39;d call page.element_unhooked.click.</p>
+
+<h3>Coming soon</h3>
+
+<p>Since presenting on this, we&#39;ve had an opportunity to vet some of our e</p>
+
+<p>You can get the source at:</p>
+
+<p>Gist: <a href="https://goo.gl/pyu2eX">https://goo.gl/pyu2eX</a></p>
+
+<p>Our Org: <a href="https://github.com/centric-automation">https://github.com/centric-automation</a></p>
+</div></div>
+
+      <div id="footer">
+  Generated on Mon Sep 23 14:16:16 2019 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.20 (ruby-2.4.2).
+</div>
+
+    </div>
+  </body>
+</html>

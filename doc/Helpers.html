@@ -14,6 +14,8 @@
 
   <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
 
+  <link rel="stylesheet" href="css/cucumber.css" type="text/css" charset="utf-8" />
+
 <script type="text/javascript" charset="utf-8">
   pathId = "Helpers";
   relpath = '';
@@ -23,6 +25,8 @@
   <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
 
   <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/cucumber.js"></script>
 
 
   </head>
@@ -45,8 +49,8 @@
 
         <div id="search">
   
-    <a class="full_list_link" id="class_list_link"
-        href="class_list.html">
+    <a class="full_list_link" id="feature_list_link"
+        href="feature_list.html">
 
         <svg width="24" height="24">
           <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
@@ -78,8 +82,8 @@
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>features/support/lib/helpers/config.rb<span class="defines">,<br />
-  features/support/lib/helpers/browser.rb</span>
+    <dd>lib/helpers/config.rb<span class="defines">,<br />
+  lib/helpers/browser.rb,<br /> lib/helpers/fixtures.rb,<br /> lib/helpers/misc_helpers.rb,<br /> lib/helpers/fixture_helper.rb</span>
 </dd>
   </dl>
   
@@ -87,8 +91,7 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    
-<p>Helper modules should all live in the helper namespace.</p>
+    <p>Root module for helpers.</p>
 
 
   </div>
@@ -100,7 +103,7 @@
 <p class="children">
   
     
-      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Helpers/Browser.html" title="Helpers::Browser (module)">Browser</a></span>
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="Helpers/Browser.html" title="Helpers::Browser (module)">Browser</a></span>, <span class='object_link'><a href="Helpers/Fixtures.html" title="Helpers::Fixtures (module)">Fixtures</a></span>
     
   
     
@@ -115,14 +118,100 @@
 
 
 
+  
+    <h2>
+      Class Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
 
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#table_to_hash-class_method" title="table_to_hash (class method)">.<strong>table_to_hash</strong>(table)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Convert a cucumber table to a ruby hash.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+
+  <div id="class_method_details" class="method_details_list">
+    <h2>Class Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="table_to_hash-class_method">
+  
+    .<strong>table_to_hash</strong>(table)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Convert a cucumber table to a ruby hash</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+6
+7
+8
+9
+10
+11</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/helpers/misc_helpers.rb', line 6</span>
+
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_table_to_hash'>table_to_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_table'>table</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_table'>table</span><span class='period'>.</span><span class='id identifier rubyid_transpose'>transpose</span><span class='period'>.</span><span class='id identifier rubyid_raw'>raw</span><span class='period'>.</span><span class='id identifier rubyid_each_with_object'>each_with_object</span><span class='lparen'>(</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_column'>column</span><span class='comma'>,</span> <span class='id identifier rubyid_hash'>hash</span><span class='op'>|</span>
+    <span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_reject!'>reject!</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:empty?</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_hash'>hash</span><span class='lbracket'>[</span><span class='id identifier rubyid_column'>column</span><span class='period'>.</span><span class='id identifier rubyid_shift'>shift</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_column'>column</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
 
 </div>
 
       <div id="footer">
-  Generated on Tue Nov 28 12:13:15 2017 by
+  Generated on Mon Sep 23 18:05:53 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.11 (ruby-2.4.2).
+  0.9.20 (ruby-2.4.2).
 </div>
 
     </div>

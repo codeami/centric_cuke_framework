@@ -36,7 +36,7 @@ unless MagicPath.instance.respond_to?(:fixture_path)
   # This determines the search order for loading fixture files
   # if you add another pattern for filenames, add it to the array below.
   # The first fixture file found is the one loaded.
-  FIXTURE_FILE_PATTERNS = %i[fixture_file_env fixture_file_base]
+  FIXTURE_FILE_PATTERNS = %i[fixture_file_env fixture_file_base].freeze
 
   # The default path for just uses the environment var FIXTURE_ROOT
   MagicPath.create_path :fixture_path, pattern: ':fixture_root'

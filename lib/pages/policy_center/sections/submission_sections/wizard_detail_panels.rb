@@ -1,0 +1,14 @@
+# frozen_string_literal: true
+
+require_relative 'wizard_detail_panels/wizard_detail_panel'
+require_relative 'wizard_detail_panels/wizard_offerings_detail_panel'
+require_relative 'wizard_detail_panels/wizard_policy_info_detail_panel'
+require_relative 'wizard_detail_panels/wizard_businessowners_line_detail_panel'
+require_relative 'wizard_detail_panels/wizard_location_detail_panel'
+require_relative 'wizard_detail_panels/wizard_buildings_detail_panel'
+require_relative 'wizard_detail_panels/wizard_modifiers_detail_panel'
+require_relative 'wizard_detail_panels/wizard_risk_analysis_detail_panel'
+require_relative 'wizard_detail_panels/wizard_policy_review_detail_panel'
+require_relative 'wizard_detail_panels/wizard_quote_detail_panel'
+require_relative 'wizard_detail_panels/wizard_forms_detail_panel'
+require_relative 'wizard_detail_panels/wizard_payment_detail_panel'

@@ -14,6 +14,8 @@
 
   <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
 
+  <link rel="stylesheet" href="css/cucumber.css" type="text/css" charset="utf-8" />
+
 <script type="text/javascript" charset="utf-8">
   pathId = "README_ENV";
   relpath = '';
@@ -23,6 +25,8 @@
   <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
 
   <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/cucumber.js"></script>
 
 
   </head>
@@ -43,8 +47,8 @@
 
         <div id="search">
   
-    <a class="full_list_link" id="class_list_link"
-        href="class_list.html">
+    <a class="full_list_link" id="feature_list_link"
+        href="feature_list.html">
 
         <svg width="24" height="24">
           <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
@@ -57,67 +61,148 @@
         <div class="clear"></div>
       </div>
 
-      <div id="content"><div id='filecontents'>
-<p># –&gt;</p>
+      <div id="content"><div id='filecontents'><p>--&gt;</p>
 
-<h1 id="label-Environment+variables+in+the+Centric+framework.">Environment variables in the Centric framework.</h1>
+<h1>Environment variables in the Centric framework.</h1>
 
-<h2 id="label-Nenv">Nenv</h2>
+<h2>Nenv</h2>
 
-<p><strong><a href="https://rubygems.org/gems/nenv">Nenv</a></strong>
-simplifies dealing with environment variables. It provides a clean syntax
-where env keys become methods. You no longer need to worry about the case
-of the keys and there&#39;s automatic boolean conversion that handles
-true/false/0/1.</p>
+<p><strong><a href="https://rubygems.org/gems/nenv">Nenv</a></strong> simplifies dealing with environment variables. It provides a clean syntax where env keys become methods. You no longer need to worry about the case of the keys and there&#39;s automatic boolean conversion that handles true/false/0/1.</p>
 
-<p>It&#39;s <em>highly</em> recommended to review the README for Nenv to get a
-feel for what&#39;s posible.</p>
+<p>It&#39;s <em>highly</em> recommended to review the README for Nenv to get a feel for what&#39;s posible.</p>
 
-<h2 id="label-Standards">Standards</h2>
-<ul><li>
-<p>Any environment variable that requires complex logic, or a default value
-must have an Nenv method in <em>support/lib/nenv.rb</em>.</p>
-</li><li>
-<p>Default values for environment variable methods must have a constant
-declared at the top of <em>support/lib/nenv.rb</em>. Do NOT add magic
-values to the Nenv methods.</p>
-</li></ul>
+<h2>Standards</h2>
 
-<h2 id="label-Environment+variables+used+by+the+framework">Environment variables used by the framework</h2>
+<ul>
+<li>Any environment variable that requires complex logic, or a default value must have an Nenv method in <em>support/lib/nenv.rb</em>.</li>
+<li>Default values for environment variable methods must have a constant declared at the top of <em>support/lib/nenv.rb</em>.  Do NOT add magic values to the Nenv methods.</li>
+</ul>
 
-<p>The table below lists the various environment variables that can be used to
-tune the behavior of the framework. Many of these are exposed as profiles.</p>
+<h2>Environment variables used by the framework</h2>
 
-<p>| Variable | Allowed Values | Required | Default | Info |
-|————————|————————————-|——————————-|————————————–|——————————————————————————————————–|
-| CONFIG_PATH | A path relative to the project root | | ./config | Where
-should the config helper look for files. | | TEST_ENV | Freeform | | | Used
-to differentiate which environment you&#39;re running in. | |
-TEST_ENV_NUMBER | Any integer | | | Used for differentiating between
-children when running tests in parallel. | | SERVER_HOSTNAME | String | |
-Loaded from config based on test env | Used for building URLs to the system
-under test. | | CUKE_DEBUG | true/false | | false | If set to true, a pry
-session will be opened when a test fails. | | CUKE_ENV_DEBUG | true/false |
-| false | If set to true, a pry session will be opened eat the end of
-env.rb | | CUKE_STEP_SIZE | Any integer | | 0 | If set to a non-zero value,
-test execution will stop and wait for a keypress. Useful for doing demos. |
-| BROWSER_TYPE | local, remote | | local | Set to local to use browsers via
-your local machine. Set to remote to use browsers via sauce labs. | |
-BROWSER_BRAND | chrome, firefox, ie, safari, edge | | chrome | Set to the
-brand of browser you want to test under. | | BROWSER_RESOLUTION | NxN | |
-1920x1080 | Used to specify a specific resolution for the browser window.
-For example: 1024x768 | | BROWSER_X | Any integer | | 0 | Used to specify
-the x position for the browser window. | | BROWSER_Y | Any integer | | 0 |
-Used to specify the y position for the browser window. | | SAUCE_VERSION |
-| When BROWSER_TYPE == remote. | | | | SAUCE_PLATFORM | | When BROWSER_TYPE
-== remote. | | | | SAUCE_CLIENT_TIMEOUT | Any integer | | 180 | How long
-should Sauce Labs API calls be allowed to run? |</p>
+<p>The table below lists the various environment variables that can be used to tune the behavior of the framework.  Many of these are exposed as profiles. </p>
+
+<table><thead>
+<tr>
+<th>Variable</th>
+<th>Allowed Values</th>
+<th>Required</th>
+<th>Default</th>
+<th>Info</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>CONFIG_PATH</td>
+<td>A path relative to the project root</td>
+<td></td>
+<td>./config</td>
+<td>Where should the config helper look for files.</td>
+</tr>
+<tr>
+<td>TEST_ENV</td>
+<td>Freeform</td>
+<td></td>
+<td></td>
+<td>Used to differentiate which environment you&#39;re running in.</td>
+</tr>
+<tr>
+<td>TEST_ENV_NUMBER</td>
+<td>Any integer</td>
+<td></td>
+<td></td>
+<td>Used for differentiating between children when running tests in parallel.</td>
+</tr>
+<tr>
+<td>SERVER_HOSTNAME</td>
+<td>String</td>
+<td></td>
+<td>Loaded from config based on test env</td>
+<td>Used for building URLs to the system under test.</td>
+</tr>
+<tr>
+<td>CUKE_DEBUG</td>
+<td>true/false</td>
+<td></td>
+<td>false</td>
+<td>If set to true, a pry session will be opened when a test fails.</td>
+</tr>
+<tr>
+<td>CUKE_ENV_DEBUG</td>
+<td>true/false</td>
+<td></td>
+<td>false</td>
+<td>If set to true, a pry session will be opened eat the end of env.rb</td>
+</tr>
+<tr>
+<td>CUKE_STEP_SIZE</td>
+<td>Any integer</td>
+<td></td>
+<td>0</td>
+<td>If set to a non-zero value, test execution will stop and wait for a keypress.  Useful for doing demos.</td>
+</tr>
+<tr>
+<td>BROWSER_TYPE</td>
+<td>local, remote</td>
+<td></td>
+<td>local</td>
+<td>Set to local to use browsers via your local machine.   Set to remote to use browsers via sauce labs.</td>
+</tr>
+<tr>
+<td>BROWSER_BRAND</td>
+<td>chrome, firefox, ie, safari, edge</td>
+<td></td>
+<td>chrome</td>
+<td>Set to the brand of browser you want to test under.</td>
+</tr>
+<tr>
+<td>BROWSER_RESOLUTION</td>
+<td>NxN</td>
+<td></td>
+<td>1920x1080</td>
+<td>Used to specify a specific resolution for the browser window.  For example: 1024x768</td>
+</tr>
+<tr>
+<td>BROWSER_X</td>
+<td>Any integer</td>
+<td></td>
+<td>0</td>
+<td>Used to specify the x position for the browser window.</td>
+</tr>
+<tr>
+<td>BROWSER_Y</td>
+<td>Any integer</td>
+<td></td>
+<td>0</td>
+<td>Used to specify the y position for the browser window.</td>
+</tr>
+<tr>
+<td>SAUCE_VERSION</td>
+<td></td>
+<td>When BROWSER_TYPE == remote.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SAUCE_PLATFORM</td>
+<td></td>
+<td>When BROWSER_TYPE == remote.</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>SAUCE_CLIENT_TIMEOUT</td>
+<td>Any integer</td>
+<td></td>
+<td>180</td>
+<td>How long should Sauce Labs API calls be allowed to run?</td>
+</tr>
+</tbody></table>
 </div></div>
 
       <div id="footer">
-  Generated on Tue Nov 28 12:13:15 2017 by
+  Generated on Mon Sep 23 18:05:53 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.11 (ruby-2.4.2).
+  0.9.20 (ruby-2.4.2).
 </div>
 
     </div>

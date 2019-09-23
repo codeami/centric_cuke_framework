@@ -9,10 +9,10 @@ module PageObject
     opts[:current_url] ||= @browser.url
 
     begin
-      self.send(element.to_sym)
+      send(element.to_sym)
     rescue StandardError
       wait_for_ajax
-      self.send(element.to_sym)
+      send(element.to_sym)
     end
 
     wait_for_url_change(opts)
@@ -37,6 +37,7 @@ module PageObject
 
   def wait_for_ajax(timeout = 120, message = nil)
     return wait_for_ajax_using(page_facade_value, timeout, message) if respond_to? :page_facade_value
+
     _wait_for_ajax(timeout, message)
   end
 
@@ -49,16 +50,19 @@ module PageObject
   def _wait_for_ajax(timeout = 120, message = nil)
     sleep 0.5 # Give the browser time to start it's ajax requests
     end_time = ::Time.now + timeout
+    unknown_count = 0
     until ::Time.now > end_time
       begin
         pending = browser.execute_script(::PageObject::JavascriptFrameworkFacade.pending_requests)
       rescue Selenium::WebDriver::Error::UnknownError
-        pending = 1
+        unknown_count += 1
+        pending = unknown_count > 2 ? 0 : 1
       rescue Selenium::WebDriver::Error::NoSuchDriverError
         pending = 0
       end
 
       return if pending.zero?
+
       sleep 0.5
     end
     raise message || 'Timed out waiting for ajax requests to complete'
@@ -74,6 +78,7 @@ module PageObject
       standard_methods(name, identifier, 'select_list_for', &block)
       define_method(name) do
         return platform.select_list_value_for identifier.clone unless block_given?
+
         send("#{name}_element").value
       end
 
@@ -135,15 +140,15 @@ module PageObject
     def depreciated_select_list(name, new_name)
       depreciated_standard_methods(name, new_name)
       define_method(name) do
-        STDERR.puts "Deprecation warning: #{name} is now #{new_name} please update your code."
+        warn "Deprecation warning: #{name} is now #{new_name} please update your code."
         send(new_name.to_s)
       end
       define_method("#{name}=") do |value|
-        STDERR.puts "Deprecation warning: #{name} is now #{new_name} please update your code."
+        warn "Deprecation warning: #{name} is now #{new_name} please update your code."
         send("#{new_name}=", value)
       end
       define_method("#{name}_options") do
-        STDERR.puts "Deprecation warning: #{name} is now #{new_name} please update your code."
+        warn "Deprecation warning: #{name} is now #{new_name} please update your code."
         send("#{new_name}_options")
       end
     end
@@ -156,11 +161,11 @@ module PageObject
     def depreciated_text_field(name, new_name)
       depreciated_standard_methods(name, new_name)
       define_method(name) do
-        STDERR.puts "Deprecation warning: #{name} is now #{new_name} please update your code."
+        warn "Deprecation warning: #{name} is now #{new_name} please update your code."
         send("#{new_name}_element").value
       end
       define_method("#{name}=") do |value|
-        STDERR.puts "Deprecation warning: #{name} is now #{new_name} please update your code."
+        warn "Deprecation warning: #{name} is now #{new_name} please update your code."
         send("#{new_name}_element").value = value
       end
     end
@@ -172,11 +177,11 @@ module PageObject
     #
     def depreciated_standard_methods(name, new_name)
       define_method("#{name}_element") do
-        STDERR.puts "Deprecation warning: #{name} is now #{new_name} please update your code."
+        warn "Deprecation warning: #{name} is now #{new_name} please update your code."
         send("#{new_name}_element")
       end
       define_method("#{name}?") do
-        STDERR.puts "Deprecation warning: #{name} is now #{new_name} please update your code."
+        warn "Deprecation warning: #{name} is now #{new_name} please update your code."
         send("#{new_name}?")
       end
     end
@@ -185,10 +190,12 @@ module PageObject
       standard_methods(name, identifier, 'text_field_for', &block)
       define_method(name) do
         return platform.text_field_value_for identifier.clone unless block_given?
+
         send("#{name}_element").value
       end
       define_method("#{name}=") do |value|
         return platform.text_field_value_set(identifier.clone, value) unless block_given?
+
         send("#{name}_element").value = value
         send("#{name}_element").fire_event 'blur'
       end
@@ -200,7 +207,6 @@ module PageObject
       define_method('page_facade_value') do
         facade
       end
-
     end
   end
 
@@ -214,21 +220,22 @@ module PageObject
     #
     # Create a page object.
     #
-    # @param [PageObject, String]  a class that has included the PageObject module or a string containing the name of the class
-    # @param Hash values that is pass through to page class a
+    # @param page_class [PageObject, String]  a class that has included the PageObject module or a string containing the name of the class
+    # @param params [Hash] values that is pass through to page class a
     # available in the @params instance variable.
-    # @param [Boolean]  a boolean indicating if the page should be visited?  default is false.
-    # @param [block]  an optional block to be called
+    # @param visit [Boolean]  a boolean indicating if the page should be visited?  default is false.
+    # @param block [block]  an optional block to be called
     # @return [PageObject] the newly created page object
     #
-    def on_page(page_class, params={:using_params => {}}, visit=false, &block)
+    def on_page(page_class, params = { using_params: {} }, visit = false, &block)
       page_class = class_from_string(page_class) if page_class.is_a? String
       return super(page_class, params, visit, &block) unless page_class.ancestors.include? PageObject
+
       merged = page_class.params.merge(params[:using_params])
-      page_class.instance_variable_set("@merged_params", merged) unless merged.empty?
+      page_class.instance_variable_set('@merged_params', merged) unless merged.empty?
       @current_page = page_class.new(@browser, visit)
       @current_page.wait_till_loaded if @current_page.respond_to?(:wait_till_loaded)
-      block.call @current_page if block
+      block&.call @current_page
       @current_page
     end
   end

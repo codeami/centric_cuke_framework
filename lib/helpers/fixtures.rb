@@ -43,7 +43,7 @@ module Helpers
     def self.load_fixtures_for(scenario, fixture_folder = Nenv.fixture_root)
       DataMagic.yml_directory = fixture_folder
       fixture_files           = fixture_files_on(scenario)
-      STDERR.puts "Found #{fixture_files.count} fixtures on scenario.  Using #{fixture_files.last}." if fixture_files.count > 1
+      warn "Found #{fixture_files.count} fixtures on scenario.  Using #{fixture_files.last}." if fixture_files.count > 1
       load_fixture(fixture_files.last) if fixture_files.count.positive?
     end
 
@@ -55,7 +55,6 @@ module Helpers
       DataMagic.yml_directory = fixture_folder
       DataMagic.load actual_fixture_path(base_name)
     end
-
 
     # Given a fixture file base name, resolve it's full path
     # this will first look for files using the fixture_file_env magic path

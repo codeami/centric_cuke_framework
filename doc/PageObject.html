@@ -14,6 +14,8 @@
 
   <link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8" />
 
+  <link rel="stylesheet" href="css/cucumber.css" type="text/css" charset="utf-8" />
+
 <script type="text/javascript" charset="utf-8">
   pathId = "PageObject";
   relpath = '';
@@ -23,6 +25,8 @@
   <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
 
   <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="js/cucumber.js"></script>
 
 
   </head>
@@ -45,8 +49,8 @@
 
         <div id="search">
   
-    <a class="full_list_link" id="class_list_link"
-        href="class_list.html">
+    <a class="full_list_link" id="feature_list_link"
+        href="feature_list.html">
 
         <svg width="24" height="24">
           <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
@@ -79,12 +83,17 @@
   
 
   
+  <dl>
+    <dt>Included in:</dt>
+    <dd><span class='object_link'><a href="BasePage.html" title="BasePage (class)">BasePage</a></span>, <span class='object_link'><a href="BaseSection.html" title="BaseSection (class)">BaseSection</a></span></dd>
+  </dl>
+  
 
   
   <dl>
     <dt>Defined in:</dt>
-    <dd>features/support/lib/extensions/page-object/change_page_using.rb<span class="defines">,<br />
-  features/support/lib/extensions/page-object/accessors.rb</span>
+    <dd>lib/extensions/section_parents.rb<span class="defines">,<br />
+  lib/extensions/css_state.rb,<br /> lib/extensions/guidewire_forms.rb,<br /> lib/extensions/guidewire_radios.rb,<br /> lib/extensions/guidewire_controls.rb,<br /> lib/extensions/hookable_accessors.rb,<br /> lib/extensions/guidewire_accessors.rb,<br /> lib/extensions/guidewire_questions.rb,<br /> lib/extensions/guidewire_table_check.rb,<br /> lib/extensions/page_object_extensions.rb,<br /> lib/extensions/guidewire_form_text_controls.rb</span>
 </dd>
   </dl>
   
@@ -92,8 +101,7 @@
 
 <h2>Overview</h2><div class="docstring">
   <div class="discussion">
-    
-<p>PageObject namespace for monkey patching</p>
+    <p>PageObject namespace for monkey patching</p>
 
 
   </div>
@@ -105,15 +113,50 @@
 <p class="children">
   
     
-      <strong class="modules">Modules:</strong> <span class='object_link'><a href="PageObject/Accessors.html" title="PageObject::Accessors (module)">Accessors</a></span>
+      <strong class="modules">Modules:</strong> <span class='object_link'><a href="PageObject/Accessors.html" title="PageObject::Accessors (module)">Accessors</a></span>, <span class='object_link'><a href="PageObject/PageFactory.html" title="PageObject::PageFactory (module)">PageFactory</a></span>, <span class='object_link'><a href="PageObject/Platforms.html" title="PageObject::Platforms (module)">Platforms</a></span>
     
   
+    
+      <strong class="classes">Classes:</strong> <span class='object_link'><a href="PageObject/GWBoundListFloating.html" title="PageObject::GWBoundListFloating (class)">GWBoundListFloating</a></span>, <span class='object_link'><a href="PageObject/GWCheckBox.html" title="PageObject::GWCheckBox (class)">GWCheckBox</a></span>, <span class='object_link'><a href="PageObject/GWDropdown.html" title="PageObject::GWDropdown (class)">GWDropdown</a></span>, <span class='object_link'><a href="PageObject/GWDropdownCell.html" title="PageObject::GWDropdownCell (class)">GWDropdownCell</a></span>, <span class='object_link'><a href="PageObject/GWFormActionableText.html" title="PageObject::GWFormActionableText (class)">GWFormActionableText</a></span>, <span class='object_link'><a href="PageObject/GWFormAutoFillText.html" title="PageObject::GWFormAutoFillText (class)">GWFormAutoFillText</a></span>, <span class='object_link'><a href="PageObject/GWFormChangeTo.html" title="PageObject::GWFormChangeTo (class)">GWFormChangeTo</a></span>, <span class='object_link'><a href="PageObject/GWFormCheckButton.html" title="PageObject::GWFormCheckButton (class)">GWFormCheckButton</a></span>, <span class='object_link'><a href="PageObject/GWFormDate.html" title="PageObject::GWFormDate (class)">GWFormDate</a></span>, <span class='object_link'><a href="PageObject/GWFormField.html" title="PageObject::GWFormField (class)">GWFormField</a></span>, <span class='object_link'><a href="PageObject/GWFormFieldsetHeaderCheck.html" title="PageObject::GWFormFieldsetHeaderCheck (class)">GWFormFieldsetHeaderCheck</a></span>, <span class='object_link'><a href="PageObject/GWFormMultilineText.html" title="PageObject::GWFormMultilineText (class)">GWFormMultilineText</a></span>, <span class='object_link'><a href="PageObject/GWFormRadioButton.html" title="PageObject::GWFormRadioButton (class)">GWFormRadioButton</a></span>, <span class='object_link'><a href="PageObject/GWFormRadioButtonArray.html" title="PageObject::GWFormRadioButtonArray (class)">GWFormRadioButtonArray</a></span>, <span class='object_link'><a href="PageObject/GWFormRadioSet.html" title="PageObject::GWFormRadioSet (class)">GWFormRadioSet</a></span>, <span class='object_link'><a href="PageObject/GWFormSearchableText.html" title="PageObject::GWFormSearchableText (class)">GWFormSearchableText</a></span>, <span class='object_link'><a href="PageObject/GWFormSelectList.html" title="PageObject::GWFormSelectList (class)">GWFormSelectList</a></span>, <span class='object_link'><a href="PageObject/GWFormSet.html" title="PageObject::GWFormSet (class)">GWFormSet</a></span>, <span class='object_link'><a href="PageObject/GWFormText.html" title="PageObject::GWFormText (class)">GWFormText</a></span>, <span class='object_link'><a href="PageObject/GWFormTextDisplay.html" title="PageObject::GWFormTextDisplay (class)">GWFormTextDisplay</a></span>, <span class='object_link'><a href="PageObject/GWFormYNQuestion.html" title="PageObject::GWFormYNQuestion (class)">GWFormYNQuestion</a></span>, <span class='object_link'><a href="PageObject/GWFormsetTab.html" title="PageObject::GWFormsetTab (class)">GWFormsetTab</a></span>, <span class='object_link'><a href="PageObject/GWQuestionSet.html" title="PageObject::GWQuestionSet (class)">GWQuestionSet</a></span>, <span class='object_link'><a href="PageObject/GWQuestionSetQuestion.html" title="PageObject::GWQuestionSetQuestion (class)">GWQuestionSetQuestion</a></span>, <span class='object_link'><a href="PageObject/GWQuestionSetSingleEditQuestion.html" title="PageObject::GWQuestionSetSingleEditQuestion (class)">GWQuestionSetSingleEditQuestion</a></span>, <span class='object_link'><a href="PageObject/GWQuestionSetYNQuestion.html" title="PageObject::GWQuestionSetYNQuestion (class)">GWQuestionSetYNQuestion</a></span>, <span class='object_link'><a href="PageObject/GWRadioButton.html" title="PageObject::GWRadioButton (class)">GWRadioButton</a></span>, <span class='object_link'><a href="PageObject/GWRadioButtonArray.html" title="PageObject::GWRadioButtonArray (class)">GWRadioButtonArray</a></span>, <span class='object_link'><a href="PageObject/GWSelectList.html" title="PageObject::GWSelectList (class)">GWSelectList</a></span>, <span class='object_link'><a href="PageObject/GWTabSet.html" title="PageObject::GWTabSet (class)">GWTabSet</a></span>, <span class='object_link'><a href="PageObject/GWTreeNavItem.html" title="PageObject::GWTreeNavItem (class)">GWTreeNavItem</a></span>, <span class='object_link'><a href="PageObject/GWTreeNavPanel.html" title="PageObject::GWTreeNavPanel (class)">GWTreeNavPanel</a></span>, <span class='object_link'><a href="PageObject/GridView.html" title="PageObject::GridView (class)">GridView</a></span>, <span class='object_link'><a href="PageObject/GuidewireTableCheck.html" title="PageObject::GuidewireTableCheck (class)">GuidewireTableCheck</a></span>
     
   
 </p>
 
 
 
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parent_page-instance_method" title="#parent_page (instance method)">#<strong>parent_page</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Returns the value of attribute parent_page.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
 
 
 
@@ -129,7 +172,141 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#change_page_using-instance_method" title="#change_page_using (instance method)">#<strong>change_page_using</strong>(element, opts)  &#x21d2; Object </a>
+      <a href="#_wait_for_ajax-instance_method" title="#_wait_for_ajax (instance method)">#<strong>_wait_for_ajax</strong>(timeout = 120, message = nil)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>:category: extensions.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#change_page_using-instance_method" title="#change_page_using (instance method)">#<strong>change_page_using</strong>(element, opts = {})  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#fresh_root-instance_method" title="#fresh_root (instance method)">#<strong>fresh_root</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(root, visit = false, parent = nil)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>Construct a new page object.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#parent_browser-instance_method" title="#parent_browser (instance method)">#<strong>parent_browser</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#wait_for_ajax-instance_method" title="#wait_for_ajax (instance method)">#<strong>wait_for_ajax</strong>(timeout = 120, message = nil)  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#wait_for_ajax_using-instance_method" title="#wait_for_ajax_using (instance method)">#<strong>wait_for_ajax_using</strong>(facade, timeout = 120, message = nil)  &#x21d2; Object </a>
     
 
     
@@ -175,15 +352,139 @@
 
 
   
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="parent_page-instance_method">
+  
+    #<strong>parent_page</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the value of attribute parent_page</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+22
+23
+24</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/extensions/section_parents.rb', line 22</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parent_page'>parent_page</span>
+  <span class='ivar'>@parent_page</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
 
   <div id="instance_method_details" class="method_details_list">
     <h2>Instance Method Details</h2>
 
     
       <div class="method_details first">
-  <h3 class="signature first" id="change_page_using-instance_method">
+  <h3 class="signature first" id="_wait_for_ajax-instance_method">
   
-    #<strong>change_page_using</strong>(element, opts)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+    #<strong>_wait_for_ajax</strong>(timeout = 120, message = nil)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>:category: extensions</p>
+
+<p>Wait for ajax calls to complete
+This differs from the stock wait_for_ajax in that it does not blow up while page navigation is occuring</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/extensions/page_object_extensions.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid__wait_for_ajax'>_wait_for_ajax</span><span class='lparen'>(</span><span class='id identifier rubyid_timeout'>timeout</span> <span class='op'>=</span> <span class='int'>120</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_sleep'>sleep</span> <span class='float'>0.5</span> <span class='comment'># Give the browser time to start it&#39;s ajax requests
+</span>  <span class='id identifier rubyid_end_time'>end_time</span> <span class='op'>=</span> <span class='op'>::</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>+</span> <span class='id identifier rubyid_timeout'>timeout</span>
+  <span class='id identifier rubyid_unknown_count'>unknown_count</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='kw'>until</span> <span class='op'>::</span><span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_end_time'>end_time</span>
+    <span class='kw'>begin</span>
+      <span class='id identifier rubyid_pending'>pending</span> <span class='op'>=</span> <span class='id identifier rubyid_browser'>browser</span><span class='period'>.</span><span class='id identifier rubyid_execute_script'>execute_script</span><span class='lparen'>(</span><span class='op'>::</span><span class='const'><span class='object_link'><a href="" title="PageObject (module)">PageObject</a></span></span><span class='op'>::</span><span class='const'>JavascriptFrameworkFacade</span><span class='period'>.</span><span class='id identifier rubyid_pending_requests'>pending_requests</span><span class='rparen'>)</span>
+    <span class='kw'>rescue</span> <span class='const'>Selenium</span><span class='op'>::</span><span class='const'>WebDriver</span><span class='op'>::</span><span class='const'>Error</span><span class='op'>::</span><span class='const'>UnknownError</span>
+      <span class='id identifier rubyid_unknown_count'>unknown_count</span> <span class='op'>+=</span> <span class='int'>1</span>
+      <span class='id identifier rubyid_pending'>pending</span> <span class='op'>=</span> <span class='id identifier rubyid_unknown_count'>unknown_count</span> <span class='op'>&gt;</span> <span class='int'>2</span> <span class='op'>?</span> <span class='int'>0</span> <span class='op'>:</span> <span class='int'>1</span>
+    <span class='kw'>rescue</span> <span class='const'>Selenium</span><span class='op'>::</span><span class='const'>WebDriver</span><span class='op'>::</span><span class='const'>Error</span><span class='op'>::</span><span class='const'>NoSuchDriverError</span>
+      <span class='id identifier rubyid_pending'>pending</span> <span class='op'>=</span> <span class='int'>0</span>
+    <span class='kw'>end</span>
+
+    <span class='kw'>return</span> <span class='kw'>if</span> <span class='id identifier rubyid_pending'>pending</span><span class='period'>.</span><span class='id identifier rubyid_zero?'>zero?</span>
+
+    <span class='id identifier rubyid_sleep'>sleep</span> <span class='float'>0.5</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_message'>message</span> <span class='op'>||</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Timed out waiting for ajax requests to complete</span><span class='tstring_end'>&#39;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="change_page_using-instance_method">
+  
+    #<strong>change_page_using</strong>(element, opts = {})  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -195,19 +496,268 @@
       <pre class="lines">
 
 
-6
-7
 8
 9
-10</pre>
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'features/support/lib/extensions/page-object/change_page_using.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/page_object_extensions.rb', line 8</span>
 
-<span class='kw'>def</span> <span class='id identifier rubyid_change_page_using'>change_page_using</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_change_page_using'>change_page_using</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='id identifier rubyid_opts'>opts</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:current_url</span><span class='rbracket'>]</span> <span class='op'>||=</span> <span class='ivar'>@browser</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span>
-  <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rparen'>)</span>
+
+  <span class='kw'>begin</span>
+    <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rparen'>)</span>
+  <span class='kw'>rescue</span> <span class='const'>StandardError</span>
+    <span class='id identifier rubyid_wait_for_ajax'>wait_for_ajax</span>
+    <span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_to_sym'>to_sym</span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
   <span class='id identifier rubyid_wait_for_url_change'>wait_for_url_change</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="fresh_root-instance_method">
+  
+    #<strong>fresh_root</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+71
+72
+73</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/extensions/page_object_extensions.rb', line 71</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_fresh_root'>fresh_root</span>
+  <span class='ivar'>@browser</span><span class='period'>.</span><span class='id identifier rubyid_element'>element</span><span class='lparen'>(</span><span class='id identifier rubyid_root'><span class='object_link'><a href="top-level-namespace.html" title="Top Level Namespace (root)">root</a></span></span><span class='period'>.</span><span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_instance_variable_get'>instance_variable_get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>@selector</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(root, visit = false, parent = nil)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Construct a new page object.  Prior to browser initialization it will call
+a method named initialize_accessors if it exists. Upon initialization of
+the page it will call a method named initialize_page if it exists.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>root</span>
+      
+      
+        <span class='type'>(<tt>Watir::Browser</tt>, <tt>Watir::HTMLElement</tt>, <tt>Selenium::WebDriver::Driver</tt>, <tt>Selenium::WebDriver::Element</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'><p>the platform browser/element to use</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>visit</span>
+      
+      
+        <span class='type'>(<tt>bool</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>false</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><p>open the page if page_url is set</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>parent</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="PageObject (module)">PageObject</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><ul>
+<li>The parent Page</li>
+</ul>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+15
+16
+17
+18
+19
+20
+21</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/extensions/section_parents.rb', line 15</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_root'><span class='object_link'><a href="top-level-namespace.html" title="Top Level Namespace (root)">root</a></span></span><span class='comma'>,</span> <span class='id identifier rubyid_visit'>visit</span> <span class='op'>=</span> <span class='kw'>false</span><span class='comma'>,</span> <span class='id identifier rubyid_parent'>parent</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='ivar'>@parent_page</span> <span class='op'>=</span> <span class='id identifier rubyid_parent'>parent</span>
+  <span class='id identifier rubyid_initialize_accessors'>initialize_accessors</span> <span class='kw'>if</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:initialize_accessors</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_initialize_browser'>initialize_browser</span><span class='lparen'>(</span><span class='id identifier rubyid_root'><span class='object_link'><a href="top-level-namespace.html" title="Top Level Namespace (root)">root</a></span></span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_goto'>goto</span> <span class='kw'>if</span> <span class='id identifier rubyid_visit'>visit</span> <span class='op'>&amp;&amp;</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_instance_methods'>instance_methods</span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='symbol'>:goto</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_initialize_page'>initialize_page</span> <span class='kw'>if</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span><span class='lparen'>(</span><span class='symbol'>:initialize_page</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="parent_browser-instance_method">
+  
+    #<strong>parent_browser</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/extensions/section_parents.rb', line 24</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_parent_browser'>parent_browser</span>
+  <span class='id identifier rubyid_parent_page'>parent_page</span><span class='op'>&amp;.</span><span class='id identifier rubyid_browser'>browser</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="wait_for_ajax-instance_method">
+  
+    #<strong>wait_for_ajax</strong>(timeout = 120, message = nil)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+38
+39
+40
+41
+42</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/extensions/page_object_extensions.rb', line 38</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_wait_for_ajax'>wait_for_ajax</span><span class='lparen'>(</span><span class='id identifier rubyid_timeout'>timeout</span> <span class='op'>=</span> <span class='int'>120</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='id identifier rubyid_wait_for_ajax_using'>wait_for_ajax_using</span><span class='lparen'>(</span><span class='id identifier rubyid_page_facade_value'>page_facade_value</span><span class='comma'>,</span> <span class='id identifier rubyid_timeout'>timeout</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_respond_to?'>respond_to?</span> <span class='symbol'>:page_facade_value</span>
+
+  <span class='id identifier rubyid__wait_for_ajax'>_wait_for_ajax</span><span class='lparen'>(</span><span class='id identifier rubyid_timeout'>timeout</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="wait_for_ajax_using-instance_method">
+  
+    #<strong>wait_for_ajax_using</strong>(facade, timeout = 120, message = nil)  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+21
+22
+23
+24
+25
+26</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/extensions/page_object_extensions.rb', line 21</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_wait_for_ajax_using'>wait_for_ajax_using</span><span class='lparen'>(</span><span class='id identifier rubyid_facade'>facade</span><span class='comma'>,</span> <span class='id identifier rubyid_timeout'>timeout</span> <span class='op'>=</span> <span class='int'>120</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_cur_facade'>cur_facade</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="" title="PageObject (module)">PageObject</a></span></span><span class='op'>::</span><span class='const'>JavascriptFrameworkFacade</span><span class='period'>.</span><span class='id identifier rubyid_framework'>framework</span>
+  <span class='const'><span class='object_link'><a href="" title="PageObject (module)">PageObject</a></span></span><span class='op'>::</span><span class='const'>JavascriptFrameworkFacade</span><span class='period'>.</span><span class='id identifier rubyid_framework'>framework</span> <span class='op'>=</span> <span class='id identifier rubyid_facade'>facade</span>
+  <span class='id identifier rubyid__wait_for_ajax'>_wait_for_ajax</span><span class='lparen'>(</span><span class='id identifier rubyid_timeout'>timeout</span><span class='comma'>,</span> <span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="" title="PageObject (module)">PageObject</a></span></span><span class='op'>::</span><span class='const'>JavascriptFrameworkFacade</span><span class='period'>.</span><span class='id identifier rubyid_framework'>framework</span> <span class='op'>=</span> <span class='id identifier rubyid_cur_facade'>cur_facade</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -217,7 +767,7 @@
       <div class="method_details ">
   <h3 class="signature " id="wait_for_url_change-instance_method">
   
-    #<strong>wait_for_url_change</strong>(opts)  &#x21d2; <tt><span class='object_link'><a href="Object.html" title="Object (class)">Object</a></span></tt> 
+    #<strong>wait_for_url_change</strong>(opts)  &#x21d2; <tt>Object</tt> 
   
 
   
@@ -229,22 +779,22 @@
       <pre class="lines">
 
 
-12
-13
-14
-15
-16
-17
-18
-19
-20</pre>
+28
+29
+30
+31
+32
+33
+34
+35
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'features/support/lib/extensions/page-object/change_page_using.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/page_object_extensions.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_wait_for_url_change'>wait_for_url_change</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_url_now'>url_now</span> <span class='op'>=</span> <span class='id identifier rubyid_opts'>opts</span><span class='period'>.</span><span class='id identifier rubyid_fetch'>fetch</span><span class='lparen'>(</span><span class='symbol'>:current_url</span><span class='comma'>,</span> <span class='ivar'>@browser</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span><span class='rparen'>)</span>
-  <span class='const'>Watir</span><span class='op'>::</span><span class='const'>Wait</span><span class='period'>.</span><span class='id identifier rubyid_until'>until</span> <span class='lbrace'>{</span> <span class='ivar'>@browser</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span> <span class='op'>!=</span> <span class='id identifier rubyid_url_now'>url_now</span> <span class='rbrace'>}</span>
+  <span class='const'><span class='object_link'><a href="Watir.html" title="Watir (module)">Watir</a></span></span><span class='op'>::</span><span class='const'>Wait</span><span class='period'>.</span><span class='id identifier rubyid_until'>until</span> <span class='lbrace'>{</span> <span class='ivar'>@browser</span><span class='period'>.</span><span class='id identifier rubyid_url'>url</span> <span class='op'>!=</span> <span class='id identifier rubyid_url_now'>url_now</span> <span class='rbrace'>}</span>
   <span class='id identifier rubyid_wait_for_ajax'>wait_for_ajax</span>
   <span class='id identifier rubyid_page'>page</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='id identifier rubyid_page'>page</span> <span class='op'>=</span> <span class='id identifier rubyid_on_page'>on_page</span><span class='lparen'>(</span><span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:target_page</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_to_page_class'>to_page_class</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_opts'>opts</span><span class='lbracket'>[</span><span class='symbol'>:target_page</span><span class='rbracket'>]</span>
@@ -261,9 +811,9 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Nov 28 12:13:15 2017 by
+  Generated on Mon Sep 23 18:05:53 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.9.11 (ruby-2.4.2).
+  0.9.20 (ruby-2.4.2).
 </div>
 
     </div>

@@ -12,6 +12,7 @@ module PageObject
     # This will create
     def _define_default_state(name, states, default_state)
       return if states.key?(default_state)
+
       define_method("#{name}_#{default_state}?") do
         ele = send("#{name}_element")
         states.none? { |_k, v| ele.css_class_match?(v) }
@@ -103,6 +104,7 @@ module Watir
     # @param invert [Boolean] Returns true if the class does NOT exist.
     def css_class_match?(matcher, invert = false)
       return css_class_match?(matcher.values.first, matcher.keys.first == :not) if matcher.is_a?(Hash)
+
       method = matcher.is_a?(Regexp) ? :match? : :include?
       val = class_name.send(method, matcher)
       invert ? !val : val

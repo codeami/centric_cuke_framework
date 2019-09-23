@@ -24,13 +24,14 @@ class Hash
 
   # Add a prefix to all keys in a hash
   def prepend_key!(prefix)
-    return unless self.is_a?(Hash)
-    Hash[self.map { |k, v| ["#{prefix}_#{k}", v] }]
+    return unless is_a?(Hash)
+
+    Hash[map { |k, v| ["#{prefix}_#{k}", v] }]
   end
 
   def cleaned
-    self.delete_if { |_k, v| v.nil? || v.empty? }
-    pass1 = self.each_with_object({}) { |(k, v), h| h[k] = v.to_s.casecmp('true').zero? ? true : v; }
+    delete_if { |_k, v| v.nil? || v.empty? }
+    pass1 = each_with_object({}) { |(k, v), h| h[k] = v.to_s.casecmp('true').zero? ? true : v; }
     pass2 = pass1.each_with_object({}) { |(k, v), h| h[k] = v.to_s.casecmp('false').zero? ? false : v; }
     pass2
   end
