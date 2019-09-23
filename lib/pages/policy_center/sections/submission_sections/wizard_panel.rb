@@ -37,10 +37,10 @@ class WizardPanel < BasePage
     data = data_for(data_for_key.to_s) if data.empty?
     cur_key = current_detail_key
     until cur_key == end_id
-      #binding.pry
+      #binding.pry if  cur_key.to_sym == :wizard_payment_detail_panel
       populate(data)
-      next_page
-      cur_key = current_detail_key
+      next_page unless cur_key.to_sym == :wizard_payment_detail_panel
+      cur_key = cur_key.to_sym == :wizard_payment_detail_panel ? end_id : current_detail_key
     end
   end
 

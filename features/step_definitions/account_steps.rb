@@ -10,6 +10,8 @@ And(/^I add a new product to my new account$/) do
 
   on(SubmissionTabPage) do |page|
     #binding.pry
-    page.wizard_panel.populate_to :forms
+    page.wizard_panel.populate_to :issue
+    binding.pry
+    STDOUT.puts
   end
 end

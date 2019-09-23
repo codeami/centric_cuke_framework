@@ -28,5 +28,7 @@ wizard_panel:
         percentage_owner_occupied: 10% or less
         classifications:
           - classification_sq_ft: 2000
-
-
+  wizard_payment_detail_panel:
+    downpayment_amount: '00'
+    where_should_payment_be_mailed: Directly to Insured
+    issue_policy: false
