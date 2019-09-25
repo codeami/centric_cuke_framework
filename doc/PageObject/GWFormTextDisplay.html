@@ -157,7 +157,8 @@ This mainly exists to prevent triggering the unknown question type logic</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Returns true if we handle this.</p>
+</div></span>
   
 </li>
 
@@ -188,7 +189,8 @@ This mainly exists to prevent triggering the unknown question type logic</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>alias for value.</p>
+</div></span>
   
 </li>
 
@@ -258,7 +260,8 @@ This mainly exists to prevent triggering the unknown question type logic</p>
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Sets the value.</p>
+</div></span>
   
 </li>
 
@@ -280,7 +283,7 @@ This mainly exists to prevent triggering the unknown question type logic</p>
   
 
   
-    <span class="summary_desc"><div class='inline'><p>rubocop:enable Lint/Debugger.</p>
+    <span class="summary_desc"><div class='inline'><p>Returns the value from the display div.</p>
 </div></span>
   
 </li>
@@ -340,12 +343,12 @@ This mainly exists to prevent triggering the unknown question type logic</p>
       <pre class="lines">
 
 
-170
-171
-172</pre>
+187
+188
+189</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 170</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 187</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='symbol'>:form_text_display</span><span class='rparen'>)</span>
@@ -373,7 +376,8 @@ This mainly exists to prevent triggering the unknown question type logic</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p>Returns true if we handle this</p>
+
 
   </div>
 </div>
@@ -399,12 +403,12 @@ This mainly exists to prevent triggering the unknown question type logic</p>
       <pre class="lines">
 
 
-193
-194
-195</pre>
+214
+215
+216</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 193</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 214</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_handle_element?'>handle_element?</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='rparen'>)</span>
   <span class='op'>!</span><span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_class_name'>class_name</span><span class='period'>.</span><span class='id identifier rubyid_include?'>include?</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>g-actionable</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_divs'>divs</span><span class='lparen'>(</span><span class='label'>role:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>textbox</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='op'>==</span> <span class='int'>1</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_links'>links</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span><span class='period'>.</span><span class='id identifier rubyid_zero?'>zero?</span>
@@ -429,18 +433,28 @@ This mainly exists to prevent triggering the unknown question type logic</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>alias for value</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-185
-186
-187</pre>
+204
+205
+206</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 185</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 204</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_answer'>answer</span>
   <span class='id identifier rubyid_value'>value</span>
@@ -475,13 +489,13 @@ This mainly exists to prevent triggering the unknown question type logic</p>
       <pre class="lines">
 
 
-175
-176
-177
-178</pre>
+192
+193
+194
+195</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 175</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 192</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pry'>pry</span>
   <span class='id identifier rubyid_binding'>binding</span><span class='period'>.</span><span class='id identifier rubyid_pry'>pry</span>
@@ -501,18 +515,28 @@ This mainly exists to prevent triggering the unknown question type logic</p>
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sets the value</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-189
-190
-191</pre>
+209
+210
+211</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 189</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 209</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set'>set</span><span class='lparen'>(</span><span class='id identifier rubyid_val'>val</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_warn'>warn</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Warning attempting to set a display only field</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_val'>val</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -533,7 +557,7 @@ This mainly exists to prevent triggering the unknown question type logic</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>rubocop:enable Lint/Debugger</p>
+    <p>Returns the value from the display div</p>
 
 
   </div>
@@ -547,12 +571,12 @@ This mainly exists to prevent triggering the unknown question type logic</p>
       <pre class="lines">
 
 
-181
-182
-183</pre>
+199
+200
+201</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 181</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 199</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_value'>value</span>
   <span class='id identifier rubyid_display_div'>display_div</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>
@@ -567,7 +591,7 @@ This mainly exists to prevent triggering the unknown question type logic</p>
 </div>
 
       <div id="footer">
-  Generated on Mon Sep 23 18:05:55 2019 by
+  Generated on Wed Sep 25 14:11:41 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.20 (ruby-2.4.2).
 </div>

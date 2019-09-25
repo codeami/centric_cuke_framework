@@ -6,6 +6,10 @@ module PageObject
   # set of methods that provide access to the elements on the web pages.
   #
   module Accessors
+
+    # Add a Guidewire dropdown to your model. This custom element knows how to deal with the drop downs
+    #
+    #  This accessor accepts hooks
     def gw_dropdown(name, identifier, &block)
       list_sel = identifier.delete(:list) || { xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-boundlist-floating')]" }
       item_sel = identifier.delete(:items) || { class: 'x-boundlist-item' }
@@ -32,6 +36,9 @@ module PageObject
       end
     end
 
+    # Add a Guidewire dropdown to your model (Variant for dropdowns inside forms). This custom element knows how to deal with the drop downs
+    #
+    #  This accessor accepts hooks
     def gw_form_dropdown(name, identifier, &block)
       list_sel = identifier.delete(:list) || { xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-boundlist-floating')]" }
       item_sel = identifier.delete(:items) || { class: 'x-boundlist-item' }
@@ -54,6 +61,9 @@ module PageObject
       end
     end
 
+    # Add a Guidewire dropdown to your model (Variant for drop downs inside cells). This custom element knows how to deal with the drop downs
+    #
+    #  This accessor accepts hooks
     def gw_dropdown_cell(name, identifier, &block)
       list_sel = identifier.delete(:list) || { xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-boundlist-floating')]" }
       item_sel = identifier.delete(:items) || { class: 'x-boundlist-item' }
@@ -76,6 +86,10 @@ module PageObject
       end
     end
 
+
+    # Add one of the floating lists to your model.  These are the things that show up for menus and select lists
+    #
+    # This accessor accepts hooks
     def gw_bound_list_floating(name, identifier, &block)
       item_sel = identifier.delete(:items) || { class: 'x-boundlist-item' }
       _hooked_methods = hooked_sm_em(name, identifier, 'div_for', "#{name}_po_element", &block)
@@ -97,6 +111,10 @@ module PageObject
       end
     end
 
+    # Add an array of radio buttons to your model
+    #
+    # The identifier for this should be the for the div that contains all the radios.
+    # This accessor accepts hooks
     def gw_radio_array(name, identifier, &block)
       label_sel = identifier.delete(:label) || { class: 'x-form-cb-label' }
       set_class = identifier.delete(:set_class) || 'x-form-cb-checked'
@@ -119,7 +137,10 @@ module PageObject
       end
     end
 
-    # TODO: This is a bit of a hack.  Need to plum this into PageObject
+    # Add a grid to your model
+    #
+    # The identifier for this should be the for the div that contains all the grid and it's controls.
+    # This accessor accepts hooks
     def grid_view(name, item_class, identifier, &block)
       item_sel = identifier.delete(:item_sel) || { class: 'x-grid-data-row' }
       _hooked_methods = hooked_standard_methods(name, identifier, 'div_for', &block)
@@ -133,6 +154,10 @@ module PageObject
       end
     end
 
+    # Add a select list to your model
+    #
+    # The identifier for this should be the for the div that contains all the controls
+    # This accessor accepts hooks
     def gw_select_list(name, identifier = { index: 0 }, &block)
       _hooked_methods = gw_simple_sm(name, identifier, GWSelectList, 'div_for', &block)
       define_method(name) do
@@ -144,6 +169,10 @@ module PageObject
       end
     end
 
+    # Add a select list to your model (table variant)
+    #
+    # The identifier for this should be the for the table that contains all the controls
+    # This accessor accepts hooks
     def gw_table_select_list(name, identifier = { index: 0 }, &block)
       _hooked_methods = gw_simple_sm(name, identifier, GWSelectList, 'table_for', &block)
       define_method(name) do
@@ -155,9 +184,12 @@ module PageObject
       end
     end
 
+    # Add a tab controls to your model
+    #
+    # The identifier for this should be the for the div that contains all the tabs
+    # This accessor accepts hooks
     def gw_tab_set(name, identifier, &block)
       _hooked_methods = hooked_sm_em(name, identifier, 'div_for', "#{name}_po_element", &block)
-      # _hooked_methods = gw_simple_sm(name, identifier, GWTabSet,'div_for', &block)
       define_method(name) do
         send("#{name}_element")
       end
@@ -179,6 +211,10 @@ module PageObject
       end
     end
 
+    # Add support for one of the tree navigation controls to your model
+    #
+    # The identifier for this should be the for the div that contains the entire tree
+    # This accessor accepts hooks
     def gw_tree_nav_panel(name, identifier, &block)
       _hooked_methods = gw_simple_sm(name, identifier, GWTreeNavPanel, 'div_for', &block)
       define_method("#{name}=") do |value|
@@ -186,8 +222,12 @@ module PageObject
       end
     end
 
+    # Define a set of questions, using only the parent div
+    #
+    # The identifier for this should be the for the div that contains the questions
+    # Note: This is not yet safe for use at WRG
+    # This accessor accepts hooks
     def gw_question_set(name, identifier, &block)
-      # _hooked_methods = gw_simple_sm(name, identifier, GWQuestionSet,'div_for', &block)
       _hooked_methods = hooked_sm_em(name, identifier, 'div_for', "#{name}_po_element", &block)
       sel = { class: 'x-grid-row' }
 
@@ -207,6 +247,11 @@ module PageObject
       end
     end
 
+    # Define a form with multiple fields, using only the parent div
+    #
+    # The identifier for this should be the for the div that contains the form
+    # Note: This is not yet safe for use at WRG
+    # This accessor accepts hooks
     def gw_form_set(name, identifier, &block)
       # _hooked_methods = gw_simple_sm(name, identifier, GWQuestionSet,'div_for', &block)
       _hooked_methods = hooked_sm_em(name, identifier, 'table_for', "#{name}_po_element", &block)
@@ -228,6 +273,7 @@ module PageObject
       end
     end
 
+    # Internal helper function to add common methods for the various custom elements
     def gw_simple_sm(name, identifier, control_class, method, &block)
       _hooked_methods = hooked_sm_em(name, identifier, method, "#{name}_po_element", &block)
 

@@ -15,31 +15,37 @@ module PageObject
     end
     # rubocop:enable Lint/Debugger
 
+    # Returns the value from the editor
     def value
       editor.value
     end
 
+    # alias for value
     def answer
       value
     end
 
+    # Set the text field
     def set(val)
       editor.set(val)
       editor.send_keys(:tab)
     end
 
+    # Returns true if we handle this
     def self.handle_element?(element)
       correct_input_count?(element) # && !has_triggers?(element)
     end
 
     private
 
+    # Internal helper
     def editor
       text_field(class: %w[x-form-field x-form-text])
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
       retry
     end
 
+    # Internal helper
     def self.correct_input_count?(element)
       element.text_fields(class: %w[x-form-field x-form-text]).count == 1
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
@@ -60,10 +66,12 @@ module PageObject
     end
     # rubocop:enable Lint/Debugger
 
+    # Returns true if we handle this
     def self.handle_element?(element)
       correct_input_count?(element)
     end
 
+    # Sets the value
     def set(val)
       editor.click
       editor.set(val)
@@ -72,12 +80,14 @@ module PageObject
 
     private
 
+    # Internal helper
     def editor
       text_field(class: %w[x-form-field x-form-text])
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
       retry
     end
 
+    # Internal helper
     def self.correct_input_count?(element)
       element.text_fields(class: %w[x-form-field x-form-text]).count == 1 &&
         element.images(src: /autofill/).count == 1
@@ -101,30 +111,35 @@ module PageObject
     end
     # rubocop:enable Lint/Debugger
 
+    # Gets the value
     def value
       false
     end
 
+    # alias for value
     def answer
       false
     end
 
+    # Sets the value
     def set(_val)
       check.click
     end
 
+    # Returns true if we handle this
     def self.handle_element?(element)
       correct_input_count?(element)
     end
 
     private
-
+    # Internal helper
     def check
       button(index: 0) # TODO: Figure out why we can't see the styles here
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
       retry
     end
 
+    # Internal helper
     def self.correct_input_count?(element)
       element.buttons.count == 1
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
@@ -149,12 +164,14 @@ module PageObject
 
     private
 
+    # Internal helper
     def editor
       textarea(class: %w[x-form-field x-form-text])
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
       retry
     end
 
+    # Internal helper
     def self.correct_input_count?(element)
       element.textareas(class: %w[x-form-field x-form-text]).count == 1
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
@@ -178,24 +195,29 @@ module PageObject
     end
     # rubocop:enable Lint/Debugger
 
+    # Returns the value from the display div
     def value
       display_div.text
     end
 
+    # alias for value
     def answer
       value
     end
 
+    # Sets the value
     def set(val)
       warn 'Warning attempting to set a display only field' unless val.empty?
     end
 
+    # Returns true if we handle this
     def self.handle_element?(element)
       !element.class_name.include?('g-actionable') && element.divs(role: 'textbox').count == 1 && element.links.count.zero?
     end
 
     private
 
+    # Internal helper
     def display_div
       div(role: 'textbox')
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
@@ -208,7 +230,7 @@ module PageObject
   # Handles the rows with have a text field and some sort of actionable button.
   class GWFormActionableText < GWFormField
     attr_reader :question_type
-
+    # init
     def initialize(element)
       super(element, :actionable_text)
     end
@@ -220,25 +242,29 @@ module PageObject
     end
     # rubocop:enable Lint/Debugger
 
+    # Returns the value from the display div
     def value
       display_div.text
     end
 
+    # alias for value
     def answer
       value
     end
 
+    # Sets the value
     def set(_val)
       # TODO: Implement
       raise 'Not yet implemented' unless _val.to_s.empty?
     end
 
+    # Returns true if we handle this
     def self.handle_element?(element)
       element.class_name.include?('g-actionable')
     end
 
     private
-
+    # Internal helper
     def display_div
       div(class: 'x-form-item-body')
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
@@ -250,10 +276,12 @@ module PageObject
 
   # Handles rows which have a single text field that allows for searching
   class GWFormSearchableText < GWFormField
+    # init
     def initialize(element)
       super(element, :form_searchable_text)
     end
 
+    # Not implemented
     def search
       # TODO: Implement
       raise 'Not implmented yet'
@@ -266,32 +294,38 @@ module PageObject
     end
     # rubocop:enable Lint/Debugger
 
+    # Returns the value from the editor
     def value
       editor.value
     end
 
+    # alias for value
     def answer
       value
     end
 
+    # Sets the value
     def set(val)
       editor.click
       editor.set(val)
       editor.send_keys :tab
     end
 
+    # Returns true if we handle this
     def self.handle_element?(element)
       correct_input_count?(element) && element.divs(class: 'x-form-search-trigger').count.positive?
     end
 
     private
 
+    # Internal helper
     def editor
       text_field(class: %w[x-form-field x-form-text])
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
       retry
     end
 
+    # Internal helper
     def self.correct_input_count?(element)
       element.text_fields(class: %w[x-form-field x-form-text]).count == 1
     rescue Selenium::WebDriver::Error::StaleElementReferenceError

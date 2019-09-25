@@ -158,7 +158,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>rubocop:enable Lint/Debugger.</p>
+    <span class="summary_desc"><div class='inline'><p>Returns true if we handle this.</p>
 </div></span>
   
 </li>
@@ -238,7 +238,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Sets the value.</p>
+</div></span>
   
 </li>
 
@@ -308,12 +309,12 @@
       <pre class="lines">
 
 
-52
-53
-54</pre>
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='symbol'>:form_autofill_text</span><span class='rparen'>)</span>
@@ -341,7 +342,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>rubocop:enable Lint/Debugger</p>
+    <p>Returns true if we handle this</p>
 
 
   </div>
@@ -368,12 +369,12 @@
       <pre class="lines">
 
 
-63
-64
-65</pre>
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_handle_element?'>handle_element?</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_correct_input_count?'>correct_input_count?</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='rparen'>)</span>
@@ -414,13 +415,13 @@
       <pre class="lines">
 
 
-57
-58
-59
-60</pre>
+63
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pry'>pry</span>
   <span class='id identifier rubyid_binding'>binding</span><span class='period'>.</span><span class='id identifier rubyid_pry'>pry</span>
@@ -440,20 +441,30 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sets the value</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-67
-68
-69
-70
-71</pre>
+75
+76
+77
+78
+79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 75</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set'>set</span><span class='lparen'>(</span><span class='id identifier rubyid_val'>val</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_editor'>editor</span><span class='period'>.</span><span class='id identifier rubyid_click'>click</span>
@@ -470,7 +481,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Sep 23 18:05:55 2019 by
+  Generated on Wed Sep 25 14:11:41 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.20 (ruby-2.4.2).
 </div>

@@ -147,7 +147,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Returns true if all items matches the string or regex.</p>
+</div></span>
   
 </li>
 
@@ -169,7 +170,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Returns true if any item matches the string or regex.</p>
+</div></span>
   
 </li>
 
@@ -191,7 +193,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Returns the count of the items in the grid.</p>
+</div></span>
   
 </li>
 
@@ -213,7 +216,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Find a single item using a method and a string or regex.</p>
+</div></span>
   
 </li>
 
@@ -235,7 +239,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Find items using a method and a string or regex.</p>
+</div></span>
   
 </li>
 
@@ -259,7 +264,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>A new instance of GridView.</p>
+    <span class="summary_desc"><div class='inline'><p>Newness.</p>
 </div></span>
   
 </li>
@@ -282,7 +287,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Maps all of the item divs into their item class.</p>
+</div></span>
   
 </li>
 
@@ -304,7 +310,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Syntatic sugar for when you know you&#39;re going to trigger a count change This will call your block then block until the count changes.</p>
+</div></span>
   
 </li>
 
@@ -326,7 +333,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Wait until the count changes from some value.</p>
+</div></span>
   
 </li>
 
@@ -348,7 +356,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Block until we have items.</p>
+</div></span>
   
 </li>
 
@@ -370,7 +379,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Block until we don&#39;t have items.</p>
+</div></span>
   
 </li>
 
@@ -393,7 +403,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Returns a new instance of GridView</p>
+    <p>Newness</p>
 
 
   </div>
@@ -407,15 +417,15 @@
       <pre class="lines">
 
 
-254
-255
-256
-257
-258
-259</pre>
+279
+280
+281
+282
+283
+284</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 254</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 279</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='id identifier rubyid_item_class'>item_class</span><span class='comma'>,</span> <span class='id identifier rubyid_item_sel'>item_sel</span><span class='comma'>,</span> <span class='id identifier rubyid_parent'>parent</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='rparen'>)</span>
@@ -446,7 +456,10 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p>Returns true if all items matches the string or regex</p>
+
+<p>all_smiths = grid.all?(:last_name, &#39;Smith&#39;)</p>
+
 
   </div>
 </div>
@@ -472,12 +485,12 @@
       <pre class="lines">
 
 
-318
-319
-320</pre>
+369
+370
+371</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 318</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 369</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_all?'>all?</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_items'>items</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_p'>p</span><span class='op'>|</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Regexp</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span><span class='period'>.</span><span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span> <span class='rbrace'>}</span>
@@ -498,7 +511,10 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p>Returns true if any item matches the string or regex</p>
+
+<p>have_a_smith = grid.any?(:last_name, &#39;Smith&#39;)</p>
+
 
   </div>
 </div>
@@ -524,12 +540,12 @@
       <pre class="lines">
 
 
-314
-315
-316</pre>
+361
+362
+363</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 314</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 361</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_any?'>any?</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_items'>items</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_p'>p</span><span class='op'>|</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Regexp</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span><span class='period'>.</span><span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span> <span class='rbrace'>}</span>
@@ -548,24 +564,34 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the count of the items in the grid</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-261
-262
-263
-264
-265
-266
-267
-268
-269</pre>
+287
+288
+289
+290
+291
+292
+293
+294
+295</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 261</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 287</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_count'>count</span>
   <span class='id identifier rubyid_item_divs'>item_divs</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span>
@@ -590,18 +616,30 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Find a single item using a method and a string or regex</p>
+
+<p>item = grid.find_item(:last_name, &#39;Smith&#39;)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-306
-307
-308</pre>
+345
+346
+347</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 306</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 345</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_item'>find_item</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_items'>items</span><span class='period'>.</span><span class='id identifier rubyid_detect'>detect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_p'>p</span><span class='op'>|</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Regexp</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span><span class='period'>.</span><span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span> <span class='rbrace'>}</span>
@@ -620,18 +658,30 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Find items using a method and a string or regex</p>
+
+<p>items = grid.find_items(:last_name, &#39;Smith&#39;)</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-310
-311
-312</pre>
+353
+354
+355</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 310</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 353</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_find_items'>find_items</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='comma'>,</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_items'>items</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_p'>p</span><span class='op'>|</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Regexp</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span><span class='period'>.</span><span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_p'>p</span><span class='period'>.</span><span class='id identifier rubyid_send'>send</span><span class='lparen'>(</span><span class='id identifier rubyid_method'>method</span><span class='rparen'>)</span> <span class='op'>==</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span> <span class='rbrace'>}</span>
@@ -650,24 +700,34 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Maps all of the item divs into their item class.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-271
-272
-273
-274
-275
-276
-277
-278
-279</pre>
+298
+299
+300
+301
+302
+303
+304
+305
+306</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 271</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 298</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_items'>items</span>
   <span class='id identifier rubyid_item_divs'>item_divs</span><span class='period'>.</span><span class='id identifier rubyid_to_a'>to_a</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_div'>div</span><span class='op'>|</span> <span class='ivar'>@item_class</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_div'>div</span><span class='comma'>,</span> <span class='ivar'>@element</span><span class='comma'>,</span> <span class='ivar'>@parent</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -692,20 +752,33 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Syntatic sugar for when you know you&#39;re going to trigger a count change
+This will call your block then block until the count changes</p>
+
+<p>page.trigger_account_change { some_item.delete}</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-300
-301
-302
-303
-304</pre>
+335
+336
+337
+338
+339</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 300</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 335</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_trigger_count_change'>trigger_count_change</span>
   <span class='id identifier rubyid_last_count'>last_count</span> <span class='op'>=</span> <span class='id identifier rubyid_count'>count</span>
@@ -726,21 +799,31 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Wait until the count changes from some value</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-293
-294
-295
-296
-297
-298</pre>
+323
+324
+325
+326
+327
+328</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 293</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 323</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_wait_for_count_change'>wait_for_count_change</span><span class='lparen'>(</span><span class='id identifier rubyid_last_count'>last_count</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_last_count'>last_count</span> <span class='op'>||=</span> <span class='id identifier rubyid_count'>count</span>
@@ -762,20 +845,30 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Block until we have items</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-281
-282
-283
-284
-285</pre>
+309
+310
+311
+312
+313</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 281</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 309</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_wait_for_items'>wait_for_items</span>
   <span class='const'><span class='object_link'><a href="../Watir.html" title="Watir (module)">Watir</a></span></span><span class='op'>::</span><span class='const'>Wait</span><span class='period'>.</span><span class='id identifier rubyid_until'>until</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_present?'>present?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_count'>count</span><span class='period'>.</span><span class='id identifier rubyid_positive?'>positive?</span> <span class='rbrace'>}</span>
@@ -796,20 +889,30 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Block until we don&#39;t have items</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-287
-288
-289
-290
-291</pre>
+316
+317
+318
+319
+320</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 287</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 316</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_wait_for_no_items'>wait_for_no_items</span>
   <span class='const'><span class='object_link'><a href="../Watir.html" title="Watir (module)">Watir</a></span></span><span class='op'>::</span><span class='const'>Wait</span><span class='period'>.</span><span class='id identifier rubyid_until'>until</span> <span class='lbrace'>{</span> <span class='id identifier rubyid_present?'>present?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_count'>count</span><span class='period'>.</span><span class='id identifier rubyid_zero?'>zero?</span> <span class='rbrace'>}</span>
@@ -826,7 +929,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Sep 23 18:05:54 2019 by
+  Generated on Wed Sep 25 14:11:41 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.20 (ruby-2.4.2).
 </div>

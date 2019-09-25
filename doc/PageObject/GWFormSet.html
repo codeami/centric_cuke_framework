@@ -107,7 +107,22 @@
   
 </div>
 
-<div id="subclasses">
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>This handles sets of form fields within a table layout.</p>
+
+<p>It will parse each row of the table and add the appropriate methods to manipulate them.
+Much like the QuestionSet does. This is the primary consumer of the various form classes.</p>
+
+<p>This is not currently safe for use at WRG</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
   <p class="children"><span class='object_link'><a href="GWFormsetTab.html" title="PageObject::GWFormsetTab (class)">GWFormsetTab</a></span></p>
 </div>
@@ -143,7 +158,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Internal helper function.</p>
+</div></span>
   
 </li>
 
@@ -167,7 +183,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>A new instance of GWFormSet.</p>
+    <span class="summary_desc"><div class='inline'><p>Newness.</p>
 </div></span>
   
 </li>
@@ -247,7 +263,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Returns a new instance of GWFormSet</p>
+    <p>Newness</p>
 
 
   </div>
@@ -261,13 +277,13 @@
       <pre class="lines">
 
 
-7
-8
-9
-10</pre>
+15
+16
+17
+18</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_forms.rb', line 7</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_forms.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='id identifier rubyid_row_selector'>row_selector</span><span class='comma'>,</span> <span class='id identifier rubyid_name'>name</span><span class='comma'>,</span> <span class='id identifier rubyid_parent'>parent</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='id identifier rubyid_row_selector'>row_selector</span><span class='comma'>,</span> <span class='id identifier rubyid_parent'>parent</span><span class='rparen'>)</span>
@@ -294,25 +310,35 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Internal helper function</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21</pre>
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_forms.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_forms.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid__questions'>_questions</span>
   <span class='comment'># divs( @row_selector).map { |r| class_for_row(r) }
@@ -344,12 +370,12 @@
       <pre class="lines">
 
 
-23
-24
-25</pre>
+32
+33
+34</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_forms.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_forms.rb', line 32</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
   <span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span>
@@ -384,13 +410,13 @@
       <pre class="lines">
 
 
-28
-29
-30
-31</pre>
+37
+38
+39
+40</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_forms.rb', line 28</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_forms.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pry'>pry</span>
   <span class='id identifier rubyid_binding'>binding</span><span class='period'>.</span><span class='id identifier rubyid_pry'>pry</span>
@@ -406,7 +432,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Sep 23 18:05:53 2019 by
+  Generated on Wed Sep 25 14:11:40 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.20 (ruby-2.4.2).
 </div>

@@ -156,7 +156,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Returns true if we handle this.</p>
+</div></span>
   
 </li>
 
@@ -187,7 +188,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>alias for value.</p>
+</div></span>
   
 </li>
 
@@ -211,7 +213,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>A new instance of GWFormSearchableText.</p>
+    <span class="summary_desc"><div class='inline'><p>init.</p>
 </div></span>
   
 </li>
@@ -257,7 +259,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Not implemented.</p>
+</div></span>
   
 </li>
 
@@ -279,7 +282,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Sets the value.</p>
+</div></span>
   
 </li>
 
@@ -301,7 +305,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>rubocop:enable Lint/Debugger.</p>
+    <span class="summary_desc"><div class='inline'><p>Returns the value from the editor.</p>
 </div></span>
   
 </li>
@@ -347,7 +351,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Returns a new instance of GWFormSearchableText</p>
+    <p>init</p>
 
 
   </div>
@@ -361,12 +365,12 @@
       <pre class="lines">
 
 
-253
-254
-255</pre>
+280
+281
+282</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 253</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 280</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='symbol'>:form_searchable_text</span><span class='rparen'>)</span>
@@ -394,7 +398,8 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p>Returns true if we handle this</p>
+
 
   </div>
 </div>
@@ -420,12 +425,12 @@
       <pre class="lines">
 
 
-283
-284
-285</pre>
+315
+316
+317</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 283</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 315</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_handle_element?'>handle_element?</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_correct_input_count?'>correct_input_count?</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_element'>element</span><span class='period'>.</span><span class='id identifier rubyid_divs'>divs</span><span class='lparen'>(</span><span class='label'>class:</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>x-form-search-trigger</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span><span class='period'>.</span><span class='id identifier rubyid_positive?'>positive?</span>
@@ -450,18 +455,28 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>alias for value</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-273
-274
-275</pre>
+303
+304
+305</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 273</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 303</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_answer'>answer</span>
   <span class='id identifier rubyid_value'>value</span>
@@ -496,13 +511,13 @@
       <pre class="lines">
 
 
-263
-264
-265
-266</pre>
+291
+292
+293
+294</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 263</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 291</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pry'>pry</span>
   <span class='id identifier rubyid_binding'>binding</span><span class='period'>.</span><span class='id identifier rubyid_pry'>pry</span>
@@ -522,19 +537,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Not implemented</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-257
-258
-259
-260</pre>
+285
+286
+287
+288</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 257</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 285</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_search'>search</span>
   <span class='comment'># TODO: Implement
@@ -554,20 +579,30 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Sets the value</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-277
-278
-279
-280
-281</pre>
+308
+309
+310
+311
+312</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 277</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 308</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_set'>set</span><span class='lparen'>(</span><span class='id identifier rubyid_val'>val</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_editor'>editor</span><span class='period'>.</span><span class='id identifier rubyid_click'>click</span>
@@ -590,7 +625,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>rubocop:enable Lint/Debugger</p>
+    <p>Returns the value from the editor</p>
 
 
   </div>
@@ -604,12 +639,12 @@
       <pre class="lines">
 
 
-269
-270
-271</pre>
+298
+299
+300</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 269</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_form_text_controls.rb', line 298</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_value'>value</span>
   <span class='id identifier rubyid_editor'>editor</span><span class='period'>.</span><span class='id identifier rubyid_value'>value</span>
@@ -624,7 +659,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Sep 23 18:05:55 2019 by
+  Generated on Wed Sep 25 14:11:41 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.20 (ruby-2.4.2).
 </div>

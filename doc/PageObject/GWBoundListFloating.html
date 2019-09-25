@@ -149,7 +149,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'><p>A new instance of GWBoundListFloating.</p>
+    <span class="summary_desc"><div class='inline'><p>More new stuff.</p>
 </div></span>
   
 </li>
@@ -172,7 +172,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Helper function to find all the items in the list.</p>
+</div></span>
   
 </li>
 
@@ -194,7 +195,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Returns the text of all the items.</p>
+</div></span>
   
 </li>
 
@@ -216,7 +218,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Select an item from the list using a string or regex.</p>
+</div></span>
   
 </li>
 
@@ -239,7 +242,7 @@
   
 </h3><div class="docstring">
   <div class="discussion">
-    <p>Returns a new instance of GWBoundListFloating</p>
+    <p>More new stuff</p>
 
 
   </div>
@@ -253,13 +256,13 @@
       <pre class="lines">
 
 
-230
-231
-232
-233</pre>
+251
+252
+253
+254</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 230</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 251</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='comma'>,</span> <span class='id identifier rubyid_item_selector'>item_selector</span><span class='rparen'>)</span>
   <span class='kw'>super</span><span class='lparen'>(</span><span class='id identifier rubyid_element'>element</span><span class='rparen'>)</span>
@@ -286,18 +289,28 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Helper function to find all the items in the list</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-247
-248
-249</pre>
+271
+272
+273</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 247</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 271</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_item_elements'>item_elements</span>
   <span class='id identifier rubyid_elements'>elements</span><span class='lparen'>(</span><span class='ivar'>@item_selector</span><span class='rparen'>)</span>
@@ -316,18 +329,28 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the text of all the items</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-235
-236
-237</pre>
+257
+258
+259</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 235</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 257</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_items'>items</span>
   <span class='id identifier rubyid_item_elements'>item_elements</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:text</span><span class='rparen'>)</span>
@@ -346,22 +369,32 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Select an item from the list using a string or regex</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-239
-240
-241
-242
-243
-244
-245</pre>
+262
+263
+264
+265
+266
+267
+268</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 239</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_controls.rb', line 262</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_select_item'>select_item</span><span class='lparen'>(</span><span class='id identifier rubyid_str_or_regex'>str_or_regex</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_item'>item</span> <span class='op'>=</span> <span class='id identifier rubyid_item_elements'>item_elements</span><span class='period'>.</span><span class='id identifier rubyid_detect'>detect</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_i'>i</span><span class='op'>|</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Regexp</span><span class='rparen'>)</span> <span class='op'>?</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span><span class='period'>.</span><span class='id identifier rubyid_match'>match</span><span class='lparen'>(</span><span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='id identifier rubyid_i'>i</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='op'>==</span> <span class='id identifier rubyid_str_or_regex'>str_or_regex</span> <span class='rbrace'>}</span>
@@ -380,7 +413,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Sep 23 18:05:54 2019 by
+  Generated on Wed Sep 25 14:11:41 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.20 (ruby-2.4.2).
 </div>

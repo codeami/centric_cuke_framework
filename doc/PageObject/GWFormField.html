@@ -107,7 +107,17 @@
   
 </div>
 
-<div id="subclasses">
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>Base class for all from fields</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
   <p class="children"><span class='object_link'><a href="GWFormActionableText.html" title="PageObject::GWFormActionableText (class)">GWFormActionableText</a></span>, <span class='object_link'><a href="GWFormChangeTo.html" title="PageObject::GWFormChangeTo (class)">GWFormChangeTo</a></span>, <span class='object_link'><a href="GWFormCheckButton.html" title="PageObject::GWFormCheckButton (class)">GWFormCheckButton</a></span>, <span class='object_link'><a href="GWFormDate.html" title="PageObject::GWFormDate (class)">GWFormDate</a></span>, <span class='object_link'><a href="GWFormFieldsetHeaderCheck.html" title="PageObject::GWFormFieldsetHeaderCheck (class)">GWFormFieldsetHeaderCheck</a></span>, <span class='object_link'><a href="GWFormRadioSet.html" title="PageObject::GWFormRadioSet (class)">GWFormRadioSet</a></span>, <span class='object_link'><a href="GWFormSearchableText.html" title="PageObject::GWFormSearchableText (class)">GWFormSearchableText</a></span>, <span class='object_link'><a href="GWFormSelectList.html" title="PageObject::GWFormSelectList (class)">GWFormSelectList</a></span>, <span class='object_link'><a href="GWFormText.html" title="PageObject::GWFormText (class)">GWFormText</a></span>, <span class='object_link'><a href="GWFormTextDisplay.html" title="PageObject::GWFormTextDisplay (class)">GWFormTextDisplay</a></span></p>
 </div>
@@ -148,7 +158,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Internal helper function.</p>
+</div></span>
   
 </li>
 
@@ -170,7 +181,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Internal helper function.</p>
+</div></span>
   
 </li>
 
@@ -192,7 +204,8 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>Returns the label text.</p>
+</div></span>
   
 </li>
 
@@ -233,18 +246,28 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Internal helper function</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-105
-106
-107</pre>
+129
+130
+131</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_forms.rb', line 105</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_forms.rb', line 129</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_label_ele'>label_ele</span>
   <span class='ivar'>@label_ele</span> <span class='op'>||=</span> <span class='id identifier rubyid_locate_label'>locate_label</span>
@@ -263,26 +286,36 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Internal helper function</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103</pre>
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_forms.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_forms.rb', line 116</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_locate_label'>locate_label</span>
   <span class='kw'>return</span> <span class='id identifier rubyid_label'>label</span> <span class='kw'>unless</span> <span class='id identifier rubyid_label'>label</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span>
@@ -309,23 +342,33 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    <p>Returns the label text</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-109
-110
-111
-112
-113
-114
-115
-116</pre>
+134
+135
+136
+137
+138
+139
+140
+141</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_forms.rb', line 109</span>
+      <pre class="code"><span class="info file"># File 'lib/extensions/guidewire_forms.rb', line 134</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_text'>text</span>
   <span class='id identifier rubyid_label_ele'>label_ele</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span>
@@ -345,7 +388,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon Sep 23 18:05:53 2019 by
+  Generated on Wed Sep 25 14:11:40 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.20 (ruby-2.4.2).
 </div>
