@@ -21,6 +21,6 @@ module YAML
   # Load a yaml file using ERB so that we can use the include command.
   def self.load_erb(file_name)
     @root = File.dirname(file_name)
-    YAML.safe_load(YAML.include(File.basename(file_name)))
+    YAML.load(YAML.include(File.basename(file_name)))
   end
 end
