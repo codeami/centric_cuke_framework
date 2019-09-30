@@ -60,7 +60,7 @@ class CreateAccountPage < PolicyCenterPage
       populate(data)
     rescue Exception => e
       # rubocop:disable Lint/Debugger
-      binding.pry if Nenv.debug?
+      binding.pry if Nenv.cuke_debug?
       # rubocop:enable Lint/Debugger
       STDOUT.puts "#{e.message} populating create account page"
     end

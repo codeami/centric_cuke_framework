@@ -25,4 +25,4 @@ rescue Exception
   STDOUT.puts 'Warning failed to initialize the world.  This is only OK if in the console!'
 end
 
-PageObject::JavascriptFrameworkFacade.framework = :jquery
+PageObject::JavascriptFrameworkFacade.framework = :ext_js

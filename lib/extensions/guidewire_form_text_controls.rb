@@ -11,7 +11,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
@@ -42,14 +42,20 @@ module PageObject
     def editor
       text_field(class: %w[x-form-field x-form-text])
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     # Internal helper
     def self.correct_input_count?(element)
       element.text_fields(class: %w[x-form-field x-form-text]).count == 1
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
   end
 
@@ -62,7 +68,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
@@ -84,7 +90,10 @@ module PageObject
     def editor
       text_field(class: %w[x-form-field x-form-text])
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     # Internal helper
@@ -92,7 +101,10 @@ module PageObject
       element.text_fields(class: %w[x-form-field x-form-text]).count == 1 &&
         element.images(src: /autofill/).count == 1
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
   end
 
@@ -107,7 +119,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
@@ -136,14 +148,20 @@ module PageObject
     def check
       button(index: 0) # TODO: Figure out why we can't see the styles here
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     # Internal helper
     def self.correct_input_count?(element)
       element.buttons.count == 1
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
   end
 
@@ -158,7 +176,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
@@ -168,14 +186,20 @@ module PageObject
     def editor
       textarea(class: %w[x-form-field x-form-text])
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     # Internal helper
     def self.correct_input_count?(element)
       element.textareas(class: %w[x-form-field x-form-text]).count == 1
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
   end
 
@@ -191,7 +215,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
@@ -221,7 +245,10 @@ module PageObject
     def display_div
       div(role: 'textbox')
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
   end
 
@@ -238,7 +265,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
@@ -268,7 +295,10 @@ module PageObject
     def display_div
       div(class: 'x-form-item-body')
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
   end
 
@@ -290,7 +320,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
@@ -322,14 +352,20 @@ module PageObject
     def editor
       text_field(class: %w[x-form-field x-form-text])
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     # Internal helper
     def self.correct_input_count?(element)
       element.text_fields(class: %w[x-form-field x-form-text]).count == 1
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
   end
 

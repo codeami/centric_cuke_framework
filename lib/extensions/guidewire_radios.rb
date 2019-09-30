@@ -101,7 +101,7 @@ module PageObject
         table.tables.map { |b| GWFormRadioButton.new(b) }
       rescue Exception => e
         # rubocop:disable Lint/Debugger
-        binding.pry if Nenv.debug?
+        binding.pry if Nenv.cuke_debug?
         STDOUT.puts "#{e.message} getting items for form radio button array"
         # rubocop:enable Lint/Debugger
       end

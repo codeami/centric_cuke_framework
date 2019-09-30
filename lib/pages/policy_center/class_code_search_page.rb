@@ -16,7 +16,7 @@ class ClassCodeSearchPage < BasePage
   # rubocop:disable Lint/Debugger
   def pry
     binding.pry
-    STDOUT.puts 'Line for pry' if Nenv.debug?
+    STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
   end
   # rubocop:enable Lint/Debugger
 

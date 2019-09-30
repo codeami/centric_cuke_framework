@@ -31,4 +31,4 @@ wizard_panel:
   wizard_payment_detail_panel:
     downpayment_amount: '00'
     where_should_payment_be_mailed: Directly to Insured
-    issue_policy: false
+    issue_policy: true

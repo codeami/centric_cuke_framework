@@ -13,8 +13,8 @@ And(/^I add a new product to my new account$/) do
   on(SubmissionTabPage) do |page|
     page.wizard_panel.populate_to :issue
     # rubocop:disable Lint/Debugger
-    binding.pry
-    STDOUT.puts 'Line for pry' if Nenv.debug?
+    # binding.pry
+    STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     # rubocop:enable Lint/Debugger
   end
 end

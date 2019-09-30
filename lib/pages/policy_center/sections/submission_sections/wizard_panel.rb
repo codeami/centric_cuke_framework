@@ -63,8 +63,8 @@ class WizardPanel < BasePage
     data = data_for(data_for_key.to_s) if data.empty?
     cur_key = current_detail_key
     until cur_key == end_id
-      # binding.pry if  cur_key.to_sym == :wizard_payment_detail_panel && Nenv.debug?
-      populate(data)
+      # binding.pry if  cur_key.to_sym == :wizard_payment_detail_panel && Nenv.cuke_debug?
+      populate(data) unless data.nil?
       next_page unless cur_key.to_sym == :wizard_payment_detail_panel
       cur_key = cur_key.to_sym == :wizard_payment_detail_panel ? end_id : current_detail_key
     end
@@ -103,9 +103,9 @@ class WizardPanel < BasePage
     rescue Exception => e
       attempts += 1
       # rubocop:disable Lint/Debugger
-      binding.pry if attempts > 3 && Nenv.debug?
+      binding.pry if Nenv.cuke_debug?
       # rubocop:enable Lint/Debugger
-      retry
+      retry unless attempts > 3
     end
     Watir::Wait.until { current_detail_key != last_detail_key || warnings? }
     raise "Could not change wizard page. Messages: #{messages}" if warnings?
@@ -113,7 +113,7 @@ class WizardPanel < BasePage
 
   # Used to safely navigate forward instead of just clicking the button
   def next_page
-    change_page_with(:next_button)
+    change_page_with( next_button? ? :next_button : :quote)
   end
 
   # Used to safely navigate backward instead of just clicking the button
@@ -124,7 +124,7 @@ class WizardPanel < BasePage
   # rubocop:disable Lint/Debugger
   def pry
     binding.pry
-    STDOUT.puts 'Line for pry' if Nenv.debug?
+    STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
   end
   # rubocop:enable Lint/Debugger
 end

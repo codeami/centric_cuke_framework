@@ -7,7 +7,7 @@ end
 
 After do |scenario|
   # rubocop:disable Lint/Debugger
-  binding.pry if scenario.failed? && Nenv.debug?
+  binding.pry if scenario.failed? && Nenv.cuke_debug?
   # rubocop:enable Lint/Debugger
   @browser.close
 end

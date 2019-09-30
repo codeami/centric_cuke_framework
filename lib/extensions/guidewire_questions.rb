@@ -40,7 +40,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
@@ -76,13 +76,19 @@ module PageObject
     def self.correct_input_count?(element)
       element.inputs(class: 'x-form-radio').count == 2
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     def self.correct_labels?(element)
       element.labels.map(&:text).join == 'YesNo'
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
   end
 
@@ -95,7 +101,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
@@ -131,13 +137,19 @@ module PageObject
     def self.correct_input_count?(element)
       element.inputs(class: 'x-form-radio').count == 2
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     def self.correct_labels?(element)
       element.labels.map(&:text).join == 'YesNo'
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
   end
   # GuideWire.question_types[:yes_no] = GWFormYNQuestion
@@ -151,7 +163,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
@@ -189,31 +201,46 @@ module PageObject
     def cell
       td(class: 'g-cell-edit')
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     def editor_div
       div(xpath: "//div[not(contains(@style,'display:none')) and contains(@class,'x-grid-editor')]")
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     def editor
       editor_div.text_field
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     def self.correct_input_count?(element)
       element.inputs(class: 'x-form-radio').count.zero?
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     def self.correct_style?(element)
       element.tds(class: 'g-cell-edit').count == 1
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
   end
 
@@ -273,14 +300,17 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
     def _questions
       trs(@row_selector).map { |r| class_for_row(r) }.delete_if(&:nil?)
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     def questions
@@ -292,7 +322,7 @@ module PageObject
 
       q_class = GuideWire.question_types.values.detect { |q| q.handle_element?(row) }
       # rubocop:disable Lint/Debugger
-      binding.pry unless q_class && Nenv.debug?
+      binding.pry unless q_class && Nenv.cuke_debug?
       # rubocop:enable Lint/Debugger
       warn 'Unknown question type' unless q_class
       q_class&.new(row)

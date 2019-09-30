@@ -31,7 +31,10 @@ module PageObject
         begin
           return GuidewireTableCheck.new(send("#{name}_po_element"))
         rescue Selenium::WebDriver::Error::StaleElementReferenceError
-          retry
+          attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
         end
       end
 

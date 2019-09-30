@@ -20,10 +20,13 @@ module PageObject
           return GWDropdown.new(send("#{name}_po_element"), list_sel, item_sel)
         rescue Selenium::WebDriver::Error::StaleElementReferenceError
           # rubocop:disable Lint/Debugger
-          binding.pry if Nenv.debug?
-          STDOUT.puts 'Line for pry' if Nenv.debug?
+          binding.pry if Nenv.cuke_debug?
+          STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
           # rubocop:enable  Lint/Debugger
-          retry
+          attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
         end
       end
 
@@ -48,7 +51,10 @@ module PageObject
         begin
           return GWDropdown.new(send("#{name}_po_element"), list_sel, item_sel)
         rescue Selenium::WebDriver::Error::StaleElementReferenceError
-          retry
+          attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
         end
       end
 
@@ -73,7 +79,10 @@ module PageObject
         begin
           return GWDropdownCell.new(send("#{name}_po_element"), list_sel, item_sel)
         rescue Selenium::WebDriver::Error::StaleElementReferenceError
-          retry
+          attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
         end
       end
 
@@ -98,7 +107,10 @@ module PageObject
         begin
           return GWBoundListFloating.new(send("#{name}_po_element"), item_sel)
         rescue Selenium::WebDriver::Error::StaleElementReferenceError
-          retry
+          attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
         end
       end
 
@@ -124,7 +136,10 @@ module PageObject
         begin
           return GWRadioButtonArray.new(send("#{name}_po_element"), set_class, label_sel)
         rescue Selenium::WebDriver::Error::StaleElementReferenceError
-          retry
+          attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
         end
       end
 
@@ -149,7 +164,10 @@ module PageObject
         begin
           return GridView.new(send("#{name}_element"), item_class, item_sel, self)
         rescue Selenium::WebDriver::Error::StaleElementReferenceError
-          retry
+          attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
         end
       end
     end
@@ -202,7 +220,10 @@ module PageObject
         begin
           return GWTabSet.new(send("#{name}_po_element"), name)
         rescue Selenium::WebDriver::Error::StaleElementReferenceError
-          retry
+          attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
         end
       end
 
@@ -242,7 +263,10 @@ module PageObject
         begin
           return GWQuestionSet.new(send("#{name}_po_element"), sel, self)
         rescue Selenium::WebDriver::Error::StaleElementReferenceError
-          retry
+          attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
         end
       end
     end
@@ -268,7 +292,10 @@ module PageObject
         begin
           return GWFormSet.new(send("#{name}_po_element"), sel, name, self)
         rescue Selenium::WebDriver::Error::StaleElementReferenceError
-          retry
+          attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
         end
       end
     end
@@ -285,7 +312,10 @@ module PageObject
         begin
           return control_class.new(send("#{name}_po_element"))
         rescue Selenium::WebDriver::Error::StaleElementReferenceError
-          retry
+          attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
         end
       end
       _hooked_methods

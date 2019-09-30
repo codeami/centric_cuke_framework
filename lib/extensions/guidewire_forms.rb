@@ -23,10 +23,10 @@ module PageObject
       trs(role: 'presentation').map { |r| class_for_row(r) }.delete_if(&:nil?)
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
       # rubocop:disable Lint/Debugger
-      binding.pry if Nenv.debug?
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      binding.pry if Nenv.cuke_debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
       # rubocop:enable  Lint/Debugger
-      retry
+      retry unless attempts > 3
     end
 
     def name
@@ -36,7 +36,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
   end
@@ -58,7 +58,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
@@ -135,8 +135,8 @@ module PageObject
       label_ele.text
     rescue Exception => e
       # rubocop:disable Lint/Debugger
-      binding.pry if Nenv.debug?
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      binding.pry if Nenv.cuke_debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
       # rubocop:enable  Lint/Debugger
     end
   end
@@ -153,7 +153,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
@@ -188,7 +188,10 @@ module PageObject
     def display_div
       div(role: 'textbox')
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
   end
 
@@ -204,7 +207,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
@@ -234,7 +237,10 @@ module PageObject
     def control
       @control ||= GWSelectList.new(self) # class: 'x-form-item-body'))
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     # Internal helper function
@@ -242,7 +248,10 @@ module PageObject
       element.text_fields(role: 'combobox').count == 1 &&
         element.divs(class: 'x-form-arrow-trigger', visible: true).count == 1
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
   end
 
@@ -258,7 +267,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
@@ -294,14 +303,20 @@ module PageObject
     def editor
       text_field(class: %w[x-form-field x-form-text])
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     # Internal helper function
     def self.correct_input_count?(element)
       element.text_fields(class: %w[x-form-field x-form-text]).count == 1
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
   end
 
@@ -317,7 +332,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
@@ -352,14 +367,20 @@ module PageObject
     def _checkbox
       button(role: 'checkbox')
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     # Internal helper function
     def self.correct_input_count?(element)
       element.text_fields(class: %w[x-form-field x-form-text]).count == 1
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
   end
 
@@ -380,7 +401,7 @@ module PageObject
     # rubocop:disable Lint/Debugger
     def pry
       binding.pry
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
     end
     # rubocop:enable Lint/Debugger
 
@@ -411,14 +432,20 @@ module PageObject
       @array ||= GWFormRadioButtonArray.new(div(index: 0))
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
       @arry = nil
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     # Internal helper function
     def self.correct_input_count?(element)
       element.buttons(role: 'radio').count > 1
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
   end
 

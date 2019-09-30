@@ -17,6 +17,11 @@ class WizardBuildingsEditDetailPanel < WizardDetailPanel
 
   div(:classification_editor_div, id: 'SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:BP7BuildingScreen:BP7BuildingPanelSet:BuildingsEdit_DP:BP7BuildingDetailCV:BP7BuildingCoveragesPanelSet:ClassificationsListDetail_ref')
 
+  def wait_for_classification_editor
+    Watir::Wait.until { td( id: 'SubmissionWizard:LOBWizardStepGroup:LineWizardStepSet:BP7BuildingScreen:BP7BuildingPanelSet:BuildingsEdit_DP:BP7BuildingDetailCV:BP7BuildingCoveragesPanelSet:ClassificationsListDetail:bp7ClassCode-bodyEl').present? }
+    wait_for_ajax
+  end
+
   # populate the page
   def populate(data)
     wait_for_ajax
@@ -36,7 +41,7 @@ class WizardBuildingsEditDetailPanel < WizardDetailPanel
     div = classification_editor_div_element
     val.each do |c|
       add_classification
-      Watir::Wait.until { classification_editor_div? }
+      wait_for_classification_editor
       ClassificationsEditor.new(div.element, false, self).populate_page_with(c)
     end
   end

@@ -48,7 +48,7 @@ module PageObject
   # This differs from the stock wait_for_ajax in that it does not blow up while page navigation is occuring
   #
   def _wait_for_ajax(timeout = 120, message = nil)
-    sleep 0.5 # Give the browser time to start it's ajax requests
+    sleep 0.25 # Give the browser time to start it's ajax requests
     end_time = ::Time.now + timeout
     unknown_count = 0
     until ::Time.now > end_time
@@ -58,6 +58,7 @@ module PageObject
         unknown_count += 1
         pending = unknown_count > 2 ? 0 : 1
       rescue Selenium::WebDriver::Error::NoSuchDriverError
+        binding.pry
         pending = 0
       end
 
@@ -239,4 +240,18 @@ module PageObject
       @current_page
     end
   end
+
+  module Javascript
+
+    module ExtJs
+      #
+      # return the number of pending ajax requests
+      #
+      def self.pending_requests
+        'return Ext.Ajax.isLoading() ? 1 : 0'
+      end
+    end
+  end
+
+  JavascriptFrameworkFacade.add_framework(:ext_js, ::PageObject::Javascript::ExtJs)
 end

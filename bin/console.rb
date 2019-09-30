@@ -20,5 +20,5 @@ page.north_panel.link_menu.logout_link_element.exists?
 
 # rubocop:disable Lint/Debugger
 binding.pry
-STDOUT.puts 'Line for pry' if Nenv.debug?
+STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
 # rubocop:enable Lint/Debugger

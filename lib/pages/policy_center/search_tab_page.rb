@@ -25,13 +25,20 @@ class SearchTabPage < PolicyCenterPage
   def wait_for_results
     Watir::Wait.until { ps_results_grid? && ps_results_grid_element.divs(class: 'x-grid-item-container').count.positive? }
   rescue Selenium::WebDriver::Error::StaleElementReferenceError
-    retry
+    attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
+
   end
 
   # Return the contents of the list as instances of PolicySearchGridItem
   def policy_search_results
     ps_results_grid_element.divs(class: 'x-grid-item-container').map { |d| PolicySearchGridItem.new(d, false, self) }
   rescue Selenium::WebDriver::Error::StaleElementReferenceError
-    retry
+    attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
   end
 end

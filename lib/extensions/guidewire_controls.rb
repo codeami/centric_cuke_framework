@@ -288,10 +288,13 @@ module PageObject
       item_divs.count
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
       # rubocop:disable Lint/Debugger
-      binding.pry if Nenv.debug?
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      binding.pry if Nenv.cuke_debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
       # rubocop:enable Lint/Debugger
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     # Maps all of the item divs into their item class.
@@ -299,24 +302,33 @@ module PageObject
       item_divs.to_a.map { |div| @item_class.new(div, @element, @parent) }
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
       # rubocop:disable Lint/Debugger
-      binding.pry if Nenv.debug?
-      STDOUT.puts 'Line for pry' if Nenv.debug?
+      binding.pry if Nenv.cuke_debug?
+      STDOUT.puts 'Line for pry' if Nenv.cuke_debug?
       # rubocop:enable Lint/Debugger
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     # Block until we have items
     def wait_for_items
       Watir::Wait.until { present? && count.positive? }
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     # Block until we don't have items
     def wait_for_no_items
       Watir::Wait.until { present? && count.zero? }
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     # Wait until the count changes from some value
@@ -324,7 +336,10 @@ module PageObject
       last_count ||= count
       Watir::Wait.until { present? && count != last_count }
     rescue Selenium::WebDriver::Error::StaleElementReferenceError
-      retry
+      attempts ||= 0
+    attempts += 1
+    binding.pry if Nenv.cuke_debug?
+    retry unless attempts > 3
     end
 
     # Syntatic sugar for when you know you're going to trigger a count change
