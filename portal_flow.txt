@@ -1,0 +1,925 @@
+
+1.Get potential existing
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gateway/account HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 188
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"af1ba577-bff6-4379-937d-260e584a10ea","jsonrpc":"2.0","method":"getPotentialExistingAccounts","params":[{"country":"US","contactType":"company","contactName":"Test Agency JDS #3"}]}
+{"id":"af1ba577-bff6-4379-937d-260e584a10ea","jsonrpc":"2.0","method":"getPotentialExistingAccounts","params":[{"country":"US","contactType":"company","contactName":"Test Agency JDS #3"}]}
+
+2.  Get all organizations
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gateway/organization HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 104
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"9d4049a3-37e7-4525-9b2a-e5698ab01b6f","jsonrpc":"2.0","method":"getAllOrganizations","params":[]}
+
+
+
+3. Search all BP7 classcodes
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gateway/account HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 152
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"565ed6b7-dccb-44e7-bce1-64c13ac1b586","jsonrpc":"2.0","method":"searchBP7ClassCodes","params":[{"effectiveAsOfDate":"2019-09-30T21:07:45.974Z"}]}
+
+
+4. Get producer codes for org
+POST https://t1agency.wrg-ins.com/pc/service/edge/gateway/organization HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 204
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"5e83cebc-50c3-4fc9-a53a-025e14021f3c","jsonrpc":"2.0","method":"getProducerCodeForOrganization","params":[{"publicID":"aprOrg:55","displayName":"TEST AGENCY","code_Ext":"340055","eFTPremium":"n"}]}
+
+
+5. Get hazard codes
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gateway/account HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 138
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"e96c78b1-7dc7-450e-b9ce-fb357fa9ac97","jsonrpc":"2.0","method":"getHazardCodesForBP7Code","params":["ztujelf9tuve8c4el9qnudjd9da"]}
+
+
+6. Address look up (for each address)
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/address/lookup HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 298
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"c16333fb-c654-4244-b1dd-8fecea06cddb","jsonrpc":"2.0","method":"lookupAddressUsingObject","params":[{"addressLine1":"123 Main st","city":"Beech Grove","state":"IN","postalCode":"46107","addressType":"mailing","addressIsPrimaryLocation":false,"country":"US","addressLine2":"address line 2"}]}
+
+
+7. Create account and submission
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 1615
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"df10f713-a89a-4155-9a67-130e2f66840b","jsonrpc":"2.0","method":"createAccountAndSubmission","params":[{"busDesc":"Description of business","accountHolder":{"contactName":"Test Policy JDS #2","primaryAddress":{"addressLine1":"123 MAIN ST","city":"BEECH GROVE","state":"IN","postalCode":"46107","addressType":"mailing","addressIsPrimaryLocation":false,"country":"US","addressVerifyStatusExt":"standardized"},"subtype":"Company","producerCode":"","locationOneAddress":{"addressLine1":"430 DOVERWOOD DR","city":"REYNOLDSBURG","state":"OH","postalCode":"43068","country":"US","addressType":"location","addressVerifyStatusExt":"standardized"}},"producerCodes":[{"publicID":"aprPC:12941","code":"006","agencyCode":"340055","agencyProducerCode":"340055006","description":"Test User","displayValue":"Test User - 006","userName":"Test User","agentBaseState":"OH","$$hashKey":"object:1059"}],"hazardGrades":[{"hazardCodePublicID":"hazCode10000000972","nAICSCode":"531","subSector":"Real Estate","gL7ClassCode":"60010","classification":"Apartment Buildings","propertyHazard":"2","premOpHazard":"2","pCOHazard":"2","autoHazard":"2","wCHazard":"2","legacyDescription":"Apartments, Cooperatives and Condominiums*","bP7ClassCodes":[{"publicID":"ztujelf9tuve8c4el9qnudjd9da","code":"65144","description":"4 Fam or Less, No Office Occup-3/4 Fam-Lessor Risk Only","propertyType":"Apartment"}]}]},{"effectiveDate":"2019-09-30T21:07:46.632Z","producerCode":"006","state":"OH","productCode":"BP7BusinessOwners","country":"US","baseState":"OH","accountOrgType":"llc","accountOrgTypeDesc":null,"busDesc":"Description of business"}]}
+
+8. Update portal step
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 170
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"277c4fa8-831b-4c09-b91e-7d97f9a6075b","jsonrpc":"2.0","method":"updatePortalStep","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a","bp7UWGuidelines"]}
+
+9. Get gudielines
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gateway/account HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 122
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"67cbc43b-e96c-4bf8-9b82-e53ff30fa9a7","jsonrpc":"2.0","method":"getUWGuidelinesAndDetails","params":["0050009489"]}
+
+
+10. update prequal questions
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 278
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"011e7de7-50e8-4c6f-b8dd-76c71b9a2b78","jsonrpc":"2.0","method":"updatePrequalQuestionSets","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a",[{"code":"BP7UWGeneralQuestions","answers":{"BusinessOwned":"true","PastLosses":"false"},"$$hashKey":"object:1699"}]]}
+
+
+
+11. Update portal step
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 167
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"074b9dee-55a8-410f-972d-8a811b899967","jsonrpc":"2.0","method":"updatePortalStep","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a","bp7Offerings"]}
+
+
+12. Update offering
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 163
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"ed76538a-000f-4433-92de-2b6f3807020e","jsonrpc":"2.0","method":"updateOffering","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a","Broadening"]}
+
+13. Update portal step
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 174
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"fe4a64a3-33ae-4ec2-bdf4-38f3011dc328","jsonrpc":"2.0","method":"updatePortalStep","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a","bp7GeneralCoverages"]}
+
+
+
+14. Get LOB coverages
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 151
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"853ae981-30fa-4e96-940f-0be38e5727ea","jsonrpc":"2.0","method":"getLobCoverages","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a"]}
+
+
+15. Validate portal step
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 176
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"e1b331a7-161d-4958-990b-82e4db1b608a","jsonrpc":"2.0","method":"validatePortalStep","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a","bp7GeneralCoverages"]}
+
+
+16. Update portal step
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 177
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"5478eee2-02ae-4a6e-920d-e80d6188760d","jsonrpc":"2.0","method":"updatePortalStep","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a","bp7AdditionalCoverages"]}
+
+
+17. Get bp7
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/bp7coverables HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 158
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"341c3bc0-c1ba-453e-97ef-0b41af9e30ac","jsonrpc":"2.0","method":"getBp7CoverableDetails","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a"]}
+
+
+18. Validate portal step
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 179
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"8254fe60-98a7-4110-bc56-cf7524bdd7e7","jsonrpc":"2.0","method":"validatePortalStep","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a","bp7AdditionalCoverages"]}
+
+
+
+19. Update portal step
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 179
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"7305fa5a-a8ab-4432-ad74-6ad796bbf3e9","jsonrpc":"2.0","method":"updatePortalStep","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a","bp7LocationsAndBuildings"]}
+
+
+
+20. Add building
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/bp7coverables HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 370
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"d14fa137-f929-4f78-bb65-93c1d16e90d0","jsonrpc":"2.0","method":"addBuilding","params":["0000042040","pc:81800",{"effectivenessGradeClass":"NotGraded","effectivenessGrade":"Ungraded","sprinklered":false,"percentOwnerOccupied":"NotApplicable","periodStartYear":2020,"yearBuilt":"2000","constructionType":"FrameConstruction"},"0c95d388-efac-42b8-bfe8-53b79e0ccc4a"]}
+
+
+
+21. Update building coverages
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/bp7coverables HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 785
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"a0ec73fc-daae-42f4-9cea-8aad6d865d8e","jsonrpc":"2.0","method":"updateBuildingCoverages","params":["0000042040","pc:81800",{"effectivenessGradeClass":"NotGraded","effectivenessGrade":"Ungraded","sprinklered":false,"percentOwnerOccupied":"NotApplicable","periodStartYear":2020,"yearBuilt":2000,"constructionType":"FrameConstruction","publicID":"pc:84708","name":" Building","buildingNumber":1,"baseCoverages":[{"name":"Building","updated":true,"terms":[],"selected":true,"required":false,"publicID":"BP7Structure","description":"","coverageCategoryCode":"BP7BuildingStdGrp","coverageCategoryDisplayName":"Building Standard Coverages","portalUserInteraction":false,"hoverOverHelp":false}],"additionalCoverages":[],"earthquakeExists":false},"0c95d388-efac-42b8-bfe8-53b79e0ccc4a"]}
+
+
+
+22. Update UW company
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 151
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"7a3d9fcd-2500-4b92-a1df-e575d6aafa4e","jsonrpc":"2.0","method":"updateUWCompany","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a"]}
+
+
+
+23. Update UW company again
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 151
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"c729d8e3-4827-4cdd-90fd-046ba63707ad","jsonrpc":"2.0","method":"updateUWCompany","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a"]}
+
+
+
+
+24. And again
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 151
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"b604ef53-7a07-47fe-894b-249980c92f79","jsonrpc":"2.0","method":"updateUWCompany","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a"]}
+
+
+
+
+25. Update building coverages
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/bp7coverables HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 780
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"4829d656-3fca-45c9-99ca-cfcedd72039c","jsonrpc":"2.0","method":"updateBuildingCoverages","params":["0000042040","pc:81800",{"effectivenessGradeClass":"NotGraded","effectivenessGrade":"Ungraded","sprinklered":false,"percentOwnerOccupied":"10orless","periodStartYear":2020,"yearBuilt":2000,"constructionType":"FrameConstruction","publicID":"pc:84708","name":" Building","buildingNumber":1,"baseCoverages":[{"name":"Building","updated":true,"terms":[],"selected":true,"required":false,"publicID":"BP7Structure","description":"","coverageCategoryCode":"BP7BuildingStdGrp","coverageCategoryDisplayName":"Building Standard Coverages","portalUserInteraction":false,"hoverOverHelp":false}],"additionalCoverages":[],"earthquakeExists":false},"0c95d388-efac-42b8-bfe8-53b79e0ccc4a"]}
+
+
+
+26.  Update UW company
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 151
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"0d74ab10-7fce-43e9-ac84-3ed94fd98ba1","jsonrpc":"2.0","method":"updateUWCompany","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a"]}
+
+
+
+27. available class codes
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/bp7businessowners HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 116
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"a5c4e74e-a278-4682-af7f-a6893439096f","jsonrpc":"2.0","method":"availableClassCodes","params":["0000042040"]}
+
+
+
+
+28.  update classification
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/bp7coverables HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 370
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"56ea4177-7314-45e9-9116-2d64bcbd7f36","jsonrpc":"2.0","method":"updateClassification","params":["0000042040","pc:81800","pc:84708",{"classCode":{"classCode":"65144","classDescription":"4 Fam or Less, No Office Occup-3/4 Fam-Lessor Risk Only","classPropertyType":"Apartment"},"area":2000,"minExposureVal":1,"exposure":null},"0c95d388-efac-42b8-bfe8-53b79e0ccc4a"]}
+
+
+29.  Update building coverages
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/bp7coverables HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 504
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"fc095fd9-2814-4cc3-80fa-c06611c39476","jsonrpc":"2.0","method":"updateBuildingCoverages","params":["0000042040","pc:81800",{"effectivenessGradeClass":"NotGraded","effectivenessGrade":"Ungraded","sprinklered":false,"percentOwnerOccupied":"10orless","periodStartYear":2020,"yearBuilt":2000,"constructionType":"FrameConstruction","publicID":"pc:84708","name":" Building","buildingNumber":1,"baseCoverages":[],"additionalCoverages":[],"earthquakeExists":false},"0c95d388-efac-42b8-bfe8-53b79e0ccc4a"]}
+
+
+
+
+30.  Update UW company
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 151
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"6996c0b2-5264-4186-847e-00ced7be6fa1","jsonrpc":"2.0","method":"updateUWCompany","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a"]}
+
+
+
+
+31. Set coverage interaction
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gateway/submission HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 161
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"31d1b42c-75ff-48a4-8eef-9dcc9e494b1d","jsonrpc":"2.0","method":"setCoverageInteractionFlag","params":["0000042040","BP7CyberDataCompromiseCoverage",true]}
+
+
+
+
+32. Quote
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 141
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"e5799450-1b4a-4aac-b798-08dbb072c38e","jsonrpc":"2.0","method":"quote","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a"]}
+
+
+33. Update portal step
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 167
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"a45c338f-0605-4819-bee1-f3f9ef86b05c","jsonrpc":"2.0","method":"updatePortalStep","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a","quoteDetails"]}
+
+
+
+34. Generate upload token
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gateway/document HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 104
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"5f78989c-46b0-498d-8801-802162c91014","jsonrpc":"2.0","method":"generateUploadToken","params":[]}
+
+
+
+
+35. Get docs for submission
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gateway/submission HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 122
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"44ee6e12-b09c-4ed2-91c4-88a94d27c29b","jsonrpc":"2.0","method":"getDocumentsForSubmission","params":["0000042040"]}
+
+
+
+36.  Update portal step
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 185
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"a5312b38-0d31-4433-a0e4-3e5754274f2f","jsonrpc":"2.0","method":"updatePortalStep","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a","bp7UWInformationAndApplication"]}
+
+
+
+37.  Get suplimental
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 160
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"b4402212-17c8-4bfe-8773-a17dd773976e","jsonrpc":"2.0","method":"getSupplementalQuestions","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a"]}
+
+
+38.  Validate suplimental
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 65842
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"5aaaf72b-45db-4f62-acf5-73eca0a77930","jsonrpc":"2.0","method":"validateSupplementalQuestions","params":[{"sessionUUID":"0c95d388-efac-42b8-bfe8-53b79e0ccc4a","quoteID":"0000042040","baseData":{"accountNumber":"0050009489","accountHolder":{"publicID":"pc:29648","displayName":"Test Policy JDS #2","contactName":"Test Policy JDS #2","subtype":"Company","primaryAddress":{"publicID":"pc:109611","displayName":"123 MAIN ST, BEECH GROVE, IN 46107","addressLine1":"123 MAIN ST","city":"BEECH GROVE","state":"IN","postalCode":"46107","country":"US","addressType":"mailing","addressVerifyStatusExt":"standardized","addressIsPrimaryLocation":false},"accountHolder":true,"tempId":13},"policyAddress":{"publicID":"pc:109611","displayName":"123 MAIN ST, BEECH GROVE, IN 46107","addressLine1":"123 MAIN ST","city":"BEECH GROVE","state":"IN","postalCode":"46107","country":"US","addressType":"mailing","addressVerifyStatusExt":"standardized","addressIsPrimaryLocation":false},"productCode":"BP7BusinessOwners","productName":"Businessowners","periodStartDate":{"year":2019,"month":8,"day":30},"periodEndDate":{"year":2020,"month":8,"day":30},"preQualQuestionSets":[],"termType":"Annual","periodStatus":"Quoted","uWCompany":{"name":"Lightning Rod Mutual","code":"2"},"producerOfRecord":{"publicID":"aprOrg:55","displayName":"TEST AGENCY","code_Ext":"340055","eFTPremium":"n"},"producerCode":{"publicID":"aprPC:12941","code":"006","agencyCode":"340055","agencyProducerCode":"340055006","description":"Test User","displayValue":"Test User - 006","userName":"Test User","agentBaseState":"OH"},"generalPriorLossesSchedule":{"patternName":"General","displayName":"General Liability/Property Losses in the last 3 years","deserializationClass":"edge.capabilities.policycommon.coverage.schedule.dto.patterns.SimpleScheduledItemDTO","propertyInfos":[{"id":"LossDate","label":"Loss Date","valueType":"DATE","required":true,"editable":true,"order":10,"minCharCount":0,"pastDate":true},{"id":"Description","label":"Description","valueType":"STRING","required":true,"editable":true,"order":20,"minCharCount":0,"maxCharCount":150,"useTextArea":true},{"id":"TotalIncurred","label":"Total Incurred","valueType":"BIGDECIMAL","required":false,"editable":false,"isCurrency":true,"showSubtotal":true,"order":30,"minCharCount":0},{"id":"AmountPaid","label":"Amount Paid","valueType":"BIGDECIMAL","required":false,"editable":true,"isCurrency":true,"showSubtotal":true,"order":40,"minCharCount":0},{"id":"OpenReserve","label":"Open Reserve","valueType":"BIGDECIMAL","required":false,"editable":true,"isCurrency":true,"showSubtotal":true,"order":50,"minCharCount":0},{"id":"Status","label":"Status","valueType":"TYPEKEY","required":true,"editable":true,"availableTypeListValues":[{"code":"Closed","priority":-1,"displayKey":"Closed"},{"code":"Open","priority":-1,"displayKey":"Open"},{"code":"Subrogation","priority":-1,"displayKey":"Subrogation"},{"code":"Unknown","priority":-1,"displayKey":"Unknown"}],"order":60,"minCharCount":0}],"scheduleItems":[],"numOfAddInsuredLabel":"Enter total number of Additional Insureds needed for this endorsement","showInModal":true,"modalTitle":"Loss Details","showSchedule":true},"condominiumPriorLossesSchedule":{"patternName":"Condominium Directors and Officers","displayName":"Condominium Directors & Officers Professional Liability Losses in the last 3 years","deserializationClass":"edge.capabilities.policycommon.coverage.schedule.dto.patterns.SimpleScheduledItemDTO","propertyInfos":[{"id":"LossDate","label":"Loss Date","valueType":"DATE","required":true,"editable":true,"order":10,"minCharCount":0,"pastDate":true},{"id":"Description","label":"Description","valueType":"STRING","required":true,"editable":true,"order":20,"minCharCount":0,"maxCharCount":150,"useTextArea":true},{"id":"TotalIncurred","label":"Total Incurred","valueType":"BIGDECIMAL","required":false,"editable":false,"isCurrency":true,"showSubtotal":true,"order":30,"minCharCount":0},{"id":"AmountPaid","label":"Amount Paid","valueType":"BIGDECIMAL","required":false,"editable":true,"isCurrency":true,"showSubtotal":true,"order":40,"minCharCount":0},{"id":"OpenReserve","label":"Open Reserve","valueType":"BIGDECIMAL","required":false,"editable":true,"isCurrency":true,"showSubtotal":true,"order":50,"minCharCount":0},{"id":"Status","label":"Status","valueType":"TYPEKEY","required":true,"editable":true,"availableTypeListValues":[{"code":"Closed","priority":-1,"displayKey":"Closed"},{"code":"Open","priority":-1,"displayKey":"Open"},{"code":"Subrogation","priority":-1,"displayKey":"Subrogation"},{"code":"Unknown","priority":-1,"displayKey":"Unknown"}],"order":60,"minCharCount":0}],"scheduleItems":[],"numOfAddInsuredLabel":"Enter total number of Additional Insureds needed for this endorsement","showInModal":true,"modalTitle":"Loss Details","showSchedule":true},"funeralPriorLossesSchedule":{"patternName":"Funeral Directors","displayName":"Funeral Directors Professional Liability Losses in the last 3 years","deserializationClass":"edge.capabilities.policycommon.coverage.schedule.dto.patterns.SimpleScheduledItemDTO","propertyInfos":[{"id":"LossDate","label":"Loss Date","valueType":"DATE","required":true,"editable":true,"order":10,"minCharCount":0,"pastDate":true},{"id":"Description","label":"Description","valueType":"STRING","required":true,"editable":true,"order":20,"minCharCount":0,"maxCharCount":150,"useTextArea":true},{"id":"TotalIncurred","label":"Total Incurred","valueType":"BIGDECIMAL","required":false,"editable":false,"isCurrency":true,"showSubtotal":true,"order":30,"minCharCount":0},{"id":"AmountPaid","label":"Amount Paid","valueType":"BIGDECIMAL","required":false,"editable":true,"isCurrency":true,"showSubtotal":true,"order":40,"minCharCount":0},{"id":"OpenReserve","label":"Open Reserve","valueType":"BIGDECIMAL","required":false,"editable":true,"isCurrency":true,"showSubtotal":true,"order":50,"minCharCount":0},{"id":"Status","label":"Status","valueType":"TYPEKEY","required":true,"editable":true,"availableTypeListValues":[{"code":"Closed","priority":-1,"displayKey":"Closed"},{"code":"Open","priority":-1,"displayKey":"Open"},{"code":"Subrogation","priority":-1,"displayKey":"Subrogation"},{"code":"Unknown","priority":-1,"displayKey":"Unknown"}],"order":60,"minCharCount":0}],"scheduleItems":[],"numOfAddInsuredLabel":"Enter total number of Additional Insureds needed for this endorsement","showInModal":true,"modalTitle":"Loss Details","showSchedule":true},"veterinarianPriorLossesSchedule":{"patternName":"Veterinarian","displayName":"Veterinarian Professional Liability Losses in the last 3 years","deserializationClass":"edge.capabilities.policycommon.coverage.schedule.dto.patterns.SimpleScheduledItemDTO","propertyInfos":[{"id":"LossDate","label":"Loss Date","valueType":"DATE","required":true,"editable":true,"order":10,"minCharCount":0,"pastDate":true},{"id":"Description","label":"Description","valueType":"STRING","required":true,"editable":true,"order":20,"minCharCount":0,"maxCharCount":150,"useTextArea":true},{"id":"TotalIncurred","label":"Total Incurred","valueType":"BIGDECIMAL","required":false,"editable":false,"isCurrency":true,"showSubtotal":true,"order":30,"minCharCount":0},{"id":"AmountPaid","label":"Amount Paid","valueType":"BIGDECIMAL","required":false,"editable":true,"isCurrency":true,"showSubtotal":true,"order":40,"minCharCount":0},{"id":"OpenReserve","label":"Open Reserve","valueType":"BIGDECIMAL","required":false,"editable":true,"isCurrency":true,"showSubtotal":true,"order":50,"minCharCount":0},{"id":"Status","label":"Status","valueType":"TYPEKEY","required":true,"editable":true,"availableTypeListValues":[{"code":"Closed","priority":-1,"displayKey":"Closed"},{"code":"Open","priority":-1,"displayKey":"Open"},{"code":"Subrogation","priority":-1,"displayKey":"Subrogation"},{"code":"Unknown","priority":-1,"displayKey":"Unknown"}],"order":60,"minCharCount":0}],"scheduleItems":[],"numOfAddInsuredLabel":"Enter total number of Additional Insureds needed for this endorsement","showInModal":true,"modalTitle":"Loss Details","showSchedule":true},"pharmacistsPriorLossesSchedule":{"patternName":"Pharmacists","displayName":"Pharmacists Professional Liability Losses in the last 3 years","deserializationClass":"edge.capabilities.policycommon.coverage.schedule.dto.patterns.SimpleScheduledItemDTO","propertyInfos":[{"id":"LossDate","label":"Loss Date","valueType":"DATE","required":true,"editable":true,"order":10,"minCharCount":0,"pastDate":true},{"id":"Description","label":"Description","valueType":"STRING","required":true,"editable":true,"order":20,"minCharCount":0,"maxCharCount":150,"useTextArea":true},{"id":"TotalIncurred","label":"Total Incurred","valueType":"BIGDECIMAL","required":false,"editable":false,"isCurrency":true,"showSubtotal":true,"order":30,"minCharCount":0},{"id":"AmountPaid","label":"Amount Paid","valueType":"BIGDECIMAL","required":false,"editable":true,"isCurrency":true,"showSubtotal":true,"order":40,"minCharCount":0},{"id":"OpenReserve","label":"Open Reserve","valueType":"BIGDECIMAL","required":false,"editable":true,"isCurrency":true,"showSubtotal":true,"order":50,"minCharCount":0},{"id":"Status","label":"Status","valueType":"TYPEKEY","required":true,"editable":true,"availableTypeListValues":[{"code":"Closed","priority":-1,"displayKey":"Closed"},{"code":"Open","priority":-1,"displayKey":"Open"},{"code":"Subrogation","priority":-1,"displayKey":"Subrogation"},{"code":"Unknown","priority":-1,"displayKey":"Unknown"}],"order":60,"minCharCount":0}],"scheduleItems":[],"numOfAddInsuredLabel":"Enter total number of Additional Insureds needed for this endorsement","showInModal":true,"modalTitle":"Loss Details","showSchedule":true},"printersErrorsPriorLossesSchedule":{"patternName":"Printers Errors and Omissions","displayName":"Printers Errors & Omissions Professional Liability Losses in the last 3 years","deserializationClass":"edge.capabilities.policycommon.coverage.schedule.dto.patterns.SimpleScheduledItemDTO","propertyInfos":[{"id":"LossDate","label":"Loss Date","valueType":"DATE","required":true,"editable":true,"order":10,"minCharCount":0,"pastDate":true},{"id":"Description","label":"Description","valueType":"STRING","required":true,"editable":true,"order":20,"minCharCount":0,"maxCharCount":150,"useTextArea":true},{"id":"TotalIncurred","label":"Total Incurred","valueType":"BIGDECIMAL","required":false,"editable":false,"isCurrency":true,"showSubtotal":true,"order":30,"minCharCount":0},{"id":"AmountPaid","label":"Amount Paid","valueType":"BIGDECIMAL","required":false,"editable":true,"isCurrency":true,"showSubtotal":true,"order":40,"minCharCount":0},{"id":"OpenReserve","label":"Open Reserve","valueType":"BIGDECIMAL","required":false,"editable":true,"isCurrency":true,"showSubtotal":true,"order":50,"minCharCount":0},{"id":"Status","label":"Status","valueType":"TYPEKEY","required":true,"editable":true,"availableTypeListValues":[{"code":"Closed","priority":-1,"displayKey":"Closed"},{"code":"Open","priority":-1,"displayKey":"Open"},{"code":"Subrogation","priority":-1,"displayKey":"Subrogation"},{"code":"Unknown","priority":-1,"displayKey":"Unknown"}],"order":60,"minCharCount":0}],"scheduleItems":[],"numOfAddInsuredLabel":"Enter total number of Additional Insureds needed for this endorsement","showInModal":true,"modalTitle":"Loss Details","showSchedule":true},"barberShopsPriorLossesSchedule":{"patternName":"Barber Shops and Hair Salons or Beauty Salons","displayName":"Barber Shops & Hair Salons / Beauty Salons Professional Liability Losses in the last 3 years","deserializationClass":"edge.capabilities.policycommon.coverage.schedule.dto.patterns.SimpleScheduledItemDTO","propertyInfos":[{"id":"LossDate","label":"Loss Date","valueType":"DATE","required":true,"editable":true,"order":10,"minCharCount":0,"pastDate":true},{"id":"Description","label":"Description","valueType":"STRING","required":true,"editable":true,"order":20,"minCharCount":0,"maxCharCount":150,"useTextArea":true},{"id":"TotalIncurred","label":"Total Incurred","valueType":"BIGDECIMAL","required":false,"editable":false,"isCurrency":true,"showSubtotal":true,"order":30,"minCharCount":0},{"id":"AmountPaid","label":"Amount Paid","valueType":"BIGDECIMAL","required":false,"editable":true,"isCurrency":true,"showSubtotal":true,"order":40,"minCharCount":0},{"id":"OpenReserve","label":"Open Reserve","valueType":"BIGDECIMAL","required":false,"editable":true,"isCurrency":true,"showSubtotal":true,"order":50,"minCharCount":0},{"id":"Status","label":"Status","valueType":"TYPEKEY","required":true,"editable":true,"availableTypeListValues":[{"code":"Closed","priority":-1,"displayKey":"Closed"},{"code":"Open","priority":-1,"displayKey":"Open"},{"code":"Subrogation","priority":-1,"displayKey":"Subrogation"},{"code":"Unknown","priority":-1,"displayKey":"Unknown"}],"order":60,"minCharCount":0}],"scheduleItems":[],"numOfAddInsuredLabel":"Enter total number of Additional Insureds needed for this endorsement","showInModal":true,"modalTitle":"Loss Details","showSchedule":true},"opticalAndHearingPriorLossesSchedule":{"patternName":"Optical and Hearing Aid Establishments","displayName":"Optical and Hearing Aid Establishments Professional Liability Losses in the last 3 years","deserializationClass":"edge.capabilities.policycommon.coverage.schedule.dto.patterns.SimpleScheduledItemDTO","propertyInfos":[{"id":"LossDate","label":"Loss Date","valueType":"DATE","required":true,"editable":true,"order":10,"minCharCount":0,"pastDate":true},{"id":"Description","label":"Description","valueType":"STRING","required":true,"editable":true,"order":20,"minCharCount":0,"maxCharCount":150,"useTextArea":true},{"id":"TotalIncurred","label":"Total Incurred","valueType":"BIGDECIMAL","required":false,"editable":false,"isCurrency":true,"showSubtotal":true,"order":30,"minCharCount":0},{"id":"AmountPaid","label":"Amount Paid","valueType":"BIGDECIMAL","required":false,"editable":true,"isCurrency":true,"showSubtotal":true,"order":40,"minCharCount":0},{"id":"OpenReserve","label":"Open Reserve","valueType":"BIGDECIMAL","required":false,"editable":true,"isCurrency":true,"showSubtotal":true,"order":50,"minCharCount":0},{"id":"Status","label":"Status","valueType":"TYPEKEY","required":true,"editable":true,"availableTypeListValues":[{"code":"Closed","priority":-1,"displayKey":"Closed"},{"code":"Open","priority":-1,"displayKey":"Open"},{"code":"Subrogation","priority":-1,"displayKey":"Subrogation"},{"code":"Unknown","priority":-1,"displayKey":"Unknown"}],"order":60,"minCharCount":0}],"scheduleItems":[],"numOfAddInsuredLabel":"Enter total number of Additional Insureds needed for this endorsement","showInModal":true,"modalTitle":"Loss Details","showSchedule":true},"portalStepExt":"bp7UWInformationAndApplication"},"lobData":{"bP7BusinessOwners":{"preQualQuestionSets":[{"code":"BP7UWGeneralQuestions","answers":{"BusinessOwned":"true","PastLosses":"false"}}],"supplementalQuestionSets":[{"code":"BP7GeneralQuestions","answers":{"BP7HeatingYear":null,"BP7BankruptcyOrTaxOrCredit":"No","BP7EnterCarrier":null,"BP7TextEx":null,"BP7WiringYear":null,"BP7BuildingAreaOccupied":"Yes","BP7PolicyOrCoverageCancelledOrNonRenewed":"No","BP7RoofYear":null,"BP7MostRecentBldgImprovement":null,"BP7CurrentOrMostRecentCarrier":"Allstate","BP7TypesOfOperations":"No","BP7SingleFamily":"No","BP7SolidFuelStoves":"No","BP7MaintainedContinuousBusiness":"Yes","BP7BusinessConductOperations":"No","BP7ClaimsOrAllegations":"No","BP7PlumbingYear":null,"BP7InternetSales":"No","BP7OperateOrHaveControllingOperationsOrBusiness":"No","BP7PoliciesWithWesternReserve":null,"BP7AnyLosses":"No","BP7ProvidingLoss":null,"BP7TextEx1":null,"BP7TotalLosses":null,"BP7AnyBuildings":null,"BP7HaveaDivingBoard":null,"BP7UnitsOccupied":null,"BP7Swimming":null,"BP7DistanceBetween":null,"BP7StoriesHeight":null,"BP7Detectors":null,"BP7MultiFamilyOccupancy":null,"BP7StudentHousing":null,"BP7ResidentManager":null,"BP7RecreationalFacilities":null},"$$hashKey":"object:3476"},{"code":"BP7Apartments","answers":{"BP7AnyBuildings":"No","BP7HaveaDivingBoard":null,"BP7UnitsOccupied":"Yes","BP7Swimming":null,"BP7DistanceBetween":"No","BP7StoriesHeight":"No","BP7Detectors":"Yes","BP7MultiFamilyOccupancy":"No","BP7StudentHousing":"No","BP7ResidentManager":"Yes","BP7RecreationalFacilities":"No"},"$$hashKey":"object:3477"}],"lineBusinessType":"Apartment","coverables":{"locations":[{"publicID":"pc:81800","buildings":[{"effectivenessGradeClass":"NotGraded","effectivenessGrade":"Ungraded","sprinklered":false,"percentOwnerOccupied":"10orless","periodStartYear":2020,"yearBuilt":2000,"constructionType":"FrameConstruction","publicID":"pc:84708","name":" Building","buildingNumber":1,"baseCoverages":[{"name":"Building","updated":false,"terms":[{"type":"DirectCovTerm","name":"Limit","patternCode":"BP7BuildingLimit","options":[],"chosenTerm":"150000.0000","chosenTermValue":"150,000","directValue":150000,"isAscendingBetter":true,"valueType":"Money","required":true,"numbersOnly":true,"editable":true,"minVal":1,"maxVal":999999999,"minCharCount":0},{"type":"OptionBP7RatingBasisType","name":"Valuation","patternCode":"BP7RatingBasis","options":[{"name":"Replacement Cost","code":"zajg0oob2i6ti14181pmdhe33k8","optionValue":2,"maxValue":5},{"name":"Actual Cash Value","code":"z1cgkk9hnoke9cft7mv4e1g19k8","optionValue":3,"maxValue":5}],"chosenTerm":"zajg0oob2i6ti14181pmdhe33k8","chosenTermValue":"Replacement Cost","isAscendingBetter":true,"required":true,"editable":true,"minCharCount":0},{"type":"OptionBP7AutomaticIncreasePct1Type","name":"Automatic Increase Percentage","patternCode":"BP7AutomaticIncreasePct1","options":[{"name":"2%","code":"zh6jad95lulp53di4u0idbad9k9","optionValue":0,"maxValue":5},{"name":"4%","code":"zsijuaqab6jknap1p7tnbbdekg9","optionValue":1,"maxValue":5},{"name":"6%","code":"z8lgmm0og1e5jb867j7vldro6cb","optionValue":1,"maxValue":5},{"name":"8%","code":"zjajk9b7v51s449otum2eootgba","optionValue":2,"maxValue":5},{"name":"10%","code":"zcuhaaav09h1lb7s78i2u1vuh79","optionValue":2,"maxValue":5},{"name":"12%","code":"z28hi0eqd2qdic5fooij9i8rsu8","optionValue":3,"maxValue":5},{"name":"14%","code":"zmvi64q1v6t9mci4us59lp34908","optionValue":3,"maxValue":5},{"name":"16%","code":"zk2j2n7vlq8p5e12sslrcdr9em9","optionValue":3,"maxValue":5},{"name":"18%","code":"z79h80at7mb7854ulur4nssr0g8","optionValue":4,"maxValue":5},{"name":"20%","code":"zo1jogo0oodlc67f6i92rffpiu9","optionValue":4,"maxValue":5},{"name":"22%","code":"zo8jehrcc5achcoudmfcsjfg3n9","optionValue":5,"maxValue":5},{"name":"24%","code":"zndi61sf9n8en5e9h1it154cbm9","optionValue":5,"maxValue":5}],"chosenTerm":"zsijuaqab6jknap1p7tnbbdekg9","chosenTermValue":"4%","isAscendingBetter":true,"required":true,"editable":true,"minCharCount":0},{"chosenTerm":"10orless","chosenTermValue":"10% or less","extForceRadioOptions":false,"isAscendingBetter":true,"name":"Percentage Owner Occupied","options":[{"code":"10orless","name":"10% or less","maxValue":"0","optionValue":"0"},{"code":"Over10","name":"Over 10%","maxValue":"0","optionValue":"0"}],"patternCode":"PercentOccupied_notPMTerm","required":true,"updated":false}],"selected":true,"required":false,"publicID":"BP7Structure","description":"","coverageCategoryCode":"BP7BuildingStdGrp","coverageCategoryDisplayName":"Building Standard Coverages","portalUserInteraction":false,"hoverOverHelp":false},{"name":"Business Personal Property","updated":false,"terms":[{"type":"OptionBP7TotalBPPLimitAtThisBuildingType","name":"Total BPP Limit at this Building","patternCode":"BP7TotalBPPLimitAtThisBuilding","options":[{"name":"Coverage Not Added","code":"z8sicvkedht4t0t4r3q977h2669","optionValue":5,"maxValue":5}],"chosenTerm":"z8sicvkedht4t0t4r3q977h2669","chosenTermValue":"Coverage Not Added","isAscendingBetter":true,"required":true,"editable":false,"minCharCount":0}],"selected":true,"required":true,"publicID":"BP7BuildingBusinessPersonalProperty","description":"","coverageCategoryCode":"BP7BuildingStdGrp","coverageCategoryDisplayName":"Building Standard Coverages","portalUserInteraction":false,"hoverOverHelp":false,"bPPCustomMessage":"(BPP is added/modified under Classifications)"},{"name":"BP 10 03 - Earthquake","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7Earthquake","description":"","coverageCategoryCode":"BP7BuildingStdGrp","coverageCategoryDisplayName":"Building Standard Coverages","portalUserInteraction":false,"hoverOverHelp":false}],"additionalCoverages":[{"name":"Mortgageholders","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7Mortgageholders","description":"","coverageCategoryCode":"BP7MortgageholdersGrp","coverageCategoryDisplayName":"Mortgageholders","portalUserInteraction":false,"hoverOverHelp":false},{"name":"BP 04 46 - Ordinance or Law","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7OrdinanceOrLawCov","description":"","coverageCategoryCode":"BP7BuildingAddlGrp","coverageCategoryDisplayName":"Building Additional Coverages","portalUserInteraction":false,"hoverOverHelp":false},{"name":"BP 12 03 - Loss Payable Clauses","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7LossPayable","description":"","coverageCategoryCode":"BP7BuildingAddlGrp","coverageCategoryDisplayName":"Building Additional Coverages","portalUserInteraction":false,"hoverOverHelp":false},{"name":"WBP 76 - Utility Services - Direct Damage - For Building","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7UtilitySrvcsDirectDamageForBuilding","description":"","coverageCategoryCode":"BP7BuildingAddlGrp","coverageCategoryDisplayName":"Building Additional Coverages","portalUserInteraction":false,"hoverOverHelp":false}],"classifications":[{"publicID":"pc:94250","name":" 4 Fam or Less, No Office Occup-3/4 Fam-Lessor Risk Only","classificationNumber":1,"classCode":{"classCode":"65144","classDescription":"4 Fam or Less, No Office Occup-3/4 Fam-Lessor Risk Only","classPropertyType":"Apartment"},"area":2000,"exposureBasis":"LimitofInsurance","isExposureApplicable":false,"baseCoverages":[{"name":"Business Personal Property","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7ClassificationBusinessPersonalProperty","description":"","coverageCategoryCode":"BP7ClassificationStdGrp","coverageCategoryDisplayName":"Classification Standard Coverages","portalUserInteraction":false,"hoverOverHelp":false},{"name":"Swimming Pool","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7ClassificationSwimmingPool","description":"","coverageCategoryCode":"BP7ClassificationStdGrp","coverageCategoryDisplayName":"Classification Standard Coverages","portalUserInteraction":false,"hoverOverHelp":false}],"additionalCoverages":[{"name":"BP 04 15 - Spoilage Coverage","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7SpoilgCov","description":"","coverageCategoryCode":"BP7ClassificationAddlGrp","coverageCategoryDisplayName":"Classification Additional Coverages","portalUserInteraction":false,"hoverOverHelp":false},{"name":"WBP 76 - Utility Services - Direct Damage - For Business Personal Property","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7UtilitySrvcsDirectDamage","description":"","coverageCategoryCode":"BP7ClassificationAddlGrp","coverageCategoryDisplayName":"Classification Additional Coverages","portalUserInteraction":false,"hoverOverHelp":false},{"name":"WBP 77 - Utility Services - Time Element","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7UtilitySrvcsTimeElement","description":"","coverageCategoryCode":"BP7ClassificationAddlGrp","coverageCategoryDisplayName":"Classification Additional Coverages","portalUserInteraction":false,"hoverOverHelp":false}],"alcoholSales":false,"alcoholSalesRequired":false,"annualGrossAlcoholSalesRequired":false,"annualGrossAlcoholSalesVisible":false,"annualGrossAlcoholSalesPercentage":"","annualGrossAlcoholSalesPercentageVisible":false,"isTotalCondominiumBuildingSquareFootageVisible":false}],"earthquakeExists":false}],"address":{"addressLine1":"430 DOVERWOOD DR","city":"REYNOLDSBURG","state":"OH","postalCode":"43068","country":"US","addressIsPrimaryLocation":true},"displayName":" 430 DOVERWOOD DR, REYNOLDSBURG, OH 43068","availableFireProtectionValues":["4"],"fireProtection":"4","isPrimary":true,"locationNumber":1,"feetToHydrant":"1000orless","baseCoverages":[{"name":"Money and Securities","updated":false,"terms":[{"type":"DirectCovTerm","name":"On-Premises Limit","patternCode":"BP7OnPremisesLimit","options":[],"chosenTerm":"5000.0000","chosenTermValue":"5,000","directValue":5000,"isAscendingBetter":true,"valueType":"Money","required":true,"numbersOnly":true,"editable":true,"minVal":5000,"maxVal":999999999,"minCharCount":0},{"type":"DirectCovTerm","name":"Off-Premises Limit","patternCode":"BP7OffPremisesLimit","options":[],"chosenTerm":"5000.0000","chosenTermValue":"5,000","directValue":5000,"isAscendingBetter":true,"valueType":"Money","required":true,"numbersOnly":true,"editable":true,"minVal":5000,"maxVal":999999999,"minCharCount":0}],"selected":true,"required":true,"publicID":"BP7LocationMoneySecurities","description":"","coverageCategoryCode":"BP7LocationStdGrp","coverageCategoryDisplayName":"Location Standard Coverages","portalUserInteraction":false,"hoverOverHelp":false},{"name":"Outdoor Signs","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7LocationOutdoorSigns","description":"","coverageCategoryCode":"BP7LocationStdGrp","coverageCategoryDisplayName":"Location Standard Coverages","portalUserInteraction":false,"hoverOverHelp":false}],"additionalCoverages":[{"name":"BP 04 02 - Additional Insured - Managers or Lessors of Premises","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7AddlInsdManagersLessorsPremises","description":"","coverageCategoryCode":"BP7LocationAddlInsuredGrp","coverageCategoryDisplayName":"Location Additional Insured Coverages","portalUserInteraction":false,"hoverOverHelp":false},{"name":"BP 04 16 - Additional Insured - Lessor of Leased Equipment","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7AddlInsdLessorsLeasedEquipmt","description":"","coverageCategoryCode":"BP7LocationAddlInsuredGrp","coverageCategoryDisplayName":"Location Additional Insured Coverages","portalUserInteraction":false,"hoverOverHelp":false},{"name":"BP 04 53 - Water Back-Up and Sump Overflow","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7WaterBackUpAndSumpOverflowLocation","description":"","coverageCategoryCode":"BP7LocationAddlGrp","coverageCategoryDisplayName":"Location Additional Coverages","portalUserInteraction":false,"hoverOverHelp":false},{"name":"BP 07 75 - Apartment Buildings","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7ApartmentBuildings","description":"","coverageCategoryCode":"BP7LocationAddlGrp","coverageCategoryDisplayName":"Location Additional Coverages","portalUserInteraction":false,"hoverOverHelp":false},{"name":"BP 07 76 - Apartment Buildings - Loss or Damage to Tenants' Autos (Legal Liability Coverage)","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7LocApartmentBuildingsTenantsAutos","description":"","coverageCategoryCode":"BP7LocationAddlGrp","coverageCategoryDisplayName":"Location Additional Coverages","portalUserInteraction":false,"hoverOverHelp":false},{"name":"BP 07 77 - Fine Arts Coverage","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7FineArts","description":"","coverageCategoryCode":"BP7LocationAddlGrp","coverageCategoryDisplayName":"Location Additional Coverages","portalUserInteraction":false,"hoverOverHelp":false}],"fireProtectionRequired":true}]},"coverages":{"lobCoverages":[{"name":"WBP 01 - Businessowners Broadening Endorsement","updated":false,"terms":[],"selected":true,"required":true,"publicID":"BusinessownersBroadeningEndorsement","description":"","coverageCategoryCode":"BP7LineStdGrp","coverageCategoryDisplayName":"Line Standard Coverages","portalUserInteraction":false,"hoverOverHelp":false},{"name":"Business Liability","updated":false,"terms":[{"type":"OptionBP7EachOccLimitType","name":"Each Occurrence Limit","patternCode":"BP7EachOccLimit","options":[{"name":"300,000","code":"z64iofe7m4cm80jpfmsv3lat9q8","optionValue":1,"maxValue":5},{"name":"500,000","code":"zliich8ghp0fp59et4gr4gcp3s8","optionValue":3,"maxValue":5},{"name":"1,000,000","code":"zeohmj46dc23e5oj5gmqb3cka48","optionValue":4,"maxValue":5},{"name":"2,000,000","code":"z34ha83utvlkkb40ku7qvhb375b","optionValue":5,"maxValue":5}],"chosenTerm":"zeohmj46dc23e5oj5gmqb3cka48","chosenTermValue":"1,000,000","isAscendingBetter":true,"required":true,"editable":true,"extForceRadioOptions":false,"extHideOnPortal":false,"minCharCount":0},{"type":"OptionBP7OptionalMedicalCovLimitPerPersonType","name":"Medical Expenses - Per Person Limit","patternCode":"BP7OptionalMedicalCovLimitPerPerson","options":[{"name":"1,000","code":"z9himd3ith0jq1lso1o6u8qk9g8","optionValue":2,"maxValue":5},{"name":"5,000","code":"zdbh6sikdo97g2eu4fhjjd1vno9","optionValue":3,"maxValue":5},{"name":"10,000","code":"zhdi0jn19jlps9pef5daqvoatjb","optionValue":5,"maxValue":5}],"chosenTerm":"zdbh6sikdo97g2eu4fhjjd1vno9","chosenTermValue":"5,000","isAscendingBetter":true,"required":true,"editable":true,"extForceRadioOptions":false,"extHideOnPortal":false,"minCharCount":0},{"type":"DirectCovTerm","name":"Damage To Premises Rented To You","patternCode":"BP7TenantsFireLiabLimit","options":[{"name":"<none>"}],"chosenTerm":"50000.0000","chosenTermValue":"50,000","directValue":50000,"isAscendingBetter":true,"valueType":"Money","required":false,"numbersOnly":true,"editable":false,"minVal":0,"maxVal":2000000,"extForceRadioOptions":false,"extHideOnPortal":false,"minCharCount":0},{"type":"OptionBP7AggregateLimitType","name":"General Aggregate Limit","patternCode":"BP7AggregateLimit","options":[{"name":"2,000,000","code":"z8kjgbrmsl0acaukriaifkufkia","optionValue":5,"maxValue":5}],"chosenTerm":"z8kjgbrmsl0acaukriaifkufkia","chosenTermValue":"2,000,000","isAscendingBetter":true,"required":true,"editable":false,"extForceRadioOptions":false,"extHideOnPortal":false,"minCharCount":0},{"type":"OptionBP7ProdCompldOpsAggregateLimitType","name":"Products/Completed Ops. Aggregate Limit","patternCode":"BP7ProdCompldOpsAggregateLimit","options":[{"name":"2,000,000","code":"z1lg6rue9mmgm893m73e0qignmb","optionValue":2,"maxValue":5},{"name":"3,000,000","code":"zb1h8fjot3pj8asn9lqbeua420a","optionValue":3,"maxValue":5}],"chosenTerm":"z1lg6rue9mmgm893m73e0qignmb","chosenTermValue":"2,000,000","isAscendingBetter":true,"required":true,"readOnly":true,"editable":false,"extForceRadioOptions":false,"extHideOnPortal":false,"minCharCount":0}],"selected":true,"required":true,"publicID":"BP7BusinessLiability","description":"","coverageCategoryCode":"BP7LineStdGrp","coverageCategoryDisplayName":"Line Standard Coverages","portalUserInteraction":false,"hoverOverHelp":false},{"name":"BP 04 04 - Hired Auto and Non-Owned Auto Liability","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7HiredNonOwnedAuto","description":"","coverageCategoryCode":"BP7LineAddlGrp","coverageCategoryDisplayName":"Line Additional Coverages","portalUserInteraction":false,"portalDisplayNotes":"Do not select BP 04 04 when applicant has a Business Auto Policy or employees' autos are used for delivery under time constraints.","hoverOverHelp":false},{"name":"Employee Dishonesty","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7EmployeeDishty","description":"","coverageCategoryCode":"BP7LineStdGrp","coverageCategoryDisplayName":"Line Standard Coverages","portalUserInteraction":false,"hoverOverHelp":false},{"name":"Forgery or Alteration","updated":false,"terms":[{"type":"OptionBP7Limit7Type","name":"Limit","patternCode":"BP7Limit7","options":[{"name":"2,500","code":"z7tgobhk28a1g63jmdtt8de7dtb","optionValue":5,"maxValue":5}],"chosenTerm":"z7tgobhk28a1g63jmdtt8de7dtb","chosenTermValue":"2,500","isAscendingBetter":true,"required":true,"editable":false,"extForceRadioOptions":false,"extHideOnPortal":false,"minCharCount":0}],"selected":true,"required":true,"publicID":"BP7ForgeryAlteration","description":"","coverageCategoryCode":"BP7LineStdGrp","coverageCategoryDisplayName":"Line Standard Coverages","portalUserInteraction":false,"hoverOverHelp":false},{"name":"WIL 60 - Cyber - Data Compromise Coverage","updated":false,"terms":[{"type":"OptionBP7Limit55Type","name":"Limit","patternCode":"BP7Limit55","options":[{"name":"50,000","code":"z88hqlj3qnaq3e5gqqlgqcfn599","optionValue":3,"maxValue":5},{"name":"100,000","code":"z7dgevfjh9o9i8coqeom787vev9","optionValue":5,"maxValue":5}],"chosenTerm":"z88hqlj3qnaq3e5gqqlgqcfn599","chosenTermValue":"50,000","isAscendingBetter":true,"required":true,"editable":true,"extForceRadioOptions":false,"extHideOnPortal":false,"minCharCount":0},{"type":"OptionBP7RetentionType","name":"Retention","patternCode":"BP7Retention","options":[{"name":"2,500","code":"z5hjenuto8r4f63na2ue7j1m3d8","optionValue":5,"maxValue":5}],"chosenTerm":"z5hjenuto8r4f63na2ue7j1m3d8","chosenTermValue":"2,500","isAscendingBetter":true,"required":true,"editable":false,"extForceRadioOptions":false,"extHideOnPortal":true,"minCharCount":0}],"selected":true,"required":false,"publicID":"BP7CyberDataCompromiseCoverage","description":"","coverageCategoryCode":"BP7LineDefaultsGrp","coverageCategoryDisplayName":"Line Defaults","portalUserInteraction":false,"hoverOverHelp":false},{"name":"WBP 07 - Employers Liability (Stop Gap) Coverage - Ohio","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7StopGap","description":"","coverageCategoryCode":"BP7LineDefaultsGrp","coverageCategoryDisplayName":"Line Defaults","portalUserInteraction":false,"hoverOverHelp":false},{"name":"Property Deductibles","updated":false,"terms":[{"name":"Deductible","patternCode":"BP7OptionalDeductible","options":[{"name":"500","code":"zash8sm3oqhie5g1181tdbohcfa","optionValue":1,"maxValue":5},{"name":"1,000","code":"z7jjqe0fugf0n313diaq1ndtb59","optionValue":2,"maxValue":5},{"name":"2,500","code":"z3pgicg9t4fk09am69gupgu9h39","optionValue":3,"maxValue":5},{"name":"5,000","code":"zbcgiu5o2raopfgeiq8jmii6jtb","optionValue":4,"maxValue":5},{"name":"7,500","code":"z67iiuisa9sud23hg7444phl108","optionValue":4,"maxValue":5},{"name":"10,000","code":"z3hg0rhqla81odah2sjbd4v6i4a","optionValue":5,"maxValue":5}],"chosenTerm":"zash8sm3oqhie5g1181tdbohcfa","chosenTermValue":"500","isAscendingBetter":true,"required":false,"minCharCount":0}],"selected":true,"required":true,"publicID":"BP7LocationPropertyDeductibles_FAKE","description":"","coverageCategoryCode":"BP7LocationDefaultsGrp","coverageCategoryDisplayName":"Location Defaults","portalUserInteraction":false}],"additionalCoverages":[{"name":"BP 05 47 - Computer Fraud and Funds Transfer Fraud","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7AddlnCovComputerFraudFundsTransferFraud","description":"","coverageCategoryCode":"BP7LineAddlGrp","coverageCategoryDisplayName":"Line Additional Coverages","hasTerms":true,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":13673},{"name":"BP 04 41 - Business Income Changes - Time Period","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7BusnIncomeChangesTimePeriod","description":"","coverageCategoryCode":"BP7LineAddlGrp","coverageCategoryDisplayName":"Line Additional Coverages","hasTerms":false,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":10944},{"name":"WBP 67 - Care, Custody or Control Coverage","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7CareCustodyorControlCoverage","description":"","coverageCategoryCode":"BP7LineAddlGrp","coverageCategoryDisplayName":"Line Additional Coverages","hasTerms":false,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":14773},{"name":"BP 17 02 - Condominium Commercial Unit-Owners Coverage","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7CondoCommlUnitOwnersCov","description":"","coverageCategoryCode":"BP7LineAddlGrp","coverageCategoryDisplayName":"Line Additional Coverages","hasTerms":false,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":10946},{"name":"BP 14 18 - Designated Construction Project(s) General Aggregate Limit","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7DesignatedConstructionProjectsGeneralAggLimit","description":"","coverageCategoryCode":"BP7LineAddlGrp","coverageCategoryDisplayName":"Line Additional Coverages","hasTerms":true,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":13223},{"name":"BP 04 98 - Employee Benefits Liability Coverage","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7EmpBenefitsLiabCov","description":"","coverageCategoryCode":"BP7LineAddlGrp","coverageCategoryDisplayName":"Line Additional Coverages","hasTerms":true,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":10952},{"name":"BP 14 01 - Identity Fraud Expense Coverage","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7IDFraudExpenseCov","description":"","coverageCategoryCode":"BP7LineAddlGrp","coverageCategoryDisplayName":"Line Additional Coverages","hasTerms":true,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":10956},{"name":"BP 14 88 - Primary and Noncontributory - Other Insurance Condition","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7PrimaryAndNoncontributoryOtherInsuranceCond","description":"","coverageCategoryCode":"BP7LineAddlGrp","coverageCategoryDisplayName":"Line Additional Coverages","hasTerms":false,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":10945},{"name":"BP 14 16 - Snow Plow Products - Completed Operations Hazard Coverage","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7SnowPlowProdsCompldOpsHzdCov","description":"","coverageCategoryCode":"BP7LineAddlGrp","coverageCategoryDisplayName":"Line Additional Coverages","hasTerms":true,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":10972},{"name":"WBP 68 - Knowledge of Occurrence","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7KnowledgeofOccurence","description":"","coverageCategoryCode":"BP7LineCondGrp","coverageCategoryDisplayName":"Line Conditions","hasTerms":false,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Condition","unavailable":false,"priority":990},{"name":"BP 04 97 - Waiver of Transfer of Rights of Recovery Against Others to Us","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7WaiverTransferRightsOfRecoveryAgainstOthersToUs","description":"","coverageCategoryCode":"BP7LineCondGrp","coverageCategoryDisplayName":"Line Conditions","hasTerms":false,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Condition","unavailable":false,"priority":20}],"additionalInsuredCoverages":[{"name":"BP 04 48 - Additional Insured - Designated Person or Organization","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7AddlInsdDesignatedPersonOrg","description":"","coverageCategoryCode":"BP7LineAddlInsuredGrp","coverageCategoryDisplayName":"Line Additional Insured Coverages","hasTerms":false,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":10926},{"name":"BP 04 13 - Additional Insured - Engineers, Architects or Surveyors","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7AddlInsdEngineersArchitectsSurveyors","description":"","coverageCategoryCode":"BP7LineAddlInsuredGrp","coverageCategoryDisplayName":"Line Additional Insured Coverages","hasTerms":false,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":10931},{"name":"BP 04 49 - Additional Insured - Engineers, Architects or Surveyors not Engaged by the Named Insured","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7AddlInsdEngineersArchitectsSurveyorsNotEngagedB","description":"","coverageCategoryCode":"BP7LineAddlInsuredGrp","coverageCategoryDisplayName":"Line Additional Insured Coverages","hasTerms":false,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":10932},{"name":"BP 14 87 - Additional Insured - Owners, Lessees or Contractors - with Additional Insured Requirement for Other Parties in Construction Contract","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7AddlInsdOwnersLesseesContractorsAddlInsdReqForO","description":"Use BP 14 87 to provide automatic additional insured status to any person or organization when the Insured contractor has agreed in writing in a contract to include them, or any other party or organization, as additional insureds. Additional insured status applies only to the ongoing operations performed by the named insured contractor (refer to endorsement). This form is designed to be used when the Insured is a contractor.","coverageCategoryCode":"BP7LineAddlInsuredGrp","coverageCategoryDisplayName":"Line Additional Insured Coverages","hasTerms":true,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":true,"clauseType":"Coverage","unavailable":false,"priority":10970},{"name":"BP 04 51 - Additional Insured - Owners, Lessees or Contractors - with Additional Insured Requirement in Construction Contract","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7AddlInsdOwnersLesseesContractorsAddlInsdRequire","description":"","coverageCategoryCode":"BP7LineAddlInsuredGrp","coverageCategoryDisplayName":"Line Additional Insured Coverages","hasTerms":true,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":10933},{"name":"BP 14 02 - Additional Insured - Owners, Lessees or Contractors - Completed Operations (Blanket)","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7AddlInsdOwnersLesseesOrContrctrsCompldOpsBlanket","description":"","coverageCategoryCode":"BP7LineAddlInsuredGrp","coverageCategoryDisplayName":"Line Additional Insured Coverages","hasTerms":true,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":12573},{"name":"BP 14 02 - Additional Insured - Owners, Lessees or Contractors - Completed Operations (Scheduled)","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7AddlInsdOwnersLesseesOrContrctrsCompldOpsScheduled","description":"","coverageCategoryCode":"BP7LineAddlInsuredGrp","coverageCategoryDisplayName":"Line Additional Insured Coverages","hasTerms":false,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":12773},{"name":"BP 04 07 - Additional Insured - State or Governmental Agency or Subdivision or Political Subdivision - Permits or Authorizations Relating to Premises","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7AddlInsdStatePoliticalSubdivisions","description":"Use BP 04 07 to schedule a state or political subdivision when additional insured status is required as a condition of issuing a permit. Additional insured status applies only to certain premises hazards (refer to endorsement). This form is designed to be used when the Insured is the premises owner or lessee.","coverageCategoryCode":"BP7LineAddlInsuredGrp","coverageCategoryDisplayName":"Line Additional Insured Coverages","hasTerms":false,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":true,"clauseType":"Coverage","unavailable":false,"priority":10935},{"name":"BP 04 52 - Additional Insured - State or Governmental Agency or Subdivision or Political Subdivision - Permits or Authorizations","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7AddlInsdStatePoliticalSubdivisionsPermits","description":"Use BP 04 52 to schedule a state or political subdivision when additional insured status is required as a condition of issuing a permit. Additional insured status applies only to the operations performed by or on behalf of the named insured contractor (refer to endorsement). This form is designed to be used when the Insured is a contractor.","coverageCategoryCode":"BP7LineAddlInsuredGrp","coverageCategoryDisplayName":"Line Additional Insured Coverages","hasTerms":false,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":true,"clauseType":"Coverage","unavailable":false,"priority":10936},{"name":"BP 04 47 - Additional Insured - Vendors","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7AddlInsdVendors","description":"","coverageCategoryCode":"BP7LineAddlInsuredGrp","coverageCategoryDisplayName":"Line Additional Insured Coverages","hasTerms":false,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":10938},{"name":"BP 04 50 - Additional Insured - Owners, Lessees or Contractors - Scheduled Person or Organization","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7LineAddlInsOwnrsLesseesContrsPersnOrg","description":"","coverageCategoryCode":"BP7LineAddlInsuredGrp","coverageCategoryDisplayName":"Line Additional Insured Coverages","hasTerms":false,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":12173},{"name":"BP 14 05 - Additional Insured - Grantor of Franchise","updated":false,"terms":[],"selected":false,"required":false,"publicID":"BP7LineAddlInsuredGrantorOfFranchise","description":"","coverageCategoryCode":"BP7LineAddlInsuredGrp","coverageCategoryDisplayName":"Line Additional Insured Coverages","hasTerms":true,"isValid":true,"portalUserInteraction":false,"hoverOverHelp":false,"clauseType":"Coverage","unavailable":false,"priority":11973}]},"offerings":["Broadening","Enhancement","Advantage"],"offering":"Broadening","offeringCoverageTexts":[{"coverage":"Civil Authority (Business Income)","offeringTexts":[{"offering":"Advantage","coverage":"Civil Authority (Business Income)","details":"24 hour waiting period"},{"offering":"Broadening","coverage":"Civil Authority (Business Income)","details":"48 hour waiting period"},{"offering":"Enhancement","coverage":"Civil Authority (Business Income)","details":"24 hour waiting period"}]},{"coverage":"Reward Payment","offeringTexts":[{"offering":"Enhancement","coverage":"Reward Payment"},{"offering":"Broadening","coverage":"Reward Payment"},{"offering":"Advantage","coverage":"Reward Payment","details":"$5,000"}]},{"coverage":"Inventory and Appraisals","offeringTexts":[{"offering":"Broadening","coverage":"Inventory and Appraisals"},{"offering":"Advantage","coverage":"Inventory and Appraisals","details":"$10,000"},{"offering":"Enhancement","coverage":"Inventory and Appraisals","details":"$10,000"}]},{"coverage":"Pollutant Clean-up and Removal (per policy period)","offeringTexts":[{"offering":"Advantage","coverage":"Pollutant Clean-up and Removal (per policy period)","details":"$25,000"},{"offering":"Enhancement","coverage":"Pollutant Clean-up and Removal (per policy period)","details":"$10,000"},{"offering":"Broadening","coverage":"Pollutant Clean-up and Removal (per policy period)","details":"$10,000"}]},{"coverage":"Computer Fraud And Funds Transfer Fraud","offeringTexts":[{"offering":"Enhancement","coverage":"Computer Fraud And Funds Transfer Fraud"},{"offering":"Advantage","coverage":"Computer Fraud And Funds Transfer Fraud","details":"$25,000"},{"offering":"Broadening","coverage":"Computer Fraud And Funds Transfer Fraud"}]},{"coverage":"Vacancy Standard","offeringTexts":[{"offering":"Enhancement","coverage":"Vacancy Standard","details":"Vacant unless at least 11% or more of bldg is occupied"},{"offering":"Broadening","coverage":"Vacancy Standard","details":"Vacant unless at least 31% or more of bldg is occupied"},{"offering":"Advantage","coverage":"Vacancy Standard","details":"Vacant unless at least 11% or more of bldg is occupied"}]},{"coverage":"Lock Replacement","offeringTexts":[{"offering":"Broadening","coverage":"Lock Replacement"},{"offering":"Enhancement","coverage":"Lock Replacement","details":"$2,500"},{"offering":"Advantage","coverage":"Lock Replacement","details":"$5,000"}]},{"coverage":"Credit Card Invoices","offeringTexts":[{"offering":"Broadening","coverage":"Credit Card Invoices"},{"offering":"Enhancement","coverage":"Credit Card Invoices","details":"$1,000"},{"offering":"Advantage","coverage":"Credit Card Invoices","details":"$5,000"}]},{"coverage":"Debris Removal","offeringTexts":[{"offering":"Advantage","coverage":"Debris Removal","details":"25% plus $25,000"},{"offering":"Broadening","coverage":"Debris Removal","details":"25% plus $25,000"},{"offering":"Enhancement","coverage":"Debris Removal","details":"25% plus $25,000"}]},{"coverage":"Personal Property Off-premises / In Transit","offeringTexts":[{"offering":"Enhancement","coverage":"Personal Property Off-premises / In Transit","details":"$15,000"},{"offering":"Advantage","coverage":"Personal Property Off-premises / In Transit","details":"$15,000"},{"offering":"Broadening","coverage":"Personal Property Off-premises / In Transit","details":"$10,000"}]},{"coverage":"Extended Business Income – ALS","offeringTexts":[{"offering":"Broadening","coverage":"Extended Business Income – ALS","details":"Up to 60 days*<br/>\n(after operations resumed)"},{"offering":"Advantage","coverage":"Extended Business Income – ALS","details":"Up to 60 days*<br/>\n(after operations resumed)"},{"offering":"Enhancement","coverage":"Extended Business Income – ALS","details":"Up to 60 days*<br/>\n(after operations resumed)"}]},{"coverage":"Fine Arts","offeringTexts":[{"offering":"Advantage","coverage":"Fine Arts","details":"$10,000"},{"offering":"Enhancement","coverage":"Fine Arts"},{"offering":"Broadening","coverage":"Fine Arts"}]},{"coverage":"Brands and Labels","offeringTexts":[{"offering":"Advantage","coverage":"Brands and Labels","details":"Included"},{"offering":"Enhancement","coverage":"Brands and Labels","details":"Included"},{"offering":"Broadening","coverage":"Brands and Labels"}]},{"coverage":"Fire Extinguisher Systems Recharge Expense","offeringTexts":[{"offering":"Broadening","coverage":"Fire Extinguisher Systems Recharge Expense","details":"$5,000"},{"offering":"Advantage","coverage":"Fire Extinguisher Systems Recharge Expense","details":"$10,000"},{"offering":"Enhancement","coverage":"Fire Extinguisher Systems Recharge Expense","details":"$7,500"}]},{"coverage":"Business Personal Property Limit - Seasonal Increase","offeringTexts":[{"offering":"Advantage","coverage":"Business Personal Property Limit - Seasonal Increase","details":"25%"},{"offering":"Enhancement","coverage":"Business Personal Property Limit - Seasonal Increase","details":"25%"},{"offering":"Broadening","coverage":"Business Personal Property Limit - Seasonal Increase","details":"25%"}]},{"coverage":"Money Orders and Counterfeit Money","offeringTexts":[{"offering":"Enhancement","coverage":"Money Orders and Counterfeit Money","details":"$1,000"},{"offering":"Advantage","coverage":"Money Orders and Counterfeit Money","details":"$1,000"},{"offering":"Broadening","coverage":"Money Orders and Counterfeit Money","details":"$1,000"}]},{"coverage":"Forgery or Alteration* (limit must = Emp. Dshty limit)","offeringTexts":[{"offering":"Enhancement","coverage":"Forgery or Alteration* (limit must = Emp. Dshty limit)","details":"$2,500"},{"offering":"Broadening","coverage":"Forgery or Alteration* (limit must = Emp. Dshty limit)","details":"$2,500"},{"offering":"Advantage","coverage":"Forgery or Alteration* (limit must = Emp. Dshty limit)","details":"$25,000"}]},{"coverage":"Valuable Papers and Records","offeringTexts":[{"offering":"Broadening","coverage":"Valuable Papers and Records","details":"$10,000 On-Premises*<br/>\n$5,000 Off-Premises"},{"offering":"Enhancement","coverage":"Valuable Papers and Records","details":"$15,000 On-Premises*<br/>\n$7,500 Off-Premises"},{"offering":"Advantage","coverage":"Valuable Papers and Records","details":"$25,000 On-Premises*<br/>\n$25,000 Off-Premises"}]},{"coverage":"Spoilage (subject to $500 ded. and RMA condition)","offeringTexts":[{"offering":"Advantage","coverage":"Spoilage (subject to $500 ded. and RMA condition)","details":"$10,000"},{"offering":"Enhancement","coverage":"Spoilage (subject to $500 ded. and RMA condition)","details":"$5,000"},{"offering":"Broadening","coverage":"Spoilage (subject to $500 ded. and RMA condition)"}]},{"coverage":"Business Income from Dependent Properties","offeringTexts":[{"offering":"Broadening","coverage":"Business Income from Dependent Properties","details":"$5,000*<br/>\n(48 hour waiting period)"},{"offering":"Enhancement","coverage":"Business Income from Dependent Properties","details":"$5,000*<br/>\n(24 hour waiting period)"},{"offering":"Advantage","coverage":"Business Income from Dependent Properties","details":"$5,000*<br/>\n(24 hour waiting period)"}]},{"coverage":"Ordinance or Law<br/>\n&nbsp;Loss to the Undamaged Portion of Building<br/>\n&nbsp;Demolition Cost Coverage*<br/>\n&nbsp;Increased Cost of Construction Coverage*","offeringTexts":[{"offering":"Broadening","coverage":"Ordinance or Law<br/>\n&nbsp;Loss to the Undamaged Portion of Building<br/>\n&nbsp;Demolition Cost Coverage*<br/>\n&nbsp;Increased Cost of Construction Coverage*","details":"<br/>\n-<br/>\n-<br/>\n$10,000"},{"offering":"Advantage","coverage":"Ordinance or Law<br/>\n&nbsp;Loss to the Undamaged Portion of Building<br/>\n&nbsp;Demolition Cost Coverage*<br/>\n&nbsp;Increased Cost of Construction Coverage*","details":"<br/>\nBuilding Limit<br/>\n$25,000<br/>\n$25,000"},{"offering":"Enhancement","coverage":"Ordinance or Law<br/>\n&nbsp;Loss to the Undamaged Portion of Building<br/>\n&nbsp;Demolition Cost Coverage*<br/>\n&nbsp;Increased Cost of Construction Coverage*","details":"<br/>\nBuilding Limit<br/>\n$10,000<br/>\n$10,000"}]},{"coverage":"Employee Dishonesty","offeringTexts":[{"offering":"Broadening","coverage":"Employee Dishonesty"},{"offering":"Advantage","coverage":"Employee Dishonesty","details":"$25,000<br/>\n(includes ERISA)"},{"offering":"Enhancement","coverage":"Employee Dishonesty"}]},{"coverage":"Equipment Breakdown","offeringTexts":[{"offering":"Enhancement","coverage":"Equipment Breakdown","details":"Included"},{"offering":"Broadening","coverage":"Equipment Breakdown","details":"Included"},{"offering":"Advantage","coverage":"Equipment Breakdown","details":"Included"}]},{"coverage":"Utility Services – Direct Damage<br/>\n&nbsp;Includes Water Supply, Communication Supply,<br/>\n&nbsp;and Power Supply Properties.","offeringTexts":[{"offering":"Enhancement","coverage":"Utility Services – Direct Damage<br/>\n&nbsp;Includes Water Supply, Communication Supply,<br/>\n&nbsp;and Power Supply Properties.","details":"$10,000<br/>\nOverhead Transmission Lines –<br/>\nNot Included"},{"offering":"Broadening","coverage":"Utility Services – Direct Damage<br/>\n&nbsp;Includes Water Supply, Communication Supply,<br/>\n&nbsp;and Power Supply Properties."},{"offering":"Advantage","coverage":"Utility Services – Direct Damage<br/>\n&nbsp;Includes Water Supply, Communication Supply,<br/>\n&nbsp;and Power Supply Properties.","details":"$10,000<br/>\nOverhead Transmission Lines –<br/>\nIncluded"}]},{"coverage":"Outdoor Signs* – freestanding","offeringTexts":[{"offering":"Advantage","coverage":"Outdoor Signs* – freestanding","details":"$10,000"},{"offering":"Broadening","coverage":"Outdoor Signs* – freestanding","details":"$2,500<br/>\n(limited perils only)"},{"offering":"Enhancement","coverage":"Outdoor Signs* – freestanding","details":"$5,000"}]},{"coverage":"Business Income / Extra Expense – ALS 12 months","offeringTexts":[{"offering":"Advantage","coverage":"Business Income / Extra Expense – ALS 12 months","details":"Included<br/>\n(24 hour waiting period)"},{"offering":"Enhancement","coverage":"Business Income / Extra Expense – ALS 12 months","details":"Included<br/>\n(24 hour waiting period)"},{"offering":"Broadening","coverage":"Business Income / Extra Expense – ALS 12 months","details":"Included<br/>\n(48 hour waiting period)"}]},{"coverage":"Newly Acquired or Constructed Property","offeringTexts":[{"offering":"Enhancement","coverage":"Newly Acquired or Constructed Property","details":"Bldgs $500,000 / 60 days<br/>\nBPP $250,000 / 60 days\nBI $100,000 / 60 days"},{"offering":"Broadening","coverage":"Newly Acquired or Constructed Property","details":"Bldgs $250,000 / 30 days<br/>\nBPP $100,000 / 30 days"},{"offering":"Advantage","coverage":"Newly Acquired or Constructed Property","details":"Bldgs $500,000 / 90 days<br/>\nBPP $250,000 / 90 days<br/>\nBI $100,000 / 90 days<br/>\nEE $100,000 / 90 days"}]},{"coverage":"Outdoor Signs – attached to buildings","offeringTexts":[{"offering":"Enhancement","coverage":"Outdoor Signs – attached to buildings","details":"Building Limit"},{"offering":"Broadening","coverage":"Outdoor Signs – attached to buildings","details":"Building Limit"},{"offering":"Advantage","coverage":"Outdoor Signs – attached to buildings","details":"Building Limit"}]},{"coverage":"Automatic Increase Percentage – Building Limit","offeringTexts":[{"offering":"Broadening","coverage":"Automatic Increase Percentage – Building Limit","details":"4%"},{"offering":"Enhancement","coverage":"Automatic Increase Percentage – Building Limit","details":"4%"},{"offering":"Advantage","coverage":"Automatic Increase Percentage – Building Limit","details":"4%"}]},{"coverage":"Water Back-up & Sump Overflow (subj. policy ded.)<br/>\n&nbsp;Covered Property<br/>\n&nbsp;BI/EE","offeringTexts":[{"offering":"Broadening","coverage":"Water Back-up & Sump Overflow (subj. policy ded.)<br/>\n&nbsp;Covered Property<br/>\n&nbsp;BI/EE"},{"offering":"Enhancement","coverage":"Water Back-up & Sump Overflow (subj. policy ded.)<br/>\n&nbsp;Covered Property<br/>\n&nbsp;BI/EE","details":"$10,000*<br/>\n(per loc. / annual aggregate)<br/>\n$10,000*<br/>\n(per loc. / annual aggregate)"},{"offering":"Advantage","coverage":"Water Back-up & Sump Overflow (subj. policy ded.)<br/>\n&nbsp;Covered Property<br/>\n&nbsp;BI/EE","details":"$25,000*<br/>\n(per loc. / ann aggregate)<br/>\n$25,000*<br/>\n(per loc. / ann aggregate)"}]},{"coverage":"Premises Boundary","offeringTexts":[{"offering":"Enhancement","coverage":"Premises Boundary","details":"1,000 feet"},{"offering":"Broadening","coverage":"Premises Boundary","details":"100 feet"},{"offering":"Advantage","coverage":"Premises Boundary","details":"1,000 feet"}]},{"coverage":"Removal of Insurance-to-value Provision","offeringTexts":[{"offering":"Broadening","coverage":"Removal of Insurance-to-value Provision","details":"Included"},{"offering":"Advantage","coverage":"Removal of Insurance-to-value Provision","details":"Included"},{"offering":"Enhancement","coverage":"Removal of Insurance-to-value Provision","details":"Included"}]},{"coverage":"Outdoor Property*<br/>\n&nbsp;Per Tree, Shrub, or Plant","offeringTexts":[{"offering":"Broadening","coverage":"Outdoor Property*<br/>\n&nbsp;Per Tree, Shrub, or Plant","details":"$2,500<br/>\n$1,000"},{"offering":"Enhancement","coverage":"Outdoor Property*<br/>\n&nbsp;Per Tree, Shrub, or Plant","details":"$10,000<br/>\n$1,000"},{"offering":"Advantage","coverage":"Outdoor Property*<br/>\n&nbsp;Per Tree, Shrub, or Plant","details":"$10,000<br/>\n$1,000"}]},{"coverage":"Accounts Receivable","offeringTexts":[{"offering":"Enhancement","coverage":"Accounts Receivable","details":"$15,000 On-Premises*<br/>\n$7,500 Off-Premises"},{"offering":"Broadening","coverage":"Accounts Receivable","details":"$10,000 On-Premises*<br/>\n$5,000 Off-Premises"},{"offering":"Advantage","coverage":"Accounts Receivable","details":"$25,000 On-Premises*<br/>\n$25,000 Off-Premises"}]},{"coverage":"Damage To Premises Rented To You<br/>\n&nbsp;Fire;<br/>\n&nbsp;Explosion;<br/>\n&nbsp;Leakage from Auto Fire Suppression System","offeringTexts":[{"offering":"Advantage","coverage":"Damage To Premises Rented To You<br/>\n&nbsp;Fire;<br/>\n&nbsp;Explosion;<br/>\n&nbsp;Leakage from Auto Fire Suppression System","details":"$250,000<br/>\nYes<br/>\nYes<br/>\nYes"},{"offering":"Enhancement","coverage":"Damage To Premises Rented To You<br/>\n&nbsp;Fire;<br/>\n&nbsp;Explosion;<br/>\n&nbsp;Leakage from Auto Fire Suppression System","details":"$100,000<br/>\nYes<br/>\nYes<br/>\nYes"},{"offering":"Broadening","coverage":"Damage To Premises Rented To You<br/>\n&nbsp;Fire;<br/>\n&nbsp;Explosion;<br/>\n&nbsp;Leakage from Auto Fire Suppression System","details":"$50,000<br/>\nYes<br/>\nNo<br/>\nNo"}]},{"coverage":"Personal Effects<br/>\n&nbsp;Each Premises<br/>\n&nbsp;Any One Person","offeringTexts":[{"offering":"Broadening","coverage":"Personal Effects<br/>\n&nbsp;Each Premises<br/>\n&nbsp;Any One Person","details":"$2,500"},{"offering":"Advantage","coverage":"Personal Effects<br/>\n&nbsp;Each Premises<br/>\n&nbsp;Any One Person","details":"$10,000<br/>\n$2,500"},{"offering":"Enhancement","coverage":"Personal Effects<br/>\n&nbsp;Each Premises<br/>\n&nbsp;Any One Person","details":"$10,000<br/>\n$2,500"}]},{"coverage":"Fairs or Exhibitions","offeringTexts":[{"offering":"Broadening","coverage":"Fairs or Exhibitions"},{"offering":"Enhancement","coverage":"Fairs or Exhibitions"},{"offering":"Advantage","coverage":"Fairs or Exhibitions","details":"$10,000"}]},{"coverage":"Money and Securities","offeringTexts":[{"offering":"Enhancement","coverage":"Money and Securities","details":"$7,500 On-Premises*<br/>\n$7,500 Off-Premises*"},{"offering":"Advantage","coverage":"Money and Securities","details":"$10,000 On-Premises*<br/>\n$10,000 Off-Premises*"},{"offering":"Broadening","coverage":"Money and Securities","details":"$5,000 On-Premises*<br/>\n$5,000 Off-Premises*"}]},{"coverage":"Fire Department Service Charge","offeringTexts":[{"offering":"Enhancement","coverage":"Fire Department Service Charge","details":"$10,000"},{"offering":"Advantage","coverage":"Fire Department Service Charge","details":"$25,000"},{"offering":"Broadening","coverage":"Fire Department Service Charge","details":"$2,500"}]}],"irpmTotal":"0","irpmTotalMax":"25","irpmTotalMin":"-25","classCodes":[{"publicID":"ztujelf9tuve8c4el9qnudjd9da","code":"65144","description":"4 Fam or Less, No Office Occup-3/4 Fam-Lessor Risk Only","propertyType":"Apartment"}],"multiPolicyDiscount":false}},"persons":[{"publicID":"pc:29648","displayName":"Test Policy JDS #2","contactName":"Test Policy JDS #2","subtype":"Company","primaryAddress":{"publicID":"pc:109611","displayName":"123 MAIN ST, BEECH GROVE, IN 46107","addressLine1":"123 MAIN ST","city":"BEECH GROVE","state":"IN","postalCode":"46107","country":"US","addressType":"mailing","addressVerifyStatusExt":"standardized","addressIsPrimaryLocation":false},"accountHolder":true,"tempId":13}],"quoteData":{"offeredQuotes":[{"publicID":"pc:46220","branchName":"CUSTOM","branchCode":"Broadening","isCustom":true,"hasBlockingUWIssues":false,"premium":{"total":{"amount":1161,"currency":"usd"},"monthlyPremium":{"amount":96.75,"currency":"usd"},"termMonths":12,"taxes":{"amount":0,"currency":"usd"},"totalBeforeTaxes":{"amount":1161,"currency":"usd"}},"coverageAlerts":[{"name":"Cyber - Data Compromise Coverage","updated":false,"terms":[{"type":"OptionBP7Limit55Type","name":"Limit","patternCode":"BP7Limit55","options":[{"name":"<none>"},{"name":"50,000","code":"z88hqlj3qnaq3e5gqqlgqcfn599","optionValue":3,"maxValue":5},{"name":"100,000","code":"z7dgevfjh9o9i8coqeom787vev9","optionValue":5,"maxValue":5}],"chosenTerm":"z88hqlj3qnaq3e5gqqlgqcfn599","chosenTermValue":"50,000","isAscendingBetter":true,"required":false,"editable":true,"minCharCount":0},{"type":"OptionBP7RetentionType","name":"Retention","patternCode":"BP7Retention","options":[{"name":"<none>"},{"name":"2,500","code":"z5hjenuto8r4f63na2ue7j1m3d8","optionValue":5,"maxValue":5}],"chosenTerm":"z5hjenuto8r4f63na2ue7j1m3d8","chosenTermValue":"2,500","isAscendingBetter":true,"required":false,"editable":false,"minCharCount":0},{"type":"DateTimeCovTerm","name":"Retroactive Date","patternCode":"BP7RetroactiveDate","options":[{"name":"<none>"}],"chosenTerm":"2019-09-30 00:00:00.000","chosenTermValue":"09/30/2019","directDateValue":"2019-09-30T04:00:00Z","isAscendingBetter":true,"valueType":"datetime","required":false,"editable":false,"minCharCount":0}],"selected":true,"required":false,"publicID":"BP7CyberDataCompromiseCoverage","description":"Cyber - Data Compromise Coverage","amount":{"amount":93,"currency":"usd"},"coverageCategoryCode":"BP7LineDefaultsGrp","coverageCategoryDisplayName":"Line Defaults","portalUserInteraction":true}],"warningMessages":[],"dateQuoted":"2019-09-30T21:48:11Z","periodStatus":"Quoted"}]}}]}
+
+
+39. Retreive payment plans
+
+
+POST https://t1agency.wrg-ins.com/pc/service/edge/gatewayquote/quote HTTP/1.1
+Host: t1agency.wrg-ins.com
+Connection: keep-alive
+Content-Length: 156
+Sec-Fetch-Mode: cors
+Origin: https://t1agency.wrg-ins.com
+Accept-Language: en_US
+SelectedUsername: qa1_uw
+SelectedAgencyCode: 130055
+Content-Type: application/json; charset=utf-8
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsImtpZCI6ImtleS1pZC0xIiwidHlwIjoiSldUIn0.eyJqdGkiOiJiN2RmODA3OGIyOTM0MTE3YWEzZjA3NWVlOWFiZWZiYSIsIm5vbmNlIjoiVWJkWDFDMXZJNmNKdmlPUCIsInN1YiI6IjU0ODZhZDk0LWMzNTYtNDQ5ZC1hMDExLTJlMmNjNmE3Y2IxYiIsInNjb3BlIjpbIm9wZW5pZCJdLCJjbGllbnRfaWQiOiJnYXRld2F5LXBvcnRhbCIsImNpZCI6ImdhdGV3YXktcG9ydGFsIiwiYXpwIjoiZ2F0ZXdheS1wb3J0YWwiLCJ1c2VyX2lkIjoiNTQ4NmFkOTQtYzM1Ni00NDlkLWEwMTEtMmUyY2M2YTdjYjFiIiwib3JpZ2luIjoiYWRmcy1sb2NhbCIsInVzZXJfbmFtZSI6IlFBMV9VVyIsImVtYWlsIjoiV1JHRENUTUB3cmctaW5zLmNvbSIsImF1dGhfdGltZSI6MTU2OTg3NzYyNCwicmV2X3NpZyI6ImM0Y2M1NDc5IiwiaWF0IjoxNTY5ODc3NjI0LCJleHAiOjE1Njk4ODEyMjQsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6ODA4MC91YWEvb2F1dGgvdG9rZW4iLCJ6aWQiOiJ1YWEiLCJhdWQiOlsiZ2F0ZXdheS1wb3J0YWwiLCJvcGVuaWQiXX0.iNNh_ZcpBN1L7yEqGrmkRJWgdW7ovaBjIgcxF1inJrSb6sXuV9HkAAjlU9BiTeYW_ZWnXqCPiQfWtSmQaaikPnm1HE0a2MQld5lES3NIyj3tkbR6Fr6M4_m_zAQF6UAXyvuxDzT0Qk52VIskQ_CKhydpxCIfIDUr9nl-2ksNnCTNy-ey9oeZS3jccr4b48CGXtQjDfF2fo1DvycguTTcHuBR35mwYVugO6OHN8cddLw6sMa7fZuaYkFrwtHzxbiwGRuXCiQny6Ao5TD2zMOTKlfugPkqnyh6UK0Zwi1iy8zjlhjBitrtgkqX66QFsD_CqqdDUbMqTPQUezW3m2UGpw
+User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36
+Sec-Fetch-Site: same-origin
+Referer: https://t1agency.wrg-ins.com/portal/html/index.html
+Accept-Encoding: gzip, deflate, br
+Cookie: X-Uaa-Csrf=HCQ5oxnM1glgtfVRgOZV0i; JSESSIONID=UBogCWnWCGd91ofY8RHocczk; UAA_JSESSIONID=A628A720B2DDF8F6D261D67155488AAE
+
+{"id":"f851ad42-2a6e-4f85-9d64-4b3572364a72","jsonrpc":"2.0","method":"retrievePaymentPlans","params":["0000042040","0c95d388-efac-42b8-bfe8-53b79e0ccc4a"]}
+
+
+
+
+40.

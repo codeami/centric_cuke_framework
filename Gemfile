@@ -8,6 +8,7 @@ gem 'cpt_hook'
 gem 'cucumber', '~> 3.0'
 gem 'cuke_cataloger', '~> 1.4'
 gem 'data_magic', '~> 1.2'
+gem 'httparty_with_cookies'
 # gem 'edsl-pageobject'
 gem 'magic_path' # Not locked yet due to active development
 gem 'mail', '~> 2.7'
