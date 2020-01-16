@@ -23,7 +23,7 @@ module Helpers
     DEFAULT_CONFIG_PATH = './config' # Where should Helpers::Config load it's yml data
 
     DEFAULT_BROWSER_TYPE         = :local # What should the default BROWSER_TYPE be?
-    DEFAULT_BROWSER_BRAND        = :chrome # What should the default BROWSER_BRAND be?
+    DEFAULT_BROWSER_BRAND        = :firefox # What should the default BROWSER_BRAND be? [need yml file in ./config as same browser name]
     DEFAULT_BROWSER_RESOLUTION   = '1920x1080' # What should the default BROWSER_RESOLUTION be?
     DEFAULT_SAUCE_CLIENT_TIMEOUT = 180 # What should the default SAUCE_CLIENT_TIMEOUT be?
 
