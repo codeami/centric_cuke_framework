@@ -1,4 +1,4 @@
-default: BROWSER_RESOLUTION=1920x1080 --no-source --color -p local -p pretty -p chrome
+default: BROWSER_RESOLUTION=1920x1080 --no-source --color -p local -p pretty -p firefox
 defaultedge: --no-source --color  -p local -p pretty -p edge -p html --tags 'not @wip and not @broken and not @framework_support'
 defaultie: --no-source --color  -p local -p pretty -p ie -p html --tags 'not @wip and not @broken and not @framework_support'
 chaos: --no-source --color  -p local -p pretty -p chrome -p html --tags '@wip or @broken'
