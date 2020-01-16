@@ -24,6 +24,7 @@ class SearchTabPage < PolicyCenterPage
   end
 
   def policy_search_results
+    ps_results_grid_element.scroll.to :bottom
     ps_results_grid_element.divs(class: 'x-grid-item-container').map { |d| PolicySearchGridItem.new(d, false, self) }
   rescue Selenium::WebDriver::Error::StaleElementReferenceError
     retry

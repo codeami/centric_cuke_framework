@@ -13,6 +13,7 @@ class WizardPanel < BasePage
   end
 
   def current_detail_classname
+    title_element.scroll.to :top
     "Wizard#{title.strip.delete(' ')}DetailPanel"
   end
 
@@ -29,6 +30,8 @@ class WizardPanel < BasePage
   def populate(data = {})
     data = data_for(data_for_key.to_s) if data.empty?
     actual_data = data.fetch(current_detail_key, data)
+    # STDERR.puts actual_data
+    # binding.pry;2
     current_details.populate(actual_data)
   end
 
