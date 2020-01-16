@@ -116,6 +116,8 @@ module PageObject
       if val.is_a?(TrueClass) || val.is_a?(FalseClass)
         val = val ? 'Yes' : 'No'
       end
+      answers.locate if answers.nil?
+      answers.scroll.to :bottom unless answers.present?
       answers.select(val.titlecase)
     end
 
@@ -171,6 +173,7 @@ module PageObject
     end
 
     def set(val)
+      binding.pry;2
       show_editor
       editor.set(val)
       editor.send_keys(:tab)
@@ -230,7 +233,9 @@ module PageObject
 
     def set(values)
       values.each do |k, v|
+        # STDERR.puts "setting #{k} to #{v}"
         find_question(k)&.set(v)
+        # STDERR.puts "#{k} IS set to #{v}"
       end
     end
 
@@ -276,8 +281,9 @@ module PageObject
     end
 
     def class_for_row(r)
+      r.scroll.to :bottom
       q_class = GuideWire.question_types.values.detect { |q| q.handle_element?(r) }
-      STDERR.puts "Unknown question type" unless q_class
+      STDERR.puts "Unknown question type - text = #{r.inner_text}" unless q_class
       q_class.new(r) if q_class
     end
   end
@@ -474,7 +480,7 @@ module PageObject
       item = item_elements.detect { |i| str_or_regex.is_a?(Regexp) ? str_or_regex.match(i.text) : i.text == str_or_regex }
       raise "Could not locate a list item matching #{str_or_regex}." unless item
       item.click
-      item.text
+      # item.text
     end
 
     def item_elements

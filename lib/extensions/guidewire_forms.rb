@@ -77,6 +77,7 @@ module PageObject
     end
 
     def text
+      label_ele.scroll.to :bottom
       label_ele.text
     end
   end
@@ -170,7 +171,7 @@ module PageObject
     end
 
     def set(val)
-      STDERR.puts "Warning attempting to set a display only field" unless val.empty?
+      STDERR.puts "Warning attempting to set a display only field.  Attempted to set #{val}" unless val.empty?
     end
 
     def self.handle_element?(element)

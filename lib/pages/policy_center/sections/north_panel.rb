@@ -36,7 +36,8 @@ class NorthPanel < BasePage
 
   def click_right_side_of(element)
     e = element.is_a?(Symbol) ? self.send("#{element}_element") : element
-    browser.driver.action.move_to( e.wd, e.wd.rect.width - 2, 2).click.perform
+    # browser.driver.action.move_to( e.wd, e.wd.rect.width - 2, 2).click.perform
+    browser.driver.action.move_to(e.wd, (e.size.width.to_i - 1), 1).click.perform
   end
 
   def show_policy_dd
