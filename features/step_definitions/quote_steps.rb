@@ -9,10 +9,10 @@ And(/I create a new policy quote/) do
   end
 
   on(SubmissionTabPage) do |page|
-    #binding.pry
+    # binding.pry
     page.wizard_panel.populate_to :businessowners_line
     d = page.wizard_panel.current_details
-    binding.pry
+    # binding.pry
   end
 
 end
