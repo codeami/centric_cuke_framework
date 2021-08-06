@@ -13,3 +13,6 @@ Our framework attempts to provide solutions to common problems, improve test rel
 The subfolder *doc* contains both Yard and human generated documentation.  There are README files for various topics you'll need to understand, to get the most out of this framework. 
 
 Opening *doc/index.html* in your browser will provide easy access to the README files as well as code documentation. **When viewing in your browser, make sure to click on the *files* link in the upper left to see the README files.**
+
+HTML displayed using htmlpreview
+(*doc/index.html*) [https://htmlpreview.github.io/?https://github.com/Donavan/centric_cuke_framework/blob/master/doc/index.html]
